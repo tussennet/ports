@@ -1,5 +1,4 @@
 # Created by: Bernhard Froehlich <decke@bluelife.at>
-# $FreeBSD: ports/finance/jgnash/Makefile,v 1.6 2010/08/05 10:13:55 decke Exp $
 
 PORTNAME=	jgnash
 PORTVERSION=	2.13.5
