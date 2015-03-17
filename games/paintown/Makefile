@@ -1,39 +1,36 @@
 # Created by: Bernhard Froehlich <decke@bluelife.at>
-# $FreeBSD$
+# $FreeBSD: head/games/paintown/Makefile 380111 2015-02-27 18:18:06Z amdmi3 $
 
 PORTNAME=	paintown
 PORTVERSION=	3.6.0
+PORTREVISION=	7
 CATEGORIES=	games
 MASTER_SITES=	SF
 
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Fighting game similar to Streets of Rage and TMNT
 
-LICENSE=	BSD
+LICENSE=	BSD3CLAUSE
 
 LIB_DEPENDS=	liballeg.so:${PORTSDIR}/devel/allegro \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libfreetype.so:${PORTSDIR}/print/freetype2
 
-USE_BZIP2=	yes
-USE_SCONS=	yes
+USES=		dos2unix scons tar:bzip2
 USE_SDL=	yes
 INSTALLS_ICONS=	yes
-USE_DOS2UNIX=	yes
 DOS2UNIX_REGEX=	.*\.(c|cpp|h)
-
-SCONS_BUILDENV+=CPPPATH="${LOCALBASE}/include" \
-		LIBPATH="${LOCALBASE}/lib"
 
 DESKTOP_ENTRIES="Paintown" "Fighting game similar to Streets of Rage and TMNT" \
 		"${LOCALBASE}/share/icons/hicolor/32x32/apps/paintown.png" \
 		"paintown" "Game;ActionGame;" false
 
 do-install:
-		${MKDIR} ${STAGEDIR}${DATADIR}
-		(cd ${WRKSRC} && ./install.sh -d ${STAGEDIR}${DATADIR} -b ${STAGEDIR}${PREFIX}/bin)
-		${MKDIR} ${STAGEDIR}${LOCALBASE}/share/icons/hicolor/32x32/apps
-		${INSTALL_DATA} ${WRKSRC}/misc/icon.png \
-			${STAGEDIR}${LOCALBASE}/share/icons/hicolor/32x32/apps/paintown.png
+	${MKDIR} ${STAGEDIR}${DATADIR}
+	(cd ${WRKSRC} && ${ENV} DESTDIR=${STAGEDIR} ./install.sh -d ${DATADIR} -b ${PREFIX}/bin)
+	${MKDIR} ${STAGEDIR}${LOCALBASE}/share/icons/hicolor/32x32/apps
+	${INSTALL_DATA} ${WRKSRC}/misc/icon.png \
+		${STAGEDIR}${LOCALBASE}/share/icons/hicolor/32x32/apps/paintown.png
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/share/paintown/paintown-bin
 
 .include <bsd.port.mk>
