@@ -10,6 +10,8 @@ DISTNAME=	jgnash-${PORTVERSION}-bin
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Free personal finance manager
 
+LICENSE=	GPLv3
+
 WRKSRC=		${WRKDIR}/jgnash-${PORTVERSION}
 DATADIR=	${JAVASHAREDIR}/${PORTNAME}
 SUB_FILES=	jgnash.desktop
@@ -17,7 +19,7 @@ SUB_LIST=	JAVA="${JAVA}"
 PLIST_SUB+=	DESKTOPDIR=${DESKTOPDIR:S|^${PREFIX}/||}
 
 USES=		zip
-#USE_JAVA=	yes
+USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 JAVA_VENDOR=	openjdk
 
