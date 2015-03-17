@@ -1,4 +1,5 @@
 # Created by: Bernhard Froehlich <decke@bluelife.at>
+# $FreeBSD: head/finance/jgnash/Makefile 347408 2014-03-07 16:59:07Z bapt $
 
 PORTNAME=	jgnash
 PORTVERSION=	2.13.5
@@ -7,7 +8,7 @@ MASTER_SITES=	SF/jgnash/Active%20Stable%202.x
 DISTNAME=	jgnash-${PORTVERSION}-bin
 
 MAINTAINER=	decke@FreeBSD.org
-COMMENT=	A free personal finance manager
+COMMENT=	Free personal finance manager
 
 WRKSRC=		${WRKDIR}/jgnash-${PORTVERSION}
 DATADIR=	${JAVASHAREDIR}/${PORTNAME}
@@ -15,7 +16,7 @@ SUB_FILES=	jgnash.desktop
 SUB_LIST=	JAVA="${JAVA}"
 PLIST_SUB+=	DESKTOPDIR=${DESKTOPDIR:S|^${PREFIX}/||}
 
-USE_ZIP=	yes
+USES=		zip
 USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 JAVA_VENDOR=	openjdk
