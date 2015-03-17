@@ -2,7 +2,7 @@
 # $FreeBSD: head/finance/jgnash/Makefile 347408 2014-03-07 16:59:07Z bapt $
 
 PORTNAME=	jgnash
-PORTVERSION=	2.13.5
+PORTVERSION=	2.15.2
 CATEGORIES=	finance java
 MASTER_SITES=	SF/jgnash/Active%20Stable%202.x
 DISTNAME=	jgnash-${PORTVERSION}-bin
@@ -17,7 +17,7 @@ SUB_LIST=	JAVA="${JAVA}"
 PLIST_SUB+=	DESKTOPDIR=${DESKTOPDIR:S|^${PREFIX}/||}
 
 USES=		zip
-USE_JAVA=	yes
+#USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 JAVA_VENDOR=	openjdk
 
