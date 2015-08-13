@@ -1,0 +1,4 @@
+@sample %%ETCDIR%%/srelay.conf.sample
+@sample %%ETCDIR%%/srelay.passwd.sample
+man/man8/srelay.8.gz
+sbin/srelay
