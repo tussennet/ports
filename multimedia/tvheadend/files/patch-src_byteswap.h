@@ -30,7 +30,7 @@
 + */
 +
 +#ifndef _INFINIBAND_BYTESWAP_H_
-+#define	_INFINIBAND_BYTESWAP_H_
++#define _INFINIBAND_BYTESWAP_H_
 +/*
 + * This file is included for compatibility with the userland libraries
 + * accompanying the infiniband stack.
