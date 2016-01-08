@@ -1,8 +1,8 @@
 # Created by: Bernhard Froehlich <decke@FreeBSD.org>
-# $FreeBSD: head/multimedia/tvheadend/Makefile 385637 2015-05-07 16:32:43Z mat $
+# $FreeBSD: head/multimedia/tvheadend/Makefile 399955 2015-10-22 10:19:42Z decke $
 
 PORTNAME=	tvheadend
-PORTVERSION=	4.0.6
+PORTVERSION=	4.0.8
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
@@ -18,7 +18,7 @@ LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
 RUN_DEPENDS=	dtv-scan-tables>=0:${PORTSDIR}/multimedia/dtv-scan-tables
 
 USE_GITHUB=	yes
-GH_TAGNAME=	d97d5f1
+GH_TAGNAME=	0499859
 
 USES=		execinfo gmake pkgconfig python shebangfix
 GNU_CONFIGURE=	yes
