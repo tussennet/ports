@@ -2,9 +2,8 @@
 # $FreeBSD: head/www/mythplugin-mythweb/Makefile 385665 2015-05-07 20:24:15Z mat $
 
 PORTNAME=	mythweb
-PORTVERSION=	0.27
+PORTVERSION=	0.27.5
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
 CATEGORIES=	www
 PKGNAMEPREFIX=	mythplugin-
 
