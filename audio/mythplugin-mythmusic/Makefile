@@ -2,9 +2,8 @@
 # $FreeBSD: head/audio/mythplugin-mythmusic/Makefile 403254 2015-12-08 09:04:59Z mat $
 
 PORTNAME=	mythmusic
-PORTVERSION=	0.27
+PORTVERSION=	0.27.5
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
 CATEGORIES=	audio
 PKGNAMEPREFIX=	mythplugin-
 
