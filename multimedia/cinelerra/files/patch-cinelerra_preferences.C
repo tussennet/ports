@@ -1,6 +1,6 @@
---- cinelerra/preferences.C.orig	2010-12-20 11:54:26.000000000 +0200
-+++ cinelerra/preferences.C	2010-12-20 12:13:02.000000000 +0200
-@@ -35,10 +35,30 @@
+--- cinelerra/preferences.C.orig	2015-08-13 16:04:04.000000000 +0200
++++ cinelerra/preferences.C	2016-03-01 13:52:06.048011281 +0100
+@@ -35,9 +35,31 @@
  #include "videoconfig.h"
  #include "videodevice.inc"
  #include <string.h>
@@ -12,7 +12,6 @@
  
  //#define CLAMP(x, y, z) (x) = ((x) < (y) ? (y) : ((x) > (z) ? (z) : (x)))
  
--
 +#if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
 +#define GETSYSCTL(name, var)    getsysctl(name, &(var), sizeof(var))
 +static int getsysctl(const char *name, void *ptr, size_t len)
@@ -29,10 +28,11 @@
 + return 0;
 +}
 +#endif
- 
- 
- 
-@@ -610,6 +630,18 @@
++
+ Preferences::Preferences()
+ {
+ // Set defaults
+@@ -599,6 +621,18 @@
  {
  /* Get processor count */
  	int result = 1;
@@ -51,7 +51,7 @@
  	FILE *proc;
  
  	if(force_uniprocessor && !interactive) return 1;
-@@ -642,7 +674,7 @@
+@@ -631,7 +665,7 @@
  		}
  		fclose(proc);
  	}
