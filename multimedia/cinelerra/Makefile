@@ -33,6 +33,7 @@ LIB_DEPENDS=	libtiff.4:${PORTSDIR}/graphics/tiff \
 		libuuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
 		libIlmImf.6:${PORTSDIR}/graphics/OpenEXR
 
+WRKSRC=		${WRKDIR}/CinelerraCV-${PORTVERSION}
 USES=		autoreconf gettext gmake tar:xz libtool
 GNU_CONFIGURE=	yes
 USE_GNOME=	esound
