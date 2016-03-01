@@ -9,6 +9,8 @@ DISTNAME=	CinelerraCV-${DISTVERSION}
 MAINTAINER=	fidaj@ukr.net
 COMMENT=	Cinelerra is a prosumer non-linear video editing system
 
+LICENSE=	GPLv2
+
 BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev.h:${PORTSDIR}/multimedia/v4l_compat
 LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
 		libfaad.so:${PORTSDIR}/audio/faad \

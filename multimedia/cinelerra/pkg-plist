@@ -279,9 +279,9 @@ share/locale/pt_BR/LC_MESSAGES/cinelerra.mo
 share/locale/ru/LC_MESSAGES/cinelerra.mo
 share/locale/sl/LC_MESSAGES/cinelerra.mo
 share/pixmaps/cinelerra.xpm
-@dirrmtry share/applications
-@dirrm lib/cinelerra/shapewipe
-@dirrm lib/cinelerra/fonts
-@dirrm lib/cinelerra
-@dirrm include/quicktime
-@dirrm include/mpeg3
+@dir share/applications
+@dir lib/cinelerra/shapewipe
+@dir lib/cinelerra/fonts
+@dir lib/cinelerra
+@dir include/quicktime
+@dir include/mpeg3
