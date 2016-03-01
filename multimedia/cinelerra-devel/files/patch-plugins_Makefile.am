@@ -1,0 +1,10 @@
+--- plugins/Makefile.am.orig
++++ plugins/Makefile.am
+@@ -16,7 +16,6 @@ SUBDIRS= \
+ 	blur \
+ 	brightness \
+ 	burn \
+-	cdripper \
+ 	chromakey \
+ 	chromakeyhsv \
+ 	colorbalance \
