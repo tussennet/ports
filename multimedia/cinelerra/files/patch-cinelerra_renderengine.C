@@ -1,6 +1,6 @@
---- cinelerra/renderengine.C.orig	2011-11-13 22:03:22.000000000 +0200
-+++ cinelerra/renderengine.C	2011-11-13 22:04:15.000000000 +0200
-@@ -419,6 +419,7 @@
+--- cinelerra/renderengine.C.orig	2015-08-13 14:04:04 UTC
++++ cinelerra/renderengine.C
+@@ -419,6 +419,7 @@ int RenderEngine::start_command()
  		Thread::start();
  		start_lock->lock("RenderEngine::start_command 2");
  		start_lock->unlock();

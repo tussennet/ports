@@ -1,5 +1,5 @@
---- libmpeg3/mpeg3io.c.orig	2010-12-26 16:11:34.332228806 +0300
-+++ libmpeg3/mpeg3io.c	2010-12-26 16:11:44.838231944 +0300
+--- libmpeg3/mpeg3io.c.orig	2015-08-13 14:04:04 UTC
++++ libmpeg3/mpeg3io.c
 @@ -1,8 +1,8 @@
  #include "mpeg3private.h"
  #include "mpeg3protos.h"
@@ -11,7 +11,7 @@
  #include <stdlib.h>
  #include <string.h>
  #include <sys/stat.h>
-@@ -35,8 +35,8 @@
+@@ -35,8 +35,8 @@ int mpeg3_copy_fs(mpeg3_fs_t *dst, mpeg3
  
  int64_t mpeg3io_get_total_bytes(mpeg3_fs_t *fs)
  {
@@ -22,7 +22,7 @@
  	fs->total_bytes = ostat.st_size;
  	return fs->total_bytes;
  	
-@@ -50,8 +50,8 @@
+@@ -50,8 +50,8 @@ int64_t mpeg3io_get_total_bytes(mpeg3_fs
  
  int64_t mpeg3io_path_total_bytes(char *path)
  {
@@ -33,7 +33,7 @@
  	return st.st_size;
  }
  
-@@ -61,7 +61,7 @@
+@@ -61,7 +61,7 @@ int mpeg3io_open_file(mpeg3_fs_t *fs)
  	mpeg3_get_keys(fs->css, fs->path);
  
  //printf("mpeg3io_open_file 1 %s\n", fs->path);
@@ -42,7 +42,7 @@
  	{
  		if (fs->path) fprintf(stderr,"[mpeg3io_open_file] Error opening file '%s': ",fs->path);
  		perror("");
-@@ -162,7 +162,7 @@
+@@ -162,7 +162,7 @@ void mpeg3io_read_buffer(mpeg3_fs_t *fs)
  
  
  
@@ -51,7 +51,7 @@
  		fread(fs->buffer, 1, remainder_start, fs->fd);
  
  
-@@ -177,7 +177,7 @@
+@@ -177,7 +177,7 @@ void mpeg3io_read_buffer(mpeg3_fs_t *fs)
  		fs->buffer_position = fs->current_byte;
  		fs->buffer_offset = 0;
  
@@ -60,7 +60,7 @@
  //printf("mpeg3io_read_buffer 2 %llx %llx\n", fs->buffer_position, ftell(fs->fd));
  		fs->buffer_size = fread(fs->buffer, 1, MPEG3_IO_SIZE, fs->fd);
  
-@@ -216,27 +216,27 @@
+@@ -216,27 +216,27 @@ void mpeg3io_complete_path(char *complet
  
  int mpeg3io_device(char *path, char *device)
  {

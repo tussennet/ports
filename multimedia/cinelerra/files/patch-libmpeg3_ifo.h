@@ -1,4 +1,4 @@
---- libmpeg3/ifo.h.orig
+--- libmpeg3/ifo.h.orig	2015-08-13 14:04:04 UTC
 +++ libmpeg3/ifo.h
 @@ -1,6 +1,8 @@
  #ifndef __IFO_H__

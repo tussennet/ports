@@ -1,4 +1,4 @@
---- quicktime/util.c.orig
+--- quicktime/util.c.orig	2015-08-13 14:04:04 UTC
 +++ quicktime/util.c
 @@ -1,5 +1,5 @@
  #include <fcntl.h>

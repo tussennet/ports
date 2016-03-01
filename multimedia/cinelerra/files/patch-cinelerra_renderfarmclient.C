@@ -1,6 +1,6 @@
---- cinelerra/renderfarmclient.C.orig
+--- cinelerra/renderfarmclient.C.orig	2015-08-13 14:04:04 UTC
 +++ cinelerra/renderfarmclient.C
-@@ -124,7 +124,7 @@ void RenderFarmClient::main_loop()
+@@ -130,7 +130,7 @@ void RenderFarmClient::main_loop()
  	else
  	{
  		struct sockaddr_un addr;

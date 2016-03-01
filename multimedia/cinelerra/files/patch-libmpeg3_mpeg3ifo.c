@@ -1,5 +1,5 @@
---- libmpeg3/mpeg3ifo.c.orig	2010-12-19 13:56:22.000000000 +0300
-+++ libmpeg3/mpeg3ifo.c	2010-12-26 16:00:24.291223315 +0300
+--- libmpeg3/mpeg3ifo.c.orig	2015-08-13 14:04:04 UTC
++++ libmpeg3/mpeg3ifo.c
 @@ -1,4 +1,4 @@
 -#include <byteswap.h>
 +//#include <byteswap.h>

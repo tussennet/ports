@@ -1,6 +1,6 @@
---- libmpeg3/mpeg3tocutil.c.orig	2010-12-26 16:14:27.556227108 +0300
-+++ libmpeg3/mpeg3tocutil.c	2010-12-26 16:14:34.918227865 +0300
-@@ -1415,8 +1415,8 @@
+--- libmpeg3/mpeg3tocutil.c.orig	2015-08-13 14:04:04 UTC
++++ libmpeg3/mpeg3tocutil.c
+@@ -1417,8 +1417,8 @@ int64_t mpeg3_get_source_date(mpeg3_t *f
  
  int64_t mpeg3_calculate_source_date(char *path)
  {

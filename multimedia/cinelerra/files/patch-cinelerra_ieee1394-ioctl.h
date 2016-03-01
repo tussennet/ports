@@ -1,4 +1,4 @@
---- cinelerra/ieee1394-ioctl.h.orig
+--- cinelerra/ieee1394-ioctl.h.orig	2015-08-13 14:04:04 UTC
 +++ cinelerra/ieee1394-ioctl.h
 @@ -25,8 +25,8 @@
  #ifndef __IEEE1394_IOCTL_H

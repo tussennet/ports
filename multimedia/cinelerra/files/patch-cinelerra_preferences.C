@@ -1,5 +1,5 @@
---- cinelerra/preferences.C.orig	2015-08-13 16:04:04.000000000 +0200
-+++ cinelerra/preferences.C	2016-03-01 13:52:06.048011281 +0100
+--- cinelerra/preferences.C.orig	2015-08-13 14:04:04 UTC
++++ cinelerra/preferences.C
 @@ -35,9 +35,31 @@
  #include "videoconfig.h"
  #include "videodevice.inc"
@@ -32,7 +32,7 @@
  Preferences::Preferences()
  {
  // Set defaults
-@@ -599,6 +621,18 @@
+@@ -599,6 +621,18 @@ int Preferences::calculate_processors(in
  {
  /* Get processor count */
  	int result = 1;
@@ -51,7 +51,7 @@
  	FILE *proc;
  
  	if(force_uniprocessor && !interactive) return 1;
-@@ -631,7 +665,7 @@
+@@ -631,7 +665,7 @@ int Preferences::calculate_processors(in
  		}
  		fclose(proc);
  	}

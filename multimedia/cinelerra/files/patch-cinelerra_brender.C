@@ -1,6 +1,6 @@
---- cinelerra/brender.C.orig	2010-12-20 12:41:00.000000000 +0200
-+++ cinelerra/brender.C	2010-12-20 13:07:00.000000000 +0200
-@@ -144,14 +144,22 @@
+--- cinelerra/brender.C.orig	2015-08-13 14:04:04 UTC
++++ cinelerra/brender.C
+@@ -144,14 +144,22 @@ void BRender::run()
  
  
  // Construct executable command with the designated filesystem port

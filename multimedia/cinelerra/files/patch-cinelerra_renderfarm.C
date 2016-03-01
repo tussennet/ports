@@ -1,6 +1,6 @@
---- cinelerra/renderfarm.C.orig
+--- cinelerra/renderfarm.C.orig	2015-08-13 14:04:04 UTC
 +++ cinelerra/renderfarm.C
-@@ -173,7 +173,7 @@ int RenderFarmServerThread::open_client(char *hostname, int port)
+@@ -163,7 +163,7 @@ int RenderFarmServerThread::open_client(
  		else
  		{
  			struct sockaddr_un addr;

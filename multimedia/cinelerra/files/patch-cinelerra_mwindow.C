@@ -1,8 +1,8 @@
---- cinelerra/mwindow.C.orig	2010-12-19 11:09:09.000000000 +0200
-+++ cinelerra/mwindow.C	2010-12-27 12:23:59.000000000 +0200
-@@ -105,7 +105,8 @@
- #include "exportedl.h"
- 
+--- cinelerra/mwindow.C.orig	2015-08-13 14:04:04 UTC
++++ cinelerra/mwindow.C
+@@ -111,7 +111,8 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
  #include <string.h>
 -
 +#include <sys/types.h>
@@ -10,7 +10,7 @@
  
  
  extern "C"
-@@ -1251,6 +1252,23 @@
+@@ -1338,6 +1339,23 @@ void MWindow::test_plugins(EDL *new_edl,
  
  void MWindow::init_shm()
  {
@@ -34,11 +34,11 @@
  // Fix shared memory
  	FILE *fd = fopen("/proc/sys/kernel/shmmax", "w");
  	if(fd)
-@@ -1278,6 +1296,7 @@
+@@ -1365,6 +1383,7 @@ void MWindow::init_shm()
  			"echo \"0x7fffffff\" > /proc/sys/kernel/shmmax\n",
  			result);
  	}
 +#endif
  }
  
- 
+ void MWindow::create_objects(int want_gui, 

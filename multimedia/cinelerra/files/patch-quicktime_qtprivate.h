@@ -1,4 +1,4 @@
---- quicktime/qtprivate.h.orig
+--- quicktime/qtprivate.h.orig	2015-08-13 14:04:04 UTC
 +++ quicktime/qtprivate.h
 @@ -30,12 +30,13 @@
  #include <stdio.h>
