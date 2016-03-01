@@ -5,38 +5,36 @@
 # $FreeBSD: ports/multimedia/cinelerra-devel/Makefile,v 1.2 2010/03/28 06:32:21 fidaj Exp $
 #
 
-PORTNAME=	cinelerra-devel
-PORTVERSION=	2.1
+PORTNAME=	cinelerra
+PORTVERSION=	2.3
 CATEGORIES=	multimedia
-MASTER_SITES=	http://pazzle.otdux.com.ua/
+MASTER_SITES=	http://www.cinelerra-cv.org/releases/
+DISTFILES=	CinelerraCV-${DISTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	fidaj@ukr.net
 COMMENT=	Cinelerra is a prosumer non-linear video editing system
 
 BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev.h:${PORTSDIR}/multimedia/v4l_compat
-LIB_DEPENDS=	tiff.4:${PORTSDIR}/graphics/tiff \
-		faad.2:${PORTSDIR}/audio/faad \
-		faac.0:${PORTSDIR}/audio/faac \
-		fftw3:${PORTSDIR}/math/fftw3 \
-		lavjpeg-2.0:${PORTSDIR}/multimedia/mjpegtools \
-		jpeg:${PORTSDIR}/graphics/jpeg \
-		a52.0:${PORTSDIR}/audio/liba52 \
-		png.6:${PORTSDIR}/graphics/png \
-		sndfile.1:${PORTSDIR}/audio/libsndfile \
-		mp3lame.0:${PORTSDIR}/audio/lame \
-		x264.123:${PORTSDIR}/multimedia/x264 \
-		theora.0:${PORTSDIR}/multimedia/libtheora \
-		vorbis.4:${PORTSDIR}/audio/libvorbis \
-		avcodec.1:${PORTSDIR}/multimedia/ffmpeg \
-		dv.4:${PORTSDIR}/multimedia/libdv \
-		uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
-		IlmImf.6:${PORTSDIR}/graphics/OpenEXR
+LIB_DEPENDS=	libtiff.4:${PORTSDIR}/graphics/tiff \
+		libfaad.2:${PORTSDIR}/audio/faad \
+		libfaac.0:${PORTSDIR}/audio/faac \
+		libfftw3:${PORTSDIR}/math/fftw3 \
+		liblavjpeg-2.0:${PORTSDIR}/multimedia/mjpegtools \
+		libjpeg:${PORTSDIR}/graphics/jpeg \
+		liba52.0:${PORTSDIR}/audio/liba52 \
+		libpng.6:${PORTSDIR}/graphics/png \
+		libsndfile.1:${PORTSDIR}/audio/libsndfile \
+		libmp3lame.0:${PORTSDIR}/audio/lame \
+		libx264.123:${PORTSDIR}/multimedia/x264 \
+		libtheora.0:${PORTSDIR}/multimedia/libtheora \
+		libvorbis.4:${PORTSDIR}/audio/libvorbis \
+		libavcodec.1:${PORTSDIR}/multimedia/ffmpeg \
+		libdv.4:${PORTSDIR}/multimedia/libdv \
+		libuuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
+		libIlmImf.6:${PORTSDIR}/graphics/OpenEXR
 
-USE_AUTOTOOLS=	aclocal:env automake:env autoconf:env libtool:env
+USES=		autoreconf gettext gmake tar:xz libtool
 GNU_CONFIGURE=	yes
-USE_BZIP2=	yes
-USE_GETTEXT=	yes
-USE_GMAKE=	yes
 USE_GNOME=	esound
 USE_LDCONFIG=	yes
 USE_XORG=	x11 xxf86vm xv
