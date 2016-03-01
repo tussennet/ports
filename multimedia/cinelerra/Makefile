@@ -11,12 +11,14 @@ COMMENT=	Cinelerra is a prosumer non-linear video editing system
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev.h:${PORTSDIR}/multimedia/v4l_compat
+BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev.h:${PORTSDIR}/multimedia/v4l_compat \
+		nasm:${PORTSDIR}/devel/nasm
+
 LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
 		libfaad.so:${PORTSDIR}/audio/faad \
 		libfaac.so:${PORTSDIR}/audio/faac \
 		libfftw3.so:${PORTSDIR}/math/fftw3 \
-		liblavjpeg-2.so:${PORTSDIR}/multimedia/mjpegtools \
+		liblavjpeg.so:${PORTSDIR}/multimedia/mjpegtools \
 		libjpeg.so:${PORTSDIR}/graphics/jpeg \
 		liba52.so:${PORTSDIR}/audio/liba52 \
 		libpng.so:${PORTSDIR}/graphics/png \
