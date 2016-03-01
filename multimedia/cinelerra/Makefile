@@ -1,49 +1,45 @@
-# New ports collection makefile for:	cinelerra-devel
-# Date created:		2010-04-16
-# Whom:			Ivan Klymenko <fidaj@ukr.net>
-#
 # $FreeBSD: ports/multimedia/cinelerra-devel/Makefile,v 1.2 2010/03/28 06:32:21 fidaj Exp $
-#
 
 PORTNAME=	cinelerra
 PORTVERSION=	2.3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.cinelerra-cv.org/releases/
-DISTFILES=	CinelerraCV-${DISTVERSION}${EXTRACT_SUFX}
+DISTNAME=	CinelerraCV-${DISTVERSION}
 
 MAINTAINER=	fidaj@ukr.net
 COMMENT=	Cinelerra is a prosumer non-linear video editing system
 
 BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev.h:${PORTSDIR}/multimedia/v4l_compat
-LIB_DEPENDS=	libtiff.4:${PORTSDIR}/graphics/tiff \
-		libfaad.2:${PORTSDIR}/audio/faad \
-		libfaac.0:${PORTSDIR}/audio/faac \
-		libfftw3:${PORTSDIR}/math/fftw3 \
-		liblavjpeg-2.0:${PORTSDIR}/multimedia/mjpegtools \
-		libjpeg:${PORTSDIR}/graphics/jpeg \
-		liba52.0:${PORTSDIR}/audio/liba52 \
-		libpng.6:${PORTSDIR}/graphics/png \
-		libsndfile.1:${PORTSDIR}/audio/libsndfile \
-		libmp3lame.0:${PORTSDIR}/audio/lame \
-		libx264.123:${PORTSDIR}/multimedia/x264 \
-		libtheora.0:${PORTSDIR}/multimedia/libtheora \
-		libvorbis.4:${PORTSDIR}/audio/libvorbis \
-		libavcodec.1:${PORTSDIR}/multimedia/ffmpeg \
-		libdv.4:${PORTSDIR}/multimedia/libdv \
-		libuuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
-		libIlmImf.6:${PORTSDIR}/graphics/OpenEXR
+LIB_DEPENDS=	libtiff.so:${PORTSDIR}/graphics/tiff \
+		libfaad.so:${PORTSDIR}/audio/faad \
+		libfaac.so:${PORTSDIR}/audio/faac \
+		libfftw3.so:${PORTSDIR}/math/fftw3 \
+		liblavjpeg-2.so:${PORTSDIR}/multimedia/mjpegtools \
+		libjpeg.so:${PORTSDIR}/graphics/jpeg \
+		liba52.so:${PORTSDIR}/audio/liba52 \
+		libpng.so:${PORTSDIR}/graphics/png \
+		libsndfile.so:${PORTSDIR}/audio/libsndfile \
+		libmp3lame.so:${PORTSDIR}/audio/lame \
+		libx264.so:${PORTSDIR}/multimedia/x264 \
+		libtheora.so:${PORTSDIR}/multimedia/libtheora \
+		libvorbis.so:${PORTSDIR}/audio/libvorbis \
+		libavcodec.so:${PORTSDIR}/multimedia/ffmpeg \
+		libdv.so:${PORTSDIR}/multimedia/libdv \
+		libuuid.so:${PORTSDIR}/misc/e2fsprogs-libuuid \
+		libIlmImf.so:${PORTSDIR}/graphics/OpenEXR
 
-WRKSRC=		${WRKDIR}/CinelerraCV-${PORTVERSION}
 USES=		autoreconf gettext gmake tar:xz libtool
 GNU_CONFIGURE=	yes
 USE_GNOME=	esound
 USE_LDCONFIG=	yes
 USE_XORG=	x11 xxf86vm xv
 USE_GL=		gl glu
+
 CONFIGURE_ARGS=	--disable-alsa \
 		--disable-alsatest \
 		--enable-opengl \
 		--with-external-ffmpeg
+
 CONFIGURE_ENV+=	CFLAGS="-g -D_THREAD_SAFE ${CFLAGS} -I${LOCALBASE}/include" \
 		CPPFLAGS="-g -D_THREAD_SAFE ${CPPFLAGS} -I${LOCALBASE}/include" \
 		CXXFLAGS="-g -D_THREAD_SAFE ${CXXFLAGS} -I${LOCALBASE}/include" \
@@ -57,6 +53,7 @@ pre-configure:
 	${FIND} ${WRKSRC} -name "*.m4" | ${XARGS} ${REINPLACE_CMD} -e \
 	's|-ldl||g'
 	cd ${WRKSRC} && ${SH} ./autogen.sh
+
 post-configure:
 	${FIND} ${WRKSRC} -name "Makefile*" | ${XARGS} ${REINPLACE_CMD} -e \
 	's|-lc_r|${PTHREAD_LIBS}|g ; \
