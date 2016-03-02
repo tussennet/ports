@@ -58,10 +58,10 @@ pre-configure:
 	's|-ldl||g'
 	cd ${WRKSRC} && ${SH} ./autogen.sh
 
-post-configure:
-	${FIND} ${WRKSRC} -name "Makefile*" | ${XARGS} ${REINPLACE_CMD} -e \
-	's|-lc_r|${PTHREAD_LIBS}|g ; \
-	s|-pthread|${PTHREAD_LIBS}|g ; \
-	s|-lpthread|${PTHREAD_LIBS}|g'
+#post-configure:
+#	${FIND} ${WRKSRC} -name "Makefile*" | ${XARGS} ${REINPLACE_CMD} -e \
+#	's|-lc_r|${PTHREAD_LIBS}|g ; \
+#	s|-pthread|${PTHREAD_LIBS}|g ; \
+#	s|-lpthread|${PTHREAD_LIBS}|g'
 
 .include <bsd.port.mk>
