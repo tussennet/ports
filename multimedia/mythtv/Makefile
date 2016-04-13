@@ -2,7 +2,7 @@
 # $FreeBSD: head/multimedia/mythtv/Makefile 412348 2016-04-01 14:17:44Z mat $
 
 PORTNAME=	mythtv
-PORTVERSION=	0.27.5.20150616
+PORTVERSION=	0.27.6
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
@@ -21,7 +21,7 @@ CONFLICTS=	mythtv-frontend-[0-9]*
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	MythTV
-GH_TAGNAME=	ad97d24
+GH_TAGNAME=	2ddd1d1
 
 WRKSRC_SUBDIR=	${PORTNAME}
 
