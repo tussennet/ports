@@ -1,5 +1,5 @@
 # Created by: Bernhard Froehlich <decke@bluelife.at>
-# $FreeBSD: head/multimedia/mythtv-frontend/Makefile 399348 2015-10-15 15:11:51Z mat $
+# $FreeBSD: head/multimedia/mythtv-frontend/Makefile 412348 2016-04-01 14:17:44Z mat $
 
 PORTNAME=	mythtv-frontend
 PORTVERSION=	0.27.5.20150616
@@ -8,12 +8,12 @@ CATEGORIES=	multimedia
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	MythTV is a homebrew PVR project
 
-BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev2.h:${PORTSDIR}/multimedia/v4l_compat \
-		yasm:${PORTSDIR}/devel/yasm
-LIB_DEPENDS=	libmp3lame.so:${PORTSDIR}/audio/lame \
-		libfreetype.so:${PORTSDIR}/print/freetype2 \
-		libtag.so:${PORTSDIR}/audio/taglib \
-		libxml2.so:${PORTSDIR}/textproc/libxml2
+BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev2.h:multimedia/v4l_compat \
+		yasm:devel/yasm
+LIB_DEPENDS=	libmp3lame.so:audio/lame \
+		libfreetype.so:print/freetype2 \
+		libtag.so:audio/taglib \
+		libxml2.so:textproc/libxml2
 
 CONFLICTS=	mythtv-[0-9]*
 
@@ -59,13 +59,13 @@ DESKTOP_ENTRIES="MythTV Frontend" "MythTV is a homebrew PVR project" "" \
 OPTIONS_DEFINE=	OPENGL JACK PULSEAUDIO VDPAU
 OPTIONS_DEFAULT=	OPENGL
 
-JACK_LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack
+JACK_LIB_DEPENDS=	libjack.so:audio/jack
 JACK_CONFIGURE_ENABLE=	audio-jack
 
-PULSEAUDIO_LIB_DEPENDS=	libpulse.so:${PORTSDIR}/audio/pulseaudio
+PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 PULSEAUDIO_CONFIGURE_ENABLE=	audio-pulseoutput
 
-VDPAU_LIB_DEPENDS=	libvdpau.so:${PORTSDIR}/multimedia/libvdpau
+VDPAU_LIB_DEPENDS=	libvdpau.so:multimedia/libvdpau
 VDPAU_CONFIGURE_ENABLE=	vdpau
 
 OPENGL_CONFIGURE_ENABLE=	opengl-video
