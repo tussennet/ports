@@ -2,13 +2,12 @@
 # $FreeBSD: head/multimedia/tvheadend/Makefile 433480 2017-02-06 09:49:04Z decke $
 
 PORTNAME=	tvheadend
-PORTVERSION=	4.0.8
+PORTVERSION=	4.0.9
 DISTVERSIONPREFIX=	v
-PORTREVISION=	4
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
-COMMENT=	TV streaming server supporting DVB, IPTV and V4L
+COMMENT=	TV streaming server supporting DVB, IPTV, SAT>IP and more
 
 LICENSE=	GPLv3
 
