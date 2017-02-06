@@ -1,9 +1,10 @@
 # Created by: Bernhard Froehlich <decke@FreeBSD.org>
-# $FreeBSD: head/multimedia/tvheadend/Makefile 399955 2015-10-22 10:19:42Z decke $
+# $FreeBSD: head/multimedia/tvheadend/Makefile 433480 2017-02-06 09:49:04Z decke $
 
 PORTNAME=	tvheadend
 PORTVERSION=	4.0.8
-PORTREVISION=	2
+DISTVERSIONPREFIX=	v
+PORTREVISION=	4
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
@@ -11,15 +12,16 @@ COMMENT=	TV streaming server supporting DVB, IPTV and V4L
 
 LICENSE=	GPLv3
 
-BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash \
-		${LOCALBASE}/include/linux/videodev2.h:${PORTSDIR}/multimedia/v4l_compat
+BROKEN_powerpc64=	Does not build
 
-LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl \
-		liburiparser.so:${PORTSDIR}/net/uriparser
-RUN_DEPENDS=	dtv-scan-tables>=0:${PORTSDIR}/multimedia/dtv-scan-tables
+BUILD_DEPENDS=	bash:shells/bash \
+		${LOCALBASE}/include/linux/videodev2.h:multimedia/v4l_compat
+
+LIB_DEPENDS=	libcurl.so:ftp/curl \
+		liburiparser.so:net/uriparser
+RUN_DEPENDS=	dtv-scan-tables>=0:multimedia/dtv-scan-tables
 
 USE_GITHUB=	yes
-GH_TAGNAME=	0499859
 
 USES=		execinfo gmake pkgconfig python shebangfix
 GNU_CONFIGURE=	yes
@@ -28,9 +30,9 @@ USE_RC_SUBR=	${PORTNAME}
 
 SHEBANG_FILES=	${WRKSRC}/Autobuild.sh \
 		${WRKSRC}/configure \
+		${WRKSRC}/support/apt-update \
 		${WRKSRC}/support/configure.inc \
 		${WRKSRC}/support/getmuxlist \
-		${WRKSRC}/support/pbuilder \
 		${WRKSRC}/support/version
 
 TVHUSER?=	tvheadend
@@ -46,24 +48,29 @@ CONFIGURE_ARGS+=--disable-dvbscan --disable-zlib
 CFLAGS+=	-I${LOCALBASE}/include -Wno-conversion -Wno-int-to-pointer-cast
 LDFLAGS+=	-L${LOCALBASE}/lib -lexecinfo -lssl -lcrypto -lz
 
-OPTIONS_DEFINE=	AVAHI DVBCSA HDHOMERUN TRANSCODING XMLTV
-OPTIONS_DEFAULT=DVBCSA HDHOMERUN
+OPTIONS_DEFINE=	AVAHI DVBCSA HDHOMERUN INOTIFY TRANSCODING XMLTV
+OPTIONS_DEFAULT=DVBCSA HDHOMERUN INOTIFY
 
-AVAHI_LIB_DEPENDS=	libavahi-client.so:${PORTSDIR}/net/avahi-app
+AVAHI_LIB_DEPENDS=	libavahi-client.so:net/avahi-app
 
 DVBCSA_DESC=		Replace internal ffdecsa with dvbcsa
-DVBCSA_LIB_DEPENDS=	libdvbcsa.so:${PORTSDIR}/multimedia/libdvbcsa
+DVBCSA_LIB_DEPENDS=	libdvbcsa.so:multimedia/libdvbcsa
 DVBCSA_CONFIGURE_ENABLE=	dvbcsa
 
 HDHOMERUN_DESC=		Native support for HDHomeRun network tuners
-HDHOMERUN_LIB_DEPENDS=	libhdhomerun.so:${PORTSDIR}/multimedia/libhdhomerun
+HDHOMERUN_LIB_DEPENDS=	libhdhomerun.so:multimedia/libhdhomerun
 HDHOMERUN_CONFIGURE_ENABLE=	hdhomerun_client
 
+INOTIFY_DESC=		File system notifications support
+INOTIFY_LIB_DEPENDS=	libinotify.so:devel/libinotify
+INOTIFY_CONFIGURE_ENABLE=	inotify
+INOTIFY_LDFLAGS=	-linotify
+
 TRANSCODING_DESC=	Transcoding for mobile and web clients
-TRANSCODING_LIB_DEPENDS=	libavcodec.so:${PORTSDIR}/multimedia/ffmpeg
+TRANSCODING_LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg
 TRANSCODING_CONFIGURE_ENABLE=	libav
 
-XMLTV_RUN_DEPENDS=	p5-xmltv>=0:${PORTSDIR}/textproc/p5-xmltv
+XMLTV_RUN_DEPENDS=	p5-xmltv>=0:textproc/p5-xmltv
 
 .include <bsd.port.pre.mk>
 
