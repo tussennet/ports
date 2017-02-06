@@ -2,7 +2,7 @@
 # $FreeBSD: head/multimedia/dtv-scan-tables/Makefile 385637 2015-05-07 16:32:43Z mat $
 
 PORTNAME=	dtv-scan-tables
-PORTVERSION=	20140612
+PORTVERSION=	20161118
 CATEGORIES=	multimedia
 
 MAINTAINER=	dreamcat4@gmail.com
@@ -12,7 +12,7 @@ LICENSE=	GPLv2
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	oliv3r
-GH_TAGNAME=	14bd6c7
+GH_TAGNAME=	9481e7c
 
 NO_BUILD=	yes
 
