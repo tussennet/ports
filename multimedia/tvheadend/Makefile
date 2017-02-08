@@ -46,7 +46,7 @@ SUB_LIST+=	TVHUSER="${TVHUSER}" \
 
 CONFIGURE_ENV+=	PLATFORM=freebsd
 CONFIGURE_ARGS+=--disable-dvbscan --disable-zlib --disable-hdhomerun_static \
-		--disable-bintray_cache --disable-ffmpeg_static
+		--disable-bintray_cache --disable-ffmpeg_static --disable-pie
 CFLAGS+=	-I${LOCALBASE}/include -Wno-conversion -Wno-int-to-pointer-cast
 LDFLAGS+=	-L${LOCALBASE}/lib -lexecinfo -lssl -lcrypto -lz
 
