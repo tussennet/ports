@@ -2,7 +2,7 @@
 # $FreeBSD: head/multimedia/tvheadend/Makefile 433480 2017-02-06 09:49:04Z decke $
 
 PORTNAME=	tvheadend
-PORTVERSION=	4.0.9
+PORTVERSION=	4.1.99.20170120
 DISTVERSIONPREFIX=	v
 CATEGORIES=	multimedia
 
@@ -14,6 +14,7 @@ LICENSE=	GPLv3
 BROKEN_powerpc64=	Does not build
 
 BUILD_DEPENDS=	bash:shells/bash \
+		cmake:devel/cmake \
 		${LOCALBASE}/include/linux/videodev2.h:multimedia/v4l_compat
 
 LIB_DEPENDS=	libcurl.so:ftp/curl \
@@ -21,6 +22,7 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 RUN_DEPENDS=	dtv-scan-tables>=0:multimedia/dtv-scan-tables
 
 USE_GITHUB=	yes
+GH_TAGNAME=	e5f5a42
 
 USES=		execinfo gmake pkgconfig python shebangfix
 GNU_CONFIGURE=	yes
@@ -43,7 +45,8 @@ SUB_LIST+=	TVHUSER="${TVHUSER}" \
 		TVHGROUP="${TVHGROUP}"
 
 CONFIGURE_ENV+=	PLATFORM=freebsd
-CONFIGURE_ARGS+=--disable-dvbscan --disable-zlib --disable-hdhomerun_static
+CONFIGURE_ARGS+=--disable-dvbscan --disable-zlib --disable-hdhomerun_static \
+		--disable-bintray_cache --disable-ffmpeg_static
 CFLAGS+=	-I${LOCALBASE}/include -Wno-conversion -Wno-int-to-pointer-cast
 LDFLAGS+=	-L${LOCALBASE}/lib -lexecinfo -lssl -lcrypto -lz
 
