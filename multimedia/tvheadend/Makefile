@@ -43,7 +43,7 @@ SUB_LIST+=	TVHUSER="${TVHUSER}" \
 		TVHGROUP="${TVHGROUP}"
 
 CONFIGURE_ENV+=	PLATFORM=freebsd
-CONFIGURE_ARGS+=--disable-dvbscan --disable-zlib
+CONFIGURE_ARGS+=--disable-dvbscan --disable-zlib --disable-hdhomerun_static
 CFLAGS+=	-I${LOCALBASE}/include -Wno-conversion -Wno-int-to-pointer-cast
 LDFLAGS+=	-L${LOCALBASE}/lib -lexecinfo -lssl -lcrypto -lz
 
@@ -73,31 +73,10 @@ XMLTV_RUN_DEPENDS=	p5-xmltv>=0:textproc/p5-xmltv
 
 .include <bsd.port.pre.mk>
 
-.if ( !empty(CC:M*clang*) || ${OSVERSION} >= 1000024 )
-# CLANG also needs -Wno-microsoft which GCC 4.2 does not know
-CFLAGS+=	-Wno-microsoft \
-		-Wno-tautological-constant-out-of-range-compare
-.endif
-
 post-patch:
-	@${REINPLACE_CMD} 's|0.0.0~unknown|${PORTVERSION}-${GH_TAGNAME}|' \
-		${WRKSRC}/support/version
-	@${REINPLACE_CMD} 's|-g||' \
-		${WRKSRC}/Makefile
 	@${REINPLACE_CMD} 's|-ldl||' \
 		${WRKSRC}/Makefile
-	# ignore gcc warnings on FreeBSD 9.X, and clang warnings on FreeBSD 10+
 	@${REINPLACE_CMD} 's|-Werror||' \
 		${WRKSRC}/Makefile
-	# Remove -Wunused-result because gcc 4.2 on FreeBSD 9.x does not know it
-	@${REINPLACE_CMD} 's|-Wunused-result||' \
-		${WRKSRC}/Makefile
-.if ${OSVERSION} >= 1000000
-	# to suppress clang CC flags on FreeBSD 10+
-	# @${REINPLACE_CMD} 's|clang|clang-options-disabled|' \
-	# to enable clang CC flags, because clang is identified as 'cc' on FreeBSD 10+
-	@${REINPLACE_CMD} 's|clang|cc|' \
-		${WRKSRC}/Makefile
-.endif
 
 .include <bsd.port.post.mk>
