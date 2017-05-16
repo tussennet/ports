@@ -2,7 +2,7 @@
 # $FreeBSD: head/multimedia/tvheadend/Makefile 433480 2017-02-06 09:49:04Z decke $
 
 PORTNAME=	tvheadend
-PORTVERSION=	4.1.99.20170120
+PORTVERSION=	4.2.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	multimedia
 
@@ -22,7 +22,6 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 RUN_DEPENDS=	dtv-scan-tables>=0:multimedia/dtv-scan-tables
 
 USE_GITHUB=	yes
-GH_TAGNAME=	e5f5a42
 
 USES=		execinfo gmake pkgconfig python shebangfix
 GNU_CONFIGURE=	yes
