@@ -23,7 +23,7 @@ RUN_DEPENDS=	dtv-scan-tables>=0:multimedia/dtv-scan-tables
 
 USE_GITHUB=	yes
 
-USES=		execinfo gmake pkgconfig python shebangfix
+USES=		execinfo gettext gmake pkgconfig python shebangfix
 GNU_CONFIGURE=	yes
 MAKE_JOBS_UNSAFE=	yes
 USE_RC_SUBR=	${PORTNAME}
