@@ -1063,6 +1063,7 @@ man/man1/tvheadend.1.gz
 %%DATADIR%%/src/webui/static/img/doc/bouquet/detach.png
 %%DATADIR%%/src/webui/static/img/doc/bouquet/tab.png
 %%DATADIR%%/src/webui/static/img/doc/caclient/tab.png
+%%DATADIR%%/src/webui/static/img/doc/caclient_capmt/tab.png
 %%DATADIR%%/src/webui/static/img/doc/channel/add.png
 %%DATADIR%%/src/webui/static/img/doc/channel/tab.png
 %%DATADIR%%/src/webui/static/img/doc/channeltag/tab.png
