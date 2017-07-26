@@ -1,9 +1,10 @@
 %%DATADIR%%/COPYING
 %%DATADIR%%/COPYING.LGPL
-%%DATADIR%%/Makefile
 %%DATADIR%%/README
 %%DATADIR%%/atsc/ca-AB-Calgary
+%%DATADIR%%/atsc/ca-ON-Toronto
 %%DATADIR%%/atsc/us-ATSC-center-frequencies-8VSB
+%%DATADIR%%/atsc/us-ATSC-center-frequencies-8VSB-062009
 %%DATADIR%%/atsc/us-CA-SF-Bay-Area
 %%DATADIR%%/atsc/us-CO-Denver
 %%DATADIR%%/atsc/us-Cable-EIA-542-HRC-center-frequencies-QAM256
@@ -14,7 +15,7 @@
 %%DATADIR%%/atsc/us-ID-Boise
 %%DATADIR%%/atsc/us-MA-Boston
 %%DATADIR%%/atsc/us-MI-Lansing
-%%DATADIR%%/atsc/us-NTSC-center-frequencies-8VSB
+%%DATADIR%%/atsc/us-NTSC-center-frequencies
 %%DATADIR%%/atsc/us-PA-Philadelphia
 %%DATADIR%%/channels-conf/atsc/us-Raleigh-Durham
 %%DATADIR%%/channels-conf/dvb-c/de-Berlin
@@ -538,6 +539,7 @@
 %%DATADIR%%/dvb-t/fi-Yllas
 %%DATADIR%%/dvb-t/fi-Yllasjarvi
 %%DATADIR%%/dvb-t/fr-All
+%%DATADIR%%/dvb-t/fr-Paris
 %%DATADIR%%/dvb-t/gr-Athens
 %%DATADIR%%/dvb-t/hk-HongKong
 %%DATADIR%%/dvb-t/hr-All
@@ -581,6 +583,7 @@
 %%DATADIR%%/dvb-t/ir-Tehran
 %%DATADIR%%/dvb-t/is-Reykjavik
 %%DATADIR%%/dvb-t/it-All
+%%DATADIR%%/dvb-t/ke-Nairobi
 %%DATADIR%%/dvb-t/lt-All
 %%DATADIR%%/dvb-t/lu-All
 %%DATADIR%%/dvb-t/lv-Riga
@@ -611,7 +614,9 @@
 %%DATADIR%%/dvb-t/ro-Bucharest
 %%DATADIR%%/dvb-t/ru-Krasnodar
 %%DATADIR%%/dvb-t/ru-Novosibirsk
+%%DATADIR%%/dvb-t/ru-Vladivostok
 %%DATADIR%%/dvb-t/ru-Volgodonsk
+%%DATADIR%%/dvb-t/ru-all
 %%DATADIR%%/dvb-t/se-Aareavaara
 %%DATADIR%%/dvb-t/se-Adolfstrom
 %%DATADIR%%/dvb-t/se-Agnas
@@ -1233,7 +1238,7 @@
 %%DATADIR%%/dvb-t/sk-Zilina
 %%DATADIR%%/dvb-t/tw-All
 %%DATADIR%%/dvb-t/ua-Kharkov
-%%DATADIR%%/dvb-t/ua-Kiev
+%%DATADIR%%/dvb-t/ua-Kyiv
 %%DATADIR%%/dvb-t/ua-Lozovaya
 %%DATADIR%%/dvb-t/ua-Odessa
 %%DATADIR%%/dvb-t/ug-All

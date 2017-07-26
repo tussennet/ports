@@ -2,22 +2,26 @@
 # $FreeBSD: head/multimedia/dtv-scan-tables/Makefile 385637 2015-05-07 16:32:43Z mat $
 
 PORTNAME=	dtv-scan-tables
-PORTVERSION=	20161118
+PORTVERSION=	20170530
 CATEGORIES=	multimedia
 
 MAINTAINER=	dreamcat4@gmail.com
 COMMENT=	Digital TV scan tables from linuxtv.org
 
-LICENSE=	GPLv2
+LICENSE=	GPLv2 LGPL21
+LICENSE_COMB=	multi
+LICENSE_FILE_GPLv2=	${WRKSRC}/COPYING
+LICENSE_FILE_LGPL21=	${WRKSRC}/COPYING.LGPL
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	oliv3r
-GH_TAGNAME=	9481e7c
+GH_TAGNAME=	fb5fe05
 
 NO_BUILD=	yes
+NO_ARCH=	yes
 
 do-install:
-		@${MKDIR} ${STAGEDIR}${DATADIR}
-		@(cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR})
+	@${MKDIR} ${STAGEDIR}${DATADIR}
+	@(cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR} "-not -name COPYING\*")
 
 .include <bsd.port.mk>
