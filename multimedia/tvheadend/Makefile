@@ -23,7 +23,7 @@ RUN_DEPENDS=	dtv-scan-tables>=0:multimedia/dtv-scan-tables
 
 USE_GITHUB=	yes
 
-USES=		execinfo gettext gmake pkgconfig python shebangfix
+USES=		execinfo gettext gmake pkgconfig python shebangfix ssl
 GNU_CONFIGURE=	yes
 MAKE_JOBS_UNSAFE=	yes
 USE_RC_SUBR=	${PORTNAME}
@@ -80,5 +80,8 @@ post-patch:
 		${WRKSRC}/Makefile
 	@${REINPLACE_CMD} 's|-Werror||' \
 		${WRKSRC}/Makefile
+
+post-install:
+	${STRIP_CMD} ${STAGEDIR}/${PREFIX}/bin/tvheadend
 
 .include <bsd.port.post.mk>
