@@ -42,8 +42,8 @@ Error 1
 gmake[2]: Leaving directory
 
 Reported by:	Rainer Hurling <rhurlin@gwdg.de>
---- main.c.orig	2017-07-01 07:22:23.000000000 +0000
-+++ main.c	2017-08-23 15:27:26.427162000 +0000
+--- src/main.c.orig	2017-07-01 07:22:23.000000000 +0000
++++ src/main.c	2017-08-23 15:27:26.427162000 +0000
 @@ -48,6 +48,7 @@
  #include "subscriptions.h"
  #include "service_mapper.h"
