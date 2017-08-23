@@ -10,20 +10,20 @@ MAINTAINER=	decke@FreeBSD.org
 COMMENT=	TV streaming server supporting DVB, IPTV, SAT>IP and more
 
 LICENSE=	GPLv3
-
-BROKEN_powerpc64=	Does not build
+LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
 BUILD_DEPENDS=	bash:shells/bash \
 		cmake:devel/cmake \
 		${LOCALBASE}/include/linux/videodev2.h:multimedia/v4l_compat
-
 LIB_DEPENDS=	libcurl.so:ftp/curl \
 		liburiparser.so:net/uriparser
 RUN_DEPENDS=	dtv-scan-tables>=0:multimedia/dtv-scan-tables
 
-USE_GITHUB=	yes
+BROKEN_powerpc64=	Does not build
 
 USES=		execinfo gettext gmake pkgconfig python shebangfix ssl
+USE_GITHUB=	yes
+
 GNU_CONFIGURE=	yes
 MAKE_JOBS_UNSAFE=	yes
 USE_RC_SUBR=	${PORTNAME}
