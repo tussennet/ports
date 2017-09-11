@@ -1,5 +1,5 @@
 # Created by: Bernhard Froehlich <decke@FreeBSD.org>
-# $FreeBSD: head/multimedia/tvheadend/Makefile 433480 2017-02-06 09:49:04Z decke $
+# $FreeBSD: head/multimedia/tvheadend/Makefile 449622 2017-09-11 09:27:04Z decke $
 
 PORTNAME=	tvheadend
 PORTVERSION=	4.2.3
@@ -19,7 +19,9 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 		liburiparser.so:net/uriparser
 RUN_DEPENDS=	dtv-scan-tables>=0:multimedia/dtv-scan-tables
 
-BROKEN_powerpc64=	Does not build
+BROKEN_mips=		fails to configure: No C compiler found
+BROKEN_mips64=		fails to configure: No C compiler found
+BROKEN_powerpc64=	fails to configure: No C compiler found
 
 USES=		execinfo gettext gmake pkgconfig python shebangfix ssl
 USE_GITHUB=	yes
