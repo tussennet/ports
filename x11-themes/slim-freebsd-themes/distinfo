@@ -1,0 +1,9 @@
+TIMESTAMP = 1518083778
+SHA256 (slim-freebsd-beastie.tar.gz) = 90de1b178817a681a74b8584c6d913309f7b678adad038831e8ca2f0b792ec53
+SIZE (slim-freebsd-beastie.tar.gz) = 129981
+SHA256 (slim-freebsd-simple.tar.gz) = 019e3e96ac31ecac5e295a9c239838064b569c133231bd4e44d6a6ab792b18d3
+SIZE (slim-freebsd-simple.tar.gz) = 63190
+SHA256 (slim-freebsd-black-theme.tar.gz) = 7dd0c27df712078c42848b76a846b9e1d861b620b397f1fa102e895efbde3773
+SIZE (slim-freebsd-black-theme.tar.gz) = 80044
+SHA256 (lebarondemerde-slim-freebsd-black-theme-1.0_GH0.tar.gz) = 7dd0c27df712078c42848b76a846b9e1d861b620b397f1fa102e895efbde3773
+SIZE (lebarondemerde-slim-freebsd-black-theme-1.0_GH0.tar.gz) = 80044
