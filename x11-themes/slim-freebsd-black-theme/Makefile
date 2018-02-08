@@ -7,10 +7,10 @@ CATEGORIES=	x11-themes
 MAINTAINER=	lbdm@privacychain.ch
 COMMENT=	Simple FreeBSD SLiM theme inspired on the FreeBSD SLiM theme
 
-RUN_DEPENDS=	montserrat>=0:x11-fonts/montserrat
-
 LICENSE=	CC-BY-SA-3.0
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+RUN_DEPENDS=	montserrat>=0:x11-fonts/montserrat
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	lebarondemerde
