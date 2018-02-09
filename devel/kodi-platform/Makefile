@@ -7,10 +7,14 @@ CATEGORIES=	devel
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Kodi platform support library
 
+LICENSE=	GPLv2+
+
+USES=		cmake
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	xbmc
 GH_TAGNAME=	36fb493
 
-USES=		cmake
+USE_LDCONFIG=	yes
 
 .include <bsd.port.mk>
