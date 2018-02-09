@@ -8,6 +8,8 @@ CATEGORIES=	multimedia
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Tvheadend PVR addon for Kodi
 
+LICENSE=	GPLv2+
+
 BUILD_DEPENDS=	cmake:devel/cmake
 LIB_DEPENDS=	libp8-platform.so:devel/p8-platform \
 		libkodiplatform.so:devel/kodi-platform
