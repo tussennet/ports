@@ -2,7 +2,7 @@
 # $FreeBSD: head/multimedia/tvheadend/Makefile 449622 2017-09-11 09:27:04Z decke $
 
 PORTNAME=	tvheadend
-PORTVERSION=	4.2.5
+PORTVERSION=	4.2.6
 DISTVERSIONPREFIX=	v
 CATEGORIES=	multimedia
 
