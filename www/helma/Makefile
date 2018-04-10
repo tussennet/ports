@@ -2,26 +2,24 @@
 # $FreeBSD: head/www/helma/Makefile 412351 2016-04-01 14:33:55Z mat $
 
 PORTNAME=	helma
-PORTVERSION=	1.7.0
-PORTREVISION=	1
+PORTVERSION=	1.7.4
 CATEGORIES=	www java
-MASTER_SITES=	http://adele.helma.org/download/helma/${PORTVERSION}/ \
-		LOCAL/decke
-DISTFILES=	helma-${PORTVERSION}.tar.gz helma-${PORTVERSION}-src.tar.gz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Web application framework for fast and efficient scripting
 
 LICENSE=	BSD3CLAUSE
-LICENSE_FILE=	${WRKBASE}/licenses/license.txt
+LICENSE_FILE=	${WRKSRC}/license.txt
 
-WRKBASE=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
-WRKSRC=		${WRKBASE}
 DATADIR=	${JAVASHAREDIR}/${PORTNAME}
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	helma-org
+GH_TAGNAME=	v${PORTVERSION}
 
 USE_RC_SUBR=	helma
 USE_JAVA=	yes
-JAVA_VERSION=	1.6+
+JAVA_VERSION=	1.8+
 USE_ANT=	yes
 ALL_TARGET=	clean jar
 NO_ARCH=	yes
@@ -30,14 +28,14 @@ DBDIR?=		/var/db/${PORTNAME}
 LOGDIR?=	/var/log/${PORTNAME}
 HELMA_USER=	${WWWOWN}
 HELMA_GROUP=	${WWWGRP}
-HELMA_CONFIG=	${WRKBASE}/scripts/helma.conf
+HELMA_CONFIG=	${WRKSRC}/scripts/helma.conf
 
 PLIST_SUB=	DBDIR="${DBDIR}" \
 		LOGDIR="${LOGDIR}" \
 		HELMA_USER="${HELMA_USER}" \
 		HELMA_GROUP="${HELMA_GROUP}"
 
-OPTIONS_DEFINE=	MYSQL DOCS
+OPTIONS_DEFINE=	MYSQL
 OPTIONS_SUB=	yes
 OPTIONS_DESC=	Install MySQL Connector for Java
 
@@ -58,31 +56,31 @@ post-patch:
 		${HELMA_CONFIG}
 
 	@${ECHO_CMD} "" >> \
-		${WRKBASE}/server.properties
+		${WRKSRC}/build/main/server.properties
 	@${ECHO_CMD} "# custom directories" >> \
-		${WRKBASE}/server.properties
+		${WRKSRC}/build/main/server.properties
 	@${ECHO_CMD} "hopHome = ${WWWDIR}" >> \
-		${WRKBASE}/server.properties
+		${WRKSRC}/build/main/server.properties
 	@${ECHO_CMD} "appHome = ${WWWDIR}/apps" >> \
-		${WRKBASE}/server.properties
+		${WRKSRC}/build/main/server.properties
 	@${ECHO_CMD} "appsPropFile = ${ETCDIR}/apps.properties" >> \
-		${WRKBASE}/server.properties
+		${WRKSRC}/build/main/server.properties
 	@${ECHO_CMD} "dbPropFile = ${ETCDIR}/db.properties" >> \
-		${WRKBASE}/server.properties
+		${WRKSRC}/build/main/server.properties
 	@${ECHO_CMD} "dbHome = ${DBDIR}" >> \
-		${WRKBASE}/server.properties
+		${WRKSRC}/build/main/server.properties
 	@${REINPLACE_CMD} -e 's|# logDir = console|logDir = ${LOGDIR}|' \
-		${WRKBASE}/server.properties
+		${WRKSRC}/build/main/server.properties
 
 do-install:
 	${INSTALL_SCRIPT} ${FILESDIR}/helma.sh.in ${STAGEDIR}${PREFIX}/bin/helma
 
 	${MKDIR} ${STAGEDIR}${WWWDIR} && \
-	(cd ${WRKBASE} && ${COPYTREE_SHARE} "apps modules" ${STAGEDIR}${WWWDIR} \
+	(cd ${WRKSRC} && ${COPYTREE_SHARE} "apps modules" ${STAGEDIR}${WWWDIR} \
 		"! -name *.html ! -name helma-*.jar ! -name .jsdoc")
 
 	${MKDIR} ${STAGEDIR}${DATADIR} && \
-	(cd ${WRKBASE} && ${COPYTREE_SHARE} "lib launcher.jar" ${STAGEDIR}${DATADIR} \
+	(cd ${WRKSRC} && ${COPYTREE_SHARE} "lib launcher.jar" ${STAGEDIR}${DATADIR} \
 		"! -name *.html ! -name helma-*.jar ! -name .jsdoc")
 
 	${MKDIR} ${STAGEDIR}${LOGDIR}
@@ -90,16 +88,9 @@ do-install:
 	${MKDIR} ${STAGEDIR}${DBDIR}
 
 	${MKDIR} ${STAGEDIR}${ETCDIR}; \
-	for f in apps.properties db.properties server.properties scripts/helma.conf; do \
-		${INSTALL_DATA} ${WRKBASE}/$$f ${STAGEDIR}${ETCDIR}/$${f##*/}.sample; \
+	for f in build/main/apps.properties build/main/db.properties build/main/server.properties scripts/helma.conf; do \
+		${INSTALL_DATA} ${WRKSRC}/$$f ${STAGEDIR}${ETCDIR}/$${f##*/}.sample; \
 	done
-
-do-install-DOCS-on:
-	${MKDIR} ${STAGEDIR}${DOCSDIR} && \
-	(cd ${WRKBASE} && ${COPYTREE_SHARE} "licenses license.txt README.txt" ${STAGEDIR}${DOCSDIR})
-
-	${MKDIR} ${STAGEDIR}${DOCSDIR}/docs/api/jala && \
-	(cd ${WRKBASE}/modules/jala/docs && ${COPYTREE_SHARE} \* ${STAGEDIR}${DOCSDIR}/docs/api/jala)
 
 do-install-MYSQL-on:
 	${LN} -sf ${JAVALIBDIR}/mysql-connector-java.jar ${STAGEDIR}${DATADIR}/lib/ext/mysql-connector-java.jar
