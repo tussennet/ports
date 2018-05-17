@@ -31,7 +31,8 @@ GROUPS=		radicale
 USE_RC_SUBR=	radicale
 NO_ARCH=	yes
 
-SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}"
+SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}" \
+		PYTHON_VER="${PYTHON_VER}"
 
 post-patch:
 	${REINPLACE_CMD} 's,= /etc,= ${PREFIX}/etc,g' ${WRKSRC}/config
