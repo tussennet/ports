@@ -30,7 +30,7 @@ USERS=		radicale
 GROUPS=		radicale
 USE_RC_SUBR=	radicale
 NO_ARCH=	yes
-SHEBANG_FILES=	www/${PORTNAME}/radicale.fcgi www/${PORTNAME}/radicale.wsgi
+SHEBANG_FILES=	radicale.fcgi radicale.wsgi
 
 SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}" \
 		PYTHON_VER="${PYTHON_VER}"
