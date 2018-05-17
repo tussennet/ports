@@ -32,8 +32,7 @@ USE_RC_SUBR=	radicale
 NO_ARCH=	yes
 SHEBANG_FILES=	radicale.fcgi radicale.wsgi
 
-SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}" \
-		PYTHON_VER="${PYTHON_VER}"
+SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}"
 
 post-patch:
 	${REINPLACE_CMD} 's,= /etc,= ${PREFIX}/etc,g' ${WRKSRC}/config
