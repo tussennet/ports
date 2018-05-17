@@ -24,7 +24,7 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}flake8>=0:devel/py-flake8@${FLAVOR} \
 
 CONFLICTS=	radicale-1.[0-9]*
 
-USES=		python:3.3+
+USES=		python:3.3+ shebangfix
 USE_PYTHON=	autoplist distutils
 USERS=		radicale
 GROUPS=		radicale
