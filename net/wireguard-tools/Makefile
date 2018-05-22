@@ -7,7 +7,7 @@ MASTER_SITES=	https://git.zx2c4.com/WireGuard/snapshot/
 DISTNAME=	WireGuard-${PORTVERSION}
 
 MAINTAINER=	decke@FreeBSD.org
-COMMENT=	Tools for wireguard
+COMMENT=	Fast, modern and secure VPN Tunnel
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKDIR}/${DISTNAME}/COPYING
