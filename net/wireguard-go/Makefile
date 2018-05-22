@@ -18,6 +18,8 @@ BUILD_DEPENDS=	go:lang/go
 
 USES=		gmake tar:xz
 
+MAKE_ENV+=	GOPATH="${WRKDIR}:${LOCALBASE}/share/go"
+
 PLIST_FILES=	bin/${PORTNAME}
 
 .include <bsd.port.mk>
