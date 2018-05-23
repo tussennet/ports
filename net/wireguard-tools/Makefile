@@ -12,9 +12,9 @@ COMMENT=	Fast, modern and secure VPN Tunnel
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKDIR}/${DISTNAME}/COPYING
 
-BUILD_DEPENDS=	wireguard-go:net/wireguard-go \
-		bash:shells/bash
-RUN_DEPENDS=	bash:shells/bash
+BUILD_DEPENDS=	bash:shells/bash
+RUN_DEPENDS=	bash:shells/bash \
+		wireguard-go:net/wireguard-go
 
 USES=		gmake tar:xz
 
@@ -22,6 +22,7 @@ WRKSRC=		${WRKDIR}/${DISTNAME}/src/tools
 
 ALL_TARGET=
 MAKE_ARGS=	WITH_WGQUICK=yes
-MAKE_ENV+=	MANDIR="${MANPREFIX}/man"
+MAKE_ENV+=	MANDIR="${MANPREFIX}/man" \
+		SYSCONFDIR="${PREFIX}/etc"
 
 .include <bsd.port.mk>
