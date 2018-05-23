@@ -28,6 +28,7 @@ MAKE_ENV+=	MANDIR="${MANPREFIX}/man" \
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
+		${WRKSRC}/completion/wg-quick.bash-completion \
 		${WRKSRC}/wg-quick/freebsd.bash
 
 .include <bsd.port.mk>
