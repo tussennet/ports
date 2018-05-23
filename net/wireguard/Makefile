@@ -4,7 +4,6 @@ PORTNAME=	wireguard
 PORTVERSION=	master
 CATEGORIES=	net
 MASTER_SITES=	https://git.zx2c4.com/WireGuard/snapshot/
-PKGNAMESUFFIX=	-tools
 DISTNAME=	WireGuard-${PORTVERSION}
 
 MAINTAINER=	decke@FreeBSD.org
