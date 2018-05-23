@@ -2,4 +2,4 @@ bin/wg
 bin/wg-quick
 man/man8/wg-quick.8.gz
 man/man8/wg.8.gz
-@dir %%ETCDIR%%
+@dir etc/wireguard
