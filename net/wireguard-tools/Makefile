@@ -27,4 +27,9 @@ MAKE_ARGS=	WITH_WGQUICK=yes
 MAKE_ENV+=	MANDIR="${MANPREFIX}/man" \
 		SYSCONFDIR="${PREFIX}/etc"
 
+post-patch:
+	@${REINPLACE_CMD} -e 's|/etc/wireguard|${LOCALBASE}/etc/wireguard|g' \
+		${WRKSRC}/man/wg-quick.8 \
+		${WRKSRC}/wg-quick/freebsd.bash
+
 .include <bsd.port.mk>
