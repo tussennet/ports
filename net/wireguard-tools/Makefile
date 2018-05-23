@@ -1,10 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	wireguard
-PORTVERSION=	0.0.2018052306
+PORTVERSION=	master
 CATEGORIES=	net
-MASTER_SITES=	https://git.zx2c4.com/WireGuard/snapshot/ \
-		http://web.bluelife.at/
+MASTER_SITES=	https://git.zx2c4.com/WireGuard/snapshot/
 PKGNAMESUFFIX=	-tools
 DISTNAME=	WireGuard-${PORTVERSION}
 
@@ -28,8 +27,7 @@ MAKE_ENV+=	MANDIR="${MANPREFIX}/man" \
 		SYSCONFDIR="${PREFIX}/etc"
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|/etc/wireguard|${LOCALBASE}/etc/wireguard|g' \
-		${WRKSRC}/man/wg-quick.8 \
+	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
 		${WRKSRC}/wg-quick/freebsd.bash
 
 .include <bsd.port.mk>
