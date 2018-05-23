@@ -1,10 +1,11 @@
 # $FreeBSD$
 
-PORTNAME=	wireguard-tools
+PORTNAME=	wireguard
 PORTVERSION=	0.0.2018052306
 CATEGORIES=	net
 MASTER_SITES=	https://git.zx2c4.com/WireGuard/snapshot/ \
 		http://web.bluelife.at/
+PKGNAMESUFFIX=	-tools
 DISTNAME=	WireGuard-${PORTVERSION}
 
 MAINTAINER=	decke@FreeBSD.org
