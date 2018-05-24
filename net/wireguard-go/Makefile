@@ -1,13 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	wireguard-go
-PORTVERSION=	master
+PORTVERSION=	0.0.20180524
 CATEGORIES=	net
 MASTER_SITES=	https://git.zx2c4.com/wireguard-go/snapshot/ \
-		LOCAL/decke \
-		http://web.bluelife.at/
+		LOCAL/decke
 DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX} \
-		${PORTNAME}-0.0.2018052317-vendor${EXTRACT_SUFX}
+		${PORTNAME}-${PORTVERSION}-vendor${EXTRACT_SUFX}
 
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	WireGuard implementation in Go
