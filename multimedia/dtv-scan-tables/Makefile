@@ -4,7 +4,7 @@
 PORTNAME=	dtv-scan-tables
 PORTVERSION=	20180606
 CATEGORIES=	multimedia
-MASTER_SITE=	LOCAL/decke
+MASTER_SITES=	LOCAL/decke
 
 MAINTAINER=	dreamcat4@gmail.com
 COMMENT=	Digital TV scan tables from linuxtv.org
