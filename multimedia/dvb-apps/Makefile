@@ -13,7 +13,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING.LGPL
 
 BUILD_DEPENDS=	${LOCALBASE}/include/linux/dvb/version.h:multimedia/v4l_compat
 
-USES=		tar:bzip2 gmake iconv
+USES=		gmake iconv perl5 tar:bzip2
 
 USE_LDCONFIG=	yes
 USE_PERL5=	build
