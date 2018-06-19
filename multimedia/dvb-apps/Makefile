@@ -16,6 +16,7 @@ BUILD_DEPENDS=	${LOCALBASE}/include/linux/dvb/version.h:multimedia/v4l_compat
 USES=		tar:bzip2 gmake iconv
 
 USE_LDCONFIG=	yes
+USE_PERL5=	build
 
 MAKE_ARGS+=	prefix="${PREFIX}"
 CFLAGS+=	-I${LOCALBASE}/include -Wno-int-conversion
