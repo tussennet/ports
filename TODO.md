@@ -14,6 +14,7 @@
 ### multimedia/kodi-addon-pvr-hts:
 ### multimedia/kodi-addon-pvr-iptvsimple:
 - waiting for kodi addon fix
+- IPTV runtime testing with https://wiki.ubuntuusers.de/Internet-TV/Stationen/
 
 
 ## DVB-EN50221
