@@ -2,9 +2,9 @@
 # $FreeBSD: head/multimedia/dtv-scan-tables/Makefile 461591 2018-02-12 15:08:51Z amdmi3 $
 
 PORTNAME=	dtv-scan-tables
-PORTVERSION=	20170530
-PORTREVISION=	1
+PORTVERSION=	20180606
 CATEGORIES=	multimedia
+MASTER_SITE=	LOCAL/decke
 
 MAINTAINER=	dreamcat4@gmail.com
 COMMENT=	Digital TV scan tables from linuxtv.org
@@ -14,9 +14,7 @@ LICENSE_COMB=	multi
 LICENSE_FILE_GPLv2=	${WRKSRC}/COPYING
 LICENSE_FILE_LGPL21=	${WRKSRC}/COPYING.LGPL
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	oliv3r
-GH_TAGNAME=	fb5fe05
+USES=		tar:xz
 
 NO_BUILD=	yes
 NO_ARCH=	yes
