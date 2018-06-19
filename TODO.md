@@ -20,7 +20,7 @@
 ## DVB-EN50221
 
 ### multimedia/dtv-scan-tables:
-- need to create PR for update to 20180606
+- waiting for timeout of PR 229151 (20180703)
 
 ### multimedia/v4l_compat:
 - waiting for timeout of PR 229143 (20180703)
