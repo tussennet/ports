@@ -1,9 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	dvb-apps
-PORTVERSION=	3d43b280298c
+PORTVERSION=	1.1.2.1505
 CATEGORIES=	multimedia
 MASTER_SITES=	LOCAL/decke
+DISTNAME=	${PORTNAME}-3d43b280298c
 
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Linux DVB API applications and utilities
