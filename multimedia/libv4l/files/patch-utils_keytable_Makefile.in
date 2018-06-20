@@ -1,0 +1,11 @@
+--- utils/keytable/Makefile.in.orig	2018-06-20 17:52:06.180114000 +0200
++++ utils/keytable/Makefile.in	2018-06-20 17:54:24.513179000 +0200
+@@ -131,7 +131,7 @@
+ am__v_at_ = $(am__v_at_@AM_DEFAULT_V@)
+ am__v_at_0 = @
+ am__v_at_1 = 
+-DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
++DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir) -I../../include
+ depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
+ am__depfiles_maybe = depfiles
+ am__mv = mv -f
