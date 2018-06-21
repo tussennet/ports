@@ -31,6 +31,8 @@ do-install:
 .endfor
 	${INSTALL_DATA} ${WRKSRC}/include/linux/lirc.h \
 		${STAGEDIR}${PREFIX}/include/linux
+	${INSTALL_DATA} ${WRKSRC}/include/linux/media.h \
+		${STAGEDIR}${PREFIX}/include/linux
 # V4L1 is dead in linux, however webcamd still supports it.
 	${INSTALL_DATA} ${FILESDIR}/videodev.h \
 		${STAGEDIR}${PREFIX}/include/linux/
