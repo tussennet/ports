@@ -1,5 +1,5 @@
-TIMESTAMP = 1529495002
+TIMESTAMP = 1529594918
 SHA256 (v4l-utils-1.14.2.tar.bz2) = e6b962c4b1253cf852c31da13fd6b5bb7cbe5aa9e182881aec55123bae680692
 SIZE (v4l-utils-1.14.2.tar.bz2) = 1672765
-SHA256 (linux-4.17.2-dvb-headers.tar.xz) = 95009c0649f965685e5e725f4e71425532411e4b841991d71904e59e11cf8cca
-SIZE (linux-4.17.2-dvb-headers.tar.xz) = 16952
+SHA256 (linux-4.17.2-dvb-headers.tar.xz) = 79f5ee11d964a31255608cb62c2de0a3f1d95e56f4115395958cd0fe8188f478
+SIZE (linux-4.17.2-dvb-headers.tar.xz) = 18220
