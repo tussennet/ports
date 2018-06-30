@@ -2,12 +2,6 @@
 
 ## KODI
 
-### multimedia/kodi:
-- waiting for timeout of PR 228950 (20180626)
-
-### devel/p8-platform:
-- waiting for timeout of PR 228948 (20180626)
-
 ### devel/kodi-platform:
 - waiting for p8-platform update and kodi addon fix
 
@@ -21,9 +15,6 @@
 
 ### multimedia/dtv-scan-tables:
 - waiting for timeout of PR 229151 (20180703)
-
-### multimedia/v4l_compat:
-- waiting for timeout of PR 229143 (20180703)
 
 ### multimedia/dvb-apps:
 - SONAME missing for libraries
