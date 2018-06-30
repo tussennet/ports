@@ -2,12 +2,7 @@
 
 ## KODI
 
-### devel/kodi-platform:
-- waiting for p8-platform update and kodi addon fix
-
-### multimedia/kodi-addon-pvr-hts:
 ### multimedia/kodi-addon-pvr-iptvsimple:
-- waiting for kodi addon fix
 - IPTV runtime testing with https://wiki.ubuntuusers.de/Internet-TV/Stationen/
 
 
