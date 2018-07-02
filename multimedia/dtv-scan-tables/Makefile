@@ -6,7 +6,7 @@ PORTVERSION=	20180606
 CATEGORIES=	multimedia
 MASTER_SITES=	LOCAL/decke
 
-MAINTAINER=	dreamcat4@gmail.com
+MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Digital TV scan tables from linuxtv.org
 
 LICENSE=	GPLv2 LGPL21
