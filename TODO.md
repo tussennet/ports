@@ -14,7 +14,6 @@
 
 ### multimedia/tvheadend:
 - Commit DVBEN50221 option after dvb-apps is committed
-- Wait for feedback from hps@
 
 
 ## Other
