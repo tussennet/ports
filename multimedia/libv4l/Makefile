@@ -6,7 +6,7 @@ PORTNAME?=	libv4l
 PORTVERSION=	1.14.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://linuxtv.org/downloads/v4l-utils/:master \
-		LOCAL/kwm:local
+		LOCAL/decke:local
 DISTFILES+=	v4l-utils-${PORTVERSION}.tar.bz2:master \
 		linux-4.17.2-dvb-headers.tar.xz:local
 
