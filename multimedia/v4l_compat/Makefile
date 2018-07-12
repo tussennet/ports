@@ -42,5 +42,7 @@ do-install:
 	${INSTALL_DATA} ${EXTRADIR}/dvb/${i} \
 		${STAGEDIR}${PREFIX}/include/linux/dvb/
 .endfor
+	${INSTALL_DATA} ${EXTRADIR}/version.h \
+		${STAGEDIR}${PREFIX}/include/linux/
 
 .include "${MASTERDIR}/Makefile"
