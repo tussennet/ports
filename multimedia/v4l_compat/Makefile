@@ -1,7 +1,7 @@
-# $FreeBSD: head/multimedia/v4l_compat/Makefile 473615 2018-06-30 12:37:58Z riggs $
+# $FreeBSD: head/multimedia/v4l_compat/Makefile 389588 2015-06-14 04:59:37Z kwm $
 
 PORTNAME=	v4l_compat
-PORTREVISION=	1
+PORTREVISION=	0
 
 COMMENT=	Video4Linux IOCTL header files
 
@@ -16,8 +16,8 @@ LIBV4L_SLAVE=	compat
 
 BASE_HEADERS=	input.h uinput.h ivtv.h v4l2-controls.h \
 		v4l2-common.h videodev2.h
-DVB_HEADERS=	audio.h dmx.h frontend.h video.h
-EXTRA_HEADERS=	ca.h net.h osd.h version.h
+DVB_HEADERS=	dmx.h frontend.h
+EXTRA_HEADERS=	audio.h ca.h net.h osd.h version.h video.h
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/include/linux/dvb/
@@ -29,6 +29,10 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/include/linux/dvb/${i} \
 		${STAGEDIR}${PREFIX}/include/linux/dvb
 .endfor
+	${INSTALL_DATA} ${WRKSRC}/include/linux/lirc.h \
+		${STAGEDIR}${PREFIX}/include/linux
+	${INSTALL_DATA} ${WRKSRC}/include/linux/media.h \
+		${STAGEDIR}${PREFIX}/include/linux
 # V4L1 is dead in linux, however webcamd still supports it.
 	${INSTALL_DATA} ${FILESDIR}/videodev.h \
 		${STAGEDIR}${PREFIX}/include/linux/
@@ -38,5 +42,7 @@ do-install:
 	${INSTALL_DATA} ${EXTRADIR}/dvb/${i} \
 		${STAGEDIR}${PREFIX}/include/linux/dvb/
 .endfor
+	${INSTALL_DATA} ${EXTRADIR}/version.h \
+		${STAGEDIR}${PREFIX}/include/linux/
 
 .include "${MASTERDIR}/Makefile"
