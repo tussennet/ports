@@ -33,6 +33,11 @@ post-patch:
 	@${REINPLACE_CMD} 's|<malloc.h>|<stdlib.h>|' \
 		${WRKSRC}/lib/libdvbcfg/dvbcfg_scanfile.c \
 		${WRKSRC}/lib/libdvbcfg/dvbcfg_zapchannel.c
+	@${REINPLACE_CMD} 's|O_LARGEFILE|0|' \
+		${WRKSRC}/test/test_dvr.c \
+		${WRKSRC}/test/test_tapdmx.c \
+		${WRKSRC}/util/gnutv/gnutv_data.c \
+		${WRKSRC}/util/szap/tzap.c
 	@${REINPLACE_CMD} 's|<linux/types.h>|<sys/types.h>|' \
 		${WRKSRC}/util/dib3000-watch/dib3000-watch.c \
 		${WRKSRC}/util/scan/lnb.c \

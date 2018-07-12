@@ -1,4 +1,4 @@
---- util/scan/section_generate.pl.orig	2018-06-18 19:55:13 UTC
+--- util/scan/section_generate.pl.orig	2014-03-21 19:26:36 UTC
 +++ util/scan/section_generate.pl
 @@ -4,7 +4,7 @@ use strict;
  
