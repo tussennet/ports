@@ -3,13 +3,12 @@
 # Check v4l_compat and v4l-utils slave ports
 
 PORTNAME?=	libv4l
-PORTVERSION=	1.6.3
-PORTREVISION?=	2
+PORTVERSION=	1.14.2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://linuxtv.org/downloads/v4l-utils/:master \
 		LOCAL/kwm:local
 DISTFILES+=	v4l-utils-${PORTVERSION}.tar.bz2:master \
-		linux-3.16.7-dvb-headers.tar.xz:local
+		linux-4.17.2-dvb-headers.tar.xz:local
 
 MAINTAINER=	multimedia@FreeBSD.org
 COMMENT?=	Video4Linux library
@@ -24,6 +23,7 @@ WRKSRC=		${WRKDIR}/v4l-utils-${PORTVERSION}
 
 .if ${LIBV4L_SLAVE} != compat
 BUILD_DEPENDS+=	v4l_compat>=${PORTVERSION}:multimedia/v4l_compat
+LIB_DEPENDS+=	libudev.so:devel/libudev-devd
 
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -31,8 +31,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 USES+=		gmake iconv jpeg libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--enable-libdvbv5 \
-		--disable-qv4l2 \
-		--without-libudev
+		--disable-qv4l2
 INSTALL_TARGET=	install-strip
 
 . if ${LIBV4L_SLAVE} == utils
@@ -50,8 +49,7 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-configure
 
 HEADER_PATCHES=	extra-linux_dvb_ca.h \
 		extra-linux_dvb_osd.h \
-		patch-include_linux_dvb_frontend.h \
-		patch-include_linux_dvb_video.h
+		patch-include_linux_dvb_frontend.h
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|$$libdir/pkgconfig|${PREFIX}/libdata/pkgconfig|g' \
@@ -59,7 +57,7 @@ post-patch:
 # fix weird types, except a few headers which have compat code for these types.
 	@${FIND} ${WRKDIR} -type f \( -iname "*.h" ! -iname "input.h" ! -iname "videodev2.h" \) | \
 		${XARGS} -n 10 ${REINPLACE_CMD} \
-		-e 's|linux/types.h|sys/types.h|g; s|__user||g; \
+		-e 's|linux/types.h|sys/types.h|g; s|linux/ioctl.h|sys/ioctl.h|g; s|__user||g; \
 		s|__u8|uint8_t|g; s|__s8|int8_t|g; \
 		s|__u16|uint16_t|g; s|__s16|int16_t|g; \
 		s|__u32|uint32_t|g; s|__s32|int32_t|g; \
