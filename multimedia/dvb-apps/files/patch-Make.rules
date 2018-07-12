@@ -1,0 +1,20 @@
+--- Make.rules.orig	2014-03-21 20:26:36.000000000 +0100
++++ Make.rules	2018-07-12 09:41:51.044121000 +0200
+@@ -46,7 +46,7 @@
+ %: %.c
+ 	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD $(LDFLAGS) -o $@ $< $(filter-out %.h %.c,$^) $(LOADLIBES) $(LDLIBS)
+ %.so:
+-	$(CC) -shared -o $@ $^
++	$(CC) -shared -Wl,-soname,$@ -o $@ $^
+ %.a:
+ 	$(AR) rcs $@ $^
+ clean::
+@@ -76,7 +76,7 @@
+ 	@$(CC) $(CPPFLAGS) $(CFLAGS) -MMD $(LDFLAGS) -o $@ $< $(filter-out %.h %.c,$^) $(LOADLIBES) $(LDLIBS)
+ %.so:
+ 	@echo CC $@
+-	@$(CC) -shared -o $@ $^
++	@$(CC) -shared -Wl,-soname,$@ -o $@ $^
+ %.a:
+ 	@echo AR $@
+ 	@$(AR) rcs $@ $^
