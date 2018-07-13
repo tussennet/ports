@@ -1,1 +1,4 @@
-This port installs the Video4Linux header files.
+Installs Linux Kernel headers which are needed for Video4Linux
+and various DVB applications.
+
+WWW: https://linuxtv.org/

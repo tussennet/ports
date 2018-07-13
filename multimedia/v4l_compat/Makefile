@@ -1,48 +1,35 @@
-# $FreeBSD: head/multimedia/v4l_compat/Makefile 389588 2015-06-14 04:59:37Z kwm $
+# $FreeBSD$
 
 PORTNAME=	v4l_compat
-PORTREVISION=	0
+PORTVERSION=	4.17.6
+CATEGORIES=	multimedia
+MASTER_SITES=	LOCAL/decke
+DISTNAME=	linux-${PORTVERSION}-dvb-headers
 
-COMMENT=	Video4Linux IOCTL header files
+MAINTAINER=	multimedia@FreeBSD.org
+COMMENT=	Linux Kernel headers needed for Video4Linux
+
+LICENSE=	GPLv2 LGPL21
+LICENSE_COMB=	multi
 
 NO_BUILD=	yes
 NO_ARCH=	yes
 
-MASTERDIR=	${.CURDIR}/../../multimedia/libv4l
-EXTRADIR=	${WRKSRC}/../linux
-DESCR=		${.CURDIR}/pkg-descr
-PLIST=		${.CURDIR}/pkg-plist
-LIBV4L_SLAVE=	compat
+WRKSRC=		${WRKDIR}/linux
+USES=		tar:xz
 
-BASE_HEADERS=	input.h uinput.h ivtv.h v4l2-controls.h \
-		v4l2-common.h videodev2.h
-DVB_HEADERS=	dmx.h frontend.h
-EXTRA_HEADERS=	audio.h ca.h net.h osd.h version.h video.h
+post-patch:
+	# fix weird types, except a few headers which have compat code for these types.
+	@${FIND} ${WRKDIR} -type f \( -iname "*.h" ! -iname "input.h" ! -iname "videodev2.h" \) | \
+		${XARGS} -n 10 ${REINPLACE_CMD} \
+		-e 's|linux/types.h|sys/types.h|g; s|linux/ioctl.h|sys/ioctl.h|g; s|__user||g; \
+		s|__u8|uint8_t|g; s|__s8|int8_t|g; \
+		s|__u16|uint16_t|g; s|__s16|int16_t|g; \
+		s|__u32|uint32_t|g; s|__s32|int32_t|g; \
+		s|__u64|uint64_t|g; s|__s64|int64_t|g'
 
 do-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/include/linux/dvb/
-.for i in ${BASE_HEADERS}
-	${INSTALL_DATA} ${WRKSRC}/contrib/freebsd/include/linux/${i} \
-		${STAGEDIR}${PREFIX}/include/linux/
-.endfor
-.for i in ${DVB_HEADERS}
-	${INSTALL_DATA} ${WRKSRC}/include/linux/dvb/${i} \
-		${STAGEDIR}${PREFIX}/include/linux/dvb
-.endfor
-	${INSTALL_DATA} ${WRKSRC}/include/linux/lirc.h \
-		${STAGEDIR}${PREFIX}/include/linux
-	${INSTALL_DATA} ${WRKSRC}/include/linux/media.h \
-		${STAGEDIR}${PREFIX}/include/linux
-# V4L1 is dead in linux, however webcamd still supports it.
-	${INSTALL_DATA} ${FILESDIR}/videodev.h \
-		${STAGEDIR}${PREFIX}/include/linux/
-# Extra dvb headers supplied taken from the linux kernel distfile.
-# vdr and the gst dvb plugin need them at least
-.for i in ${EXTRA_HEADERS}
-	${INSTALL_DATA} ${EXTRADIR}/dvb/${i} \
-		${STAGEDIR}${PREFIX}/include/linux/dvb/
-.endfor
-	${INSTALL_DATA} ${EXTRADIR}/version.h \
-		${STAGEDIR}${PREFIX}/include/linux/
+	${MKDIR} ${STAGEDIR}${PREFIX}/include/linux/ && \
+	(cd ${WRKSRC} && ${COPYTREE_SHARE} "*.h dvb/*.h" ${STAGEDIR}${PREFIX}/include/linux/)
 
-.include "${MASTERDIR}/Makefile"
+.include <bsd.port.mk>
