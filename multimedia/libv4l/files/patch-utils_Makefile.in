@@ -1,11 +1,13 @@
---- utils/Makefile.in.orig	2018-06-20 17:52:06.181935000 +0200
-+++ utils/Makefile.in	2018-06-20 17:56:34.673009000 +0200
-@@ -415,7 +415,7 @@
+--- utils/Makefile.in.orig	2018-07-12 14:47:15.124017000 +0200
++++ utils/Makefile.in	2018-07-12 14:58:36.735040000 +0200
+@@ -415,8 +415,8 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  udevrulesdir = @udevrulesdir@
 -SUBDIRS = libv4l2util libmedia_dev ivtv-ctl ir-ctl cx18-ctl keytable \
+-	media-ctl v4l2-compliance v4l2-ctl v4l2-dbg v4l2-sysfs-path \
 +SUBDIRS = libv4l2util libmedia_dev ivtv-ctl cx18-ctl \
- 	media-ctl v4l2-compliance v4l2-ctl v4l2-dbg v4l2-sysfs-path \
++	v4l2-compliance v4l2-ctl v4l2-dbg v4l2-sysfs-path \
  	cec-ctl cec-compliance cec-follower rds-ctl $(am__append_1) \
  	$(am__append_2)
+ EXTRA_DIST = common

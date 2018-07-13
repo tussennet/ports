@@ -5,10 +5,8 @@
 PORTNAME?=	libv4l
 PORTVERSION=	1.14.2
 CATEGORIES=	multimedia
-MASTER_SITES=	http://linuxtv.org/downloads/v4l-utils/:master \
-		LOCAL/decke:local
-DISTFILES+=	v4l-utils-${PORTVERSION}.tar.bz2:master \
-		linux-4.17.2-dvb-headers.tar.xz:local
+MASTER_SITES=	http://linuxtv.org/downloads/v4l-utils/
+DISTFILES+=	v4l-utils-${PORTVERSION}.tar.bz2
 
 MAINTAINER=	multimedia@FreeBSD.org
 COMMENT?=	Video4Linux library
@@ -21,7 +19,6 @@ LIBV4L_SLAVE?=	no
 USES=		tar:bzip2
 WRKSRC=		${WRKDIR}/v4l-utils-${PORTVERSION}
 
-.if ${LIBV4L_SLAVE} != compat
 BUILD_DEPENDS+=	v4l_compat>=${PORTVERSION}:multimedia/v4l_compat
 LIB_DEPENDS+=	libudev.so:devel/libudev-devd
 
@@ -34,22 +31,17 @@ CONFIGURE_ARGS=	--enable-libdvbv5 \
 		--disable-qv4l2
 INSTALL_TARGET=	install-strip
 
-. if ${LIBV4L_SLAVE} == utils
+.if ${LIBV4L_SLAVE} == utils
 BUILD_DEPENDS+=	libv4l>=${PORTVERSION}:multimedia/libv4l
 LIB_DEPENDS+=	libargp.so:devel/argp-standalone \
 		libv4l2.so:multimedia/libv4l
 # Disabling building libv4l in the utils slave is too much hackery
 # Lets wait for subpackages
 CONFIGURE_ARGS+=--enable-v4l-utils
-. else
+.else
 CONFIGURE_ARGS+=--disable-v4l-utils --enable-libv4l
 EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-configure
-. endif
 .endif
-
-HEADER_PATCHES=	extra-linux_dvb_ca.h \
-		extra-linux_dvb_osd.h \
-		patch-include_linux_dvb_frontend.h
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|$$libdir/pkgconfig|${PREFIX}/libdata/pkgconfig|g' \
@@ -62,10 +54,5 @@ post-patch:
 		s|__u16|uint16_t|g; s|__s16|int16_t|g; \
 		s|__u32|uint32_t|g; s|__s32|int32_t|g; \
 		s|__u64|uint64_t|g; s|__s64|int64_t|g'
-.if ${LIBV4L_SLAVE} == compat
-.for patch in ${HEADER_PATCHES}
-	@cd ${WRKDIR}/linux && ${PATCH} -p2 < ${FILESDIR}/${patch}
-.endfor
-.endif
 
 .include <bsd.port.mk>
