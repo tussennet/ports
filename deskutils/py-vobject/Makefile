@@ -2,7 +2,7 @@
 # $FreeBSD: head/deskutils/py-vobject/Makefile 472884 2018-06-20 17:05:41Z mat $
 
 PORTNAME=	vobject
-PORTVERSION=	0.9.5
+PORTVERSION=	0.9.6.1
 CATEGORIES=	deskutils python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
