@@ -16,6 +16,7 @@ RUN_DEPENDS=	bash:shells/bash \
 		wireguard-go:net/wireguard-go
 
 USES=		gmake tar:xz
+USE_RC_SUBR=	${PORTNAME}
 
 WRKSRC=		${WRKDIR}/${DISTNAME}/src/tools
 
