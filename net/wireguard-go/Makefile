@@ -19,6 +19,7 @@ BUILD_DEPENDS=	go>=1.11:lang/go
 USES=		gmake tar:xz
 
 ALL_TARGET=	default
+MAKE_ENV+=	GOFLAGS=-mod=vendor
 
 PLIST_FILES=	bin/${PORTNAME}
 
