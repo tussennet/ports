@@ -14,7 +14,7 @@ COMMENT=	WireGuard implementation in Go
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	go>=1.11:lang/go
+BUILD_DEPENDS=	go:lang/go
 
 USES=		gmake tar:xz
 
