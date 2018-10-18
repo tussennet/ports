@@ -30,7 +30,7 @@ wireguard_stop()
 		done
 	done
 
-	# race condition in wg-quick down with pidfile
+	# race condition in wg-quick down
 	sleep 1
 }
 
