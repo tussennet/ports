@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	wireguard-go
-PORTVERSION=	85b2378a07126fb64460f0a23e7a150d0e63d909
+PORTVERSION=	0.0.20181018
 CATEGORIES=	net
 MASTER_SITES=	https://git.zx2c4.com/wireguard-go/snapshot/ \
 		LOCAL/decke
@@ -18,7 +18,6 @@ BUILD_DEPENDS=	go:lang/go
 
 USES=		gmake tar:xz
 
-ALL_TARGET=	default
 MAKE_ENV+=	GOFLAGS=-mod=vendor
 
 PLIST_FILES=	bin/${PORTNAME}
