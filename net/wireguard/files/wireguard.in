@@ -24,14 +24,14 @@ stop_cmd="${name}_stop"
 wireguard_start()
 {
 	for interface in ${wireguard_interfaces}; do
-		/usr/local/bin/wg-quick up ${interface}
+		%%PREFIX%%/bin/wg-quick up ${interface}
 	done
 }
 
 wireguard_stop()
 {
 	for interface in ${wireguard_interfaces}; do
-		/usr/local/bin/wg-quick down ${interface}
+		%%PREFIX%%/bin/wg-quick down ${interface}
 	done
 }
 
