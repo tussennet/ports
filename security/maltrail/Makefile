@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	maltrail
-PORTVERSION=	0.9
+PORTVERSION=	0.11
 CATEGORIES=	security python
 
 MAINTAINER=	m.muenz@gmail.com
@@ -20,9 +20,8 @@ GH_ACCOUNT=	stamparm
 NO_BUILD=	yes
 NO_ARCH=	yes
 
-#DATADIR=	maltrail
-
 do-install:
-	 	${CP} -r ${WRKSRC}/ ${STAGEDIR}${DATADIR}
+		${MKDIR} ${STAGEDIR}${DATADIR} && \
+		(cd ${WRKSRC} && ${COPYTREE_SHARE} "*" ${STAGEDIR}${DATADIR})
 
 .include <bsd.port.mk>
