@@ -11,6 +11,8 @@ COMMENT=	Asyncio based SMTP server
 
 LICENSE=	APACHE20
 
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}atpublic>=0:devel/py-atpublic@${PY_FLAVOR}
+
 USES=		python:3.5+
 USE_PYTHON=	autoplist distutils
 
