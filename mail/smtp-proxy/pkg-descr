@@ -1,0 +1,4 @@
+Simple Go SMTP relay/proxy server that accepts mail via
+SMTP and forwards it directly to another SMTP server.
+
+WWW: https://code.bluelife.at/decke/smtp-proxy
