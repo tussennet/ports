@@ -1,6 +1,6 @@
-TIMESTAMP = 1544534316
-SHA256 (5a67f9.tar.gz) = 4047b4e1353f2ac6c83a1b256aba7146b20ad13cdcc68f66089e88f277a4b228
-SIZE (5a67f9.tar.gz) = 2862
+TIMESTAMP = 1544713231
+SHA256 (v1.0.1.tar.gz) = d1f80c25abf1f7b49598816a339c95b3a0781b93d78be73f56df122c69fff09e
+SIZE (v1.0.1.tar.gz) = 2918
 SHA256 (chrj-smtpd-v0.1.1_GH0.tar.gz) = 2c5a73fa7740065d14dca39917b2a87cf9fcd15b8d52e394f7d8bbd89d9f5a7f
 SIZE (chrj-smtpd-v0.1.1_GH0.tar.gz) = 13281
 SHA256 (vharitonsky-iniflags-a33cd0b5f3de_GH0.tar.gz) = d60f3292be138071158e47e794c2ba93ea9dfc866c44e6472833e2d8566024aa

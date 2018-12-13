@@ -1,10 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	smtp-proxy
-PORTVERSION=	0.0.20181210
+PORTVERSION=	1.0.1
 CATEGORIES=	mail
 MASTER_SITES=	https://code.bluelife.at/decke/smtp-proxy/archive/
-DISTFILES=	5a67f9${EXTRACT_SUFX}
+DISTFILES=	v${PORTVERSION}.tar.gz
 
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Simple Go SMTP relay/proxy server
@@ -22,6 +22,11 @@ GH_TUPLE=	chrj:smtpd:v0.1.1:smtpd/vendor/github.com/chrj/smtpd \
 WRKSRC=		${WRKDIR}/${PORTNAME}
 MAKE_ENV+=	GOFLAGS=-mod=vendor
 
-PLIST_FILES=	bin/${PORTNAME}
+PLIST_FILES=	bin/${PORTNAME} \
+		"@sample ${ETCDIR}/smtp-proxy.ini.sample"
+
+post-install:
+		${MKDIR} ${STAGEDIR}${ETCDIR}
+		${INSTALL_DATA} ${WRKSRC}/smtp-proxy.ini ${STAGEDIR}${ETCDIR}/smtp-proxy.ini.sample
 
 .include <bsd.port.mk>
