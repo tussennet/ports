@@ -10,10 +10,10 @@ COMMENT=	Tvheadend PVR addon for Kodi
 
 LICENSE=	GPLv2+
 
-BUILD_DEPENDS=	${LOCALBASE}/include/kodi/libXBMC_addon.h:multimedia/kodi
+BUILD_DEPENDS=	${LOCALBASE}/include/kodi/libXBMC_addon.h:multimedia/kodi-devel
 LIB_DEPENDS=	libp8-platform.so:devel/p8-platform \
 		libkodiplatform.so:devel/kodi-platform
-RUN_DEPENDS=	kodi:multimedia/kodi
+RUN_DEPENDS=	kodi:multimedia/kodi-devel
 
 USES=		cmake:outsource,noninja
 
