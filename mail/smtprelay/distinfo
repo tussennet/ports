@@ -1,7 +1,9 @@
-TIMESTAMP = 1544713231
-SHA256 (v1.0.1.tar.gz) = d1f80c25abf1f7b49598816a339c95b3a0781b93d78be73f56df122c69fff09e
-SIZE (v1.0.1.tar.gz) = 2918
-SHA256 (chrj-smtpd-v0.1.1_GH0.tar.gz) = 2c5a73fa7740065d14dca39917b2a87cf9fcd15b8d52e394f7d8bbd89d9f5a7f
-SIZE (chrj-smtpd-v0.1.1_GH0.tar.gz) = 13281
+TIMESTAMP = 1546864963
+SHA256 (v1.2.0.tar.gz) = 99c9763d7ff0b6bc997079b852cf8868c90c467e07bf69acc7a59fd7a1be940e
+SIZE (v1.2.0.tar.gz) = 8948
+SHA256 (chrj-smtpd-v0.1.2_GH0.tar.gz) = f290b7233bf781222e40184f32bfa4550424f96a9d69cbb75241d744080eb8f7
+SIZE (chrj-smtpd-v0.1.2_GH0.tar.gz) = 13676
 SHA256 (vharitonsky-iniflags-a33cd0b5f3de_GH0.tar.gz) = d60f3292be138071158e47e794c2ba93ea9dfc866c44e6472833e2d8566024aa
 SIZE (vharitonsky-iniflags-a33cd0b5f3de_GH0.tar.gz) = 7498
+SHA256 (golang-crypto-505ab145d0a9_GH0.tar.gz) = 33a4ff7a15a69640a7ce2c65ba94680643554b744c69f3ed3623bd9557c985e7
+SIZE (golang-crypto-505ab145d0a9_GH0.tar.gz) = 1644681
