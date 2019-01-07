@@ -13,7 +13,7 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		go
-USE_RC_SUBR=	smtprelay
+#USE_RC_SUBR=	smtprelay
 
 USE_GITHUB=	nodefault
 GH_TUPLE=	chrj:smtpd:v0.1.2:smtpd/vendor/github.com/chrj/smtpd \
