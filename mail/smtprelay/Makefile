@@ -4,7 +4,8 @@ PORTNAME=	smtprelay
 DISTVERSIONPREFIX=v
 DISTVERSION=	1.2.0
 CATEGORIES=	mail
-MASTER_SITES=	https://code.bluelife.at/decke/smtprelay/archive/
+MASTER_SITES=	https://code.bluelife.at/decke/smtprelay/archive/ \
+		LOCAL/decke/smtprelay/
 DISTFILES=	${DISTVERSIONPREFIX}${DISTVERSION}${DISTVERSIONSUFFIX}${EXTRACT_SUFX}
 DIST_SUBDIR=	${PORTNAME}
 
