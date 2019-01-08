@@ -1,10 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	smtprelay
-PORTVERSION=	1.2.0
+DISTVERSION=	v1.2.0
 CATEGORIES=	mail
 MASTER_SITES=	https://code.bluelife.at/decke/smtprelay/archive/
-DISTFILES=	v${PORTVERSION}.tar.gz
+DISTFILES=	${DISTVERSION}${EXTRACT_SUFX}
+DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Simple Go SMTP relay/proxy server
@@ -13,14 +14,13 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		go
-#USE_RC_SUBR=	smtprelay
+USE_RC_SUBR=	smtprelay
 
 USE_GITHUB=	nodefault
 GH_TUPLE=	chrj:smtpd:v0.1.2:smtpd/vendor/github.com/chrj/smtpd \
 		vharitonsky:iniflags:a33cd0b5f3de:iniflags/vendor/github.com/vharitonsky/iniflags \
 		golang:crypto:505ab145d0a9:golang/vendor/golang.org/x/crypto
 
-WRKSRC=		${WRKDIR}/${PORTNAME}
 MAKE_ENV+=	GOFLAGS=-mod=vendor
 
 PLIST_FILES=	bin/${PORTNAME} \
