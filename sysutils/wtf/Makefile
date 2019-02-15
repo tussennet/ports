@@ -1,5 +1,7 @@
 # $FreeBSD$
 
+# CAUTION: name conflict with games/wtf
+
 PORTNAME=	wtf
 DISTVERSION=	0.5.0
 CATEGORIES=	sysutils
