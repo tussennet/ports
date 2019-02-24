@@ -1,5 +1,5 @@
-TIMESTAMP = 1551000240
-SHA256 (caronade/master.tar.gz) = 2ad3ef4ccf909e8346867fdf612be2e9fa24f53986a6cc59e21803e6b84ed387
-SIZE (caronade/master.tar.gz) = 58066
+TIMESTAMP = 1551009359
+SHA256 (caronade/master.tar.gz) = 850d77e423ac307902cd33f2edd80559dea6410d0aa5f1c5c54bc605fe6c3300
+SIZE (caronade/master.tar.gz) = 57889
 SHA256 (caronade/go-yaml-yaml-v2.2.2_GH0.tar.gz) = 42c3e4ef9eca2860d22b3c6c5582c6c13fb4b417e5ebc1acc56ee5e2c4ddcaff
 SIZE (caronade/go-yaml-yaml-v2.2.2_GH0.tar.gz) = 70656
