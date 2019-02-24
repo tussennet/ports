@@ -6,5 +6,4 @@ caronade/templates/index.html
 caronade/work/portlint.mk
 caronade/work/poudriere.mk
 %%ETCDIR%%/caronade.yaml.sample
-etc/rc.d/caronade
 @dir caronade/builds
