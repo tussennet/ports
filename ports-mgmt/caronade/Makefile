@@ -15,6 +15,7 @@ LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		go
+USE_RC_SUBR=	caronade
 
 USE_GITHUB=	nodefault
 GH_TUPLE=	rakyll:statik:v0.1.5:statik/vendor/github.com/rakyll/statik \
@@ -23,11 +24,13 @@ GH_TUPLE=	rakyll:statik:v0.1.5:statik/vendor/github.com/rakyll/statik \
 GO_PKGNAME=	code.bluelife.at/decke/caronade
 MAKE_ENV+=	GOFLAGS=-mod=vendor
 
-PLIST_FILES=	bin/${PORTNAME} \
-		"@sample ${ETCDIR}/caronade.yaml.sample"
-
 post-install:
 		${MKDIR} ${STAGEDIR}${ETCDIR}
 		${INSTALL_DATA} ${WRKSRC}/caronade.yaml ${STAGEDIR}${ETCDIR}/caronade.yaml.sample
+
+		${MKDIR} ${STAGEDIR}${PREFIX}/${PORTNAME}
+		(cd ${WRKSRC} && ${COPYTREE_SHARE} work ${STAGEDIR}${PREFIX}/${PORTNAME})
+
+		${MKDIR} ${STAGEDIR}${PREFIX}/${PORTNAME}/builds
 
 .include <bsd.port.mk>

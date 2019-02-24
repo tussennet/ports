@@ -1,0 +1,5 @@
+bin/caronade
+caronade/work/portlint.mk
+caronade/work/poudriere.mk
+%%ETCDIR%%/caronade.yaml.sample
+@dir caronade/builds
