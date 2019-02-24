@@ -18,8 +18,7 @@ USES=		go
 USE_RC_SUBR=	caronade
 
 USE_GITHUB=	nodefault
-GH_TUPLE=	rakyll:statik:v0.1.5:statik/vendor/github.com/rakyll/statik \
-		go-yaml:yaml:v2.2.2:yaml/vendor/gopkg.in/yaml.v2
+GH_TUPLE=	go-yaml:yaml:v2.2.2:yaml/vendor/gopkg.in/yaml.v2
 
 GO_PKGNAME=	code.bluelife.at/decke/caronade
 MAKE_ENV+=	GOFLAGS=-mod=vendor
@@ -29,7 +28,7 @@ post-install:
 		${INSTALL_DATA} ${WRKSRC}/caronade.yaml ${STAGEDIR}${ETCDIR}/caronade.yaml.sample
 
 		${MKDIR} ${STAGEDIR}${PREFIX}/${PORTNAME}
-		(cd ${WRKSRC} && ${COPYTREE_SHARE} work ${STAGEDIR}${PREFIX}/${PORTNAME})
+		(cd ${WRKSRC} && ${COPYTREE_SHARE} "static templates work" ${STAGEDIR}${PREFIX}/${PORTNAME})
 
 		${MKDIR} ${STAGEDIR}${PREFIX}/${PORTNAME}/builds
 
