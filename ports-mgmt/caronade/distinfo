@@ -1,6 +1,6 @@
-TIMESTAMP = 1550925707
-SHA256 (caronade/master.tar.gz) = 6643f0188d8033bad50f8a2abce40c8a97589374faa862155478fc8e5a441a86
-SIZE (caronade/master.tar.gz) = 93786
+TIMESTAMP = 1550995581
+SHA256 (caronade/master.tar.gz) = 424679b17a799045f7f382b3946a349ae2d90790ed96515364c4a4566756d636
+SIZE (caronade/master.tar.gz) = 94145
 SHA256 (caronade/rakyll-statik-v0.1.5_GH0.tar.gz) = 9a60519aea5da23ec6cde9d47932491ca1e14fca316820f63c1e2b9ada0fdc30
 SIZE (caronade/rakyll-statik-v0.1.5_GH0.tar.gz) = 175465
 SHA256 (caronade/go-yaml-yaml-v2.2.2_GH0.tar.gz) = 42c3e4ef9eca2860d22b3c6c5582c6c13fb4b417e5ebc1acc56ee5e2c4ddcaff
