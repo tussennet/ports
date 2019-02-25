@@ -18,7 +18,8 @@ USES=		go
 USE_RC_SUBR=	caronade
 
 USE_GITHUB=	nodefault
-GH_TUPLE=	go-yaml:yaml:v2.2.2:yaml/vendor/gopkg.in/yaml.v2
+GH_TUPLE=	NYTimes:gziphandler:v1.1.1:gziphandler/vendor/github.com/NYTimes/gziphandler \
+		go-yaml:yaml:v2.2.2:yaml/vendor/gopkg.in/yaml.v2
 
 GO_PKGNAME=	code.bluelife.at/decke/caronade
 MAKE_ENV+=	GOFLAGS=-mod=vendor
