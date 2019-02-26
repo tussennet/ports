@@ -1,2 +1,11 @@
-SHA256 (kvasdopil-docker-20150625-582db78_GH0.tar.gz) = a750d344af4af3d30b1a3373f382ab597a2a7aa4a0bb5c22d650d0c5cc9ac506
-SIZE (kvasdopil-docker-20150625-582db78_GH0.tar.gz) = 7292884
+TIMESTAMP = 1548431217
+SHA256 (moby-moby-v17.03.2-ce-27c7178_GH0.tar.gz) = bbf81f90fd4c4b761f6b0bc1ac726f84cbbd7aa7c3613745f8b64d409de5c374
+SIZE (moby-moby-v17.03.2-ce-27c7178_GH0.tar.gz) = 8715942
+SHA256 (freebsd-docker-containerd-00a99ef_GH0.tar.gz) = b343c86f5f1ca56c04731d331e2de028cb9d42d071ae915dac01d0ffac2f6e77
+SIZE (freebsd-docker-containerd-00a99ef_GH0.tar.gz) = 1231489
+SHA256 (freebsd-docker-libnetwork-acb2447_GH0.tar.gz) = 4c9ae300c414eba96203f7e797652ee4118820ca6d0e8fbe58698bd3cd0cd8c5
+SIZE (freebsd-docker-libnetwork-acb2447_GH0.tar.gz) = 2407383
+SHA256 (freebsd-docker-runc-9c2d8d1_GH0.tar.gz) = 076b92d3d3851917386fc8fb72531a1cc77acf75b94ddfef1c0fc3d68b24e6bb
+SIZE (freebsd-docker-runc-9c2d8d1_GH0.tar.gz) = 561889
+SHA256 (krallin-tini-v0.16.1_GH0.tar.gz) = c2b7fe2fb92e71911d06b7571b53d4e7e8985b34efe2a599670b070b000c8dbe
+SIZE (krallin-tini-v0.16.1_GH0.tar.gz) = 29641

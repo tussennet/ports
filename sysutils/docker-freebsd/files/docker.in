@@ -9,50 +9,110 @@
 name="docker"
 rcvar="docker_enable"
 
+startpre_cmd="docker_precmd"
 stop_cmd="docker_stop"
 start_cmd="docker_start"
 command="%%PREFIX%%/bin/docker"
 
 load_rc_config $name
 
-: ${docker_enable=NO}
-: ${docker_dir=/usr/docker}
-: ${docker_nat_pf=YES}
-: ${docker_nat_iface=NONE}
-: ${docker_flags=}
+: ${docker_enable:=NO}
+: ${docker_dir:=/usr/docker}
+: ${docker_nat_iface:=NONE}
+: ${docker_flags:=}
+: ${docker_log_file:=/var/log/docker.log}
+: ${docker_zpool_name:=zroot}
+: ${docker_zpool_file:=/usr/local/docker.img}
+: ${docker_zpool_file_size:=4G}
+: ${docker_zfs_name:=docker}
+: ${docker_pidfile:=/var/run/docker.pid}
 
-docker_start()
+docker_precmd()
 {
-	if [ ! -d "${docker_dir}" ] ; then
-		echo "Missing ${docker_dir}! Please create / mount a ZFS dataset at this location."
-		exit 1
-	fi
+	local module
+	local fs_type=
+	local make_zfs=
+	local zfs_mountpoint=
+	local zfs_name=
+	local zpool_name=
+	local zpool_size=
 
-	if [ -e "/var/run/docker.pid" ] ; then
-		pgrep -F /var/run/docker.pid 2>/dev/null >/dev/null
-		if [ $? -eq 0 ] ; then
-			echo "Docker already running? /var/run/docker.pid"
-			exit 1
-		fi
-	fi
+	for module in \
+			zfs \
+			pf \
+			linux \
+			linux64 \
+		; do
+				kldstat -qm $module || kldload $module || die
+		done
+		[ -d "$docker_dir" ] || mkdir -p "$docker_dir"
 
-	echo "Starting docker..."
-	daemon -p /var/run/docker.pid ${command} -d -e jail -s zfs -g ${docker_dir} -D ${docker_flags} >/var/log/docker.log 2>/var/log/docker.log
+	#
+	# If ZFS filesystem is already mounted on $docker_dir, do nothing.
+	
+	#If $docker_dir is inside existing ZFS filesystem,
+	# create new filesystem.
+	#
+	# Otherwise, create $docker_zpool_file to contain pool and filesystem.
+	#
+	fstype=$( df -T "$docker_dir" 2> /dev/null | awk 'NR>1,$0=$2' )
+	case "$fstype" in
+	zfs)
+		zfs_mountpoint=$( zfs get -Ho value mountpoint "$docker_dir" )
+		zfs_name=$( zfs get -Ho name mountpoint "$docker_dir" )
+		[ "$docker_dir" = "$zfs_mountpoint" ] || make_zfs=filesystem
+		;;
+	*)
+		zfs_name="$docker_zpool_name"
+		make_zfs=pool
+	 esac
+	zpool_name="${zfs_name%%/*}"
 
-	# Check for linux 64bit support and enable
-	kldstat | grep -q 'linux64'
-	if [ $? -ne 0 -a -e "/boot/kernel/linux64.ko" ] ; then
-		kldload linux64
-	fi
+	#
+	# Setup ZFS pool if required
+	#
+	case "$make_zfs" in
+	pool)
+		#
+		# Expand desired pool size to bytes
+		#
+		zpool_size=$( awk -v size="$docker_zpool_file_size" '
+		BEGIN {
+				suffixen = "KMGTPEZYXWV" # ... Yotta Xenna Weka Vendeka
+				size = toupper(size)
+				sub(sprintf("[^[:digit:].%s].*", suffixen), "", size)
+				if (match(size, sprintf("[%s]", suffixen))) {
+						suffix = substr(size, RSTART, 1)
+						size = substr(size, 1, RSTART - 1)
+						match(suffixen, suffix)
+						size = size * 1024 ** RSTART
+				}
+				rintf "%i\n", size
+				exit
+		}
+		' )
 
-	# Check for NAT support via PF
-	# This is an ugly experimental hack for now, eventually will go away
-	if [ "${docker_nat_pf}" != "YES" ] ; then return ; fi
+		#
+		# Initialize the file using dd(1) piped through dpv(1)
+		#
+		msg="Creating ZFS pool file ($docker_zpool_file_size size) ..."
+		truncate -s "$docker_zpool_file_size" "$docker_zpool_file"
 
-	# Load PF if not already
-	kldstat | grep -q 'pf.ko'
-	if [ $? -ne 0 -a -e "/boot/kernel/pf.ko" ] ; then
-		kldload pf
+		#
+		# Create zpool
+		#
+		echo "Creating ZFS pool from file $docker_zpool_file ..."
+		zpool create "$docker_zpool_name" "$docker_zpool_file"
+		;;
+	esac
+
+	#
+	# Setup ZFS filesystem
+	#
+	if [ "$make_zfs" ]; then
+			echo "Creating ZFS filesystem $zpool_name/$docker_zfs_name ..."
+			zfs create -o mountpoint="$docker_dir" \
+				"$zpool_name/$docker_zfs_name"
 	fi
 
 	# Check if PF rules already loaded
@@ -68,16 +128,31 @@ docker_start()
 	/sbin/pfctl -f /tmp/pf-nat-docker.$$ 2>/dev/null
 	/sbin/pfctl -e 2>/dev/null
 	rm /tmp/pf-nat-docker.$$
+}
+docker_start()
+{
+		if [ ! -d "${docker_dir}" ] ; then
+			echo "Missing ${docker_dir}! Please create / mount a ZFS dataset at this location."
+			exit 1
+		fi
 
+		if [ -e "$docker_pidfile" ] ; then
+			if pgrep -F "$docker_pidfile" > /dev/null 2>&1; then
+				echo "Docker already running? "$docker_pidfile""
+				exit 1
+			fi
+		fi
+
+		echo "Starting docker..."
+		daemon -p "$docker_pidfile" ${command} -d -e jail -s zfs -g ${docker_dir} -D ${docker_flags} >${docker_log_file} 2>${docker_log_file
 }
 
 docker_stop()
 {
-	if [ -e "/var/run/docker.pid" ] ; then
+	if [ -e ""$docker_pidfile"" ] ; then
 		echo "Stopping docker..."
-		pkill -F /var/run/docker.pid
+		pkill -F "$docker_pidfile"
 	fi
 }
 
 run_rc_command "$1"
-
