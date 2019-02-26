@@ -1,6 +1,6 @@
-TIMESTAMP = 1548431217
-SHA256 (moby-moby-v17.03.2-ce-27c7178_GH0.tar.gz) = bbf81f90fd4c4b761f6b0bc1ac726f84cbbd7aa7c3613745f8b64d409de5c374
-SIZE (moby-moby-v17.03.2-ce-27c7178_GH0.tar.gz) = 8715942
+TIMESTAMP = 1551193927
+SHA256 (freebsd-docker-docker-v20170907-ce-969c6fd_GH0.tar.gz) = 31a71a4551e395f0df74b4608a97e76039eef4f8bdfc46dc4de250d389ebe138
+SIZE (freebsd-docker-docker-v20170907-ce-969c6fd_GH0.tar.gz) = 7181236
 SHA256 (freebsd-docker-containerd-00a99ef_GH0.tar.gz) = b343c86f5f1ca56c04731d331e2de028cb9d42d071ae915dac01d0ffac2f6e77
 SIZE (freebsd-docker-containerd-00a99ef_GH0.tar.gz) = 1231489
 SHA256 (freebsd-docker-libnetwork-acb2447_GH0.tar.gz) = 4c9ae300c414eba96203f7e797652ee4118820ca6d0e8fbe58698bd3cd0cd8c5
