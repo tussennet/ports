@@ -24,10 +24,10 @@ GH_PROJECT=	docker
 GH_TAGNAME=	969c6fd
 GH_SUBDIR=	src/github.com/docker/docker
 
-GH_TUPLE=	freebsd-docker:containerd:00a99ef:containerd/src/github.com/containerd/containerd \
-		freebsd-docker:libnetwork:acb2447:libnetwork/src/github.com/docker/libnetwork \
-		freebsd-docker:runc:9c2d8d1:runc/src/github.com/runc/runc \
-		krallin:tini:v0.16.1:tini/src/github.com/krallin/tini
+#GH_TUPLE=	freebsd-docker:containerd:00a99ef:containerd/src/github.com/containerd/containerd \
+#		freebsd-docker:libnetwork:acb2447:libnetwork/src/github.com/docker/libnetwork \
+#		freebsd-docker:runc:9c2d8d1:runc/src/github.com/runc/runc \
+#		krallin:tini:v0.16.1:tini/src/github.com/krallin/tini
 
 PLIST_FILES=	bin/docker \
 		bin/dockerd \
@@ -44,12 +44,8 @@ SSP_UNSAFE=	yes
 
 STRIP=	#
 
-#post-extract:
-#	${LN} -sf ${WRKSRC}/src ${WRKDIR}
-#	${CP} ${FILESDIR}/Makefile.freebsd ${WRKSRC}
-
-#do-build:
-#	@cd ${GO_WRKSRC} && export DOCKER_GITCOMMIT=${GH_TAGNAME} && ${SETENV} ${MAKE_ENV} ${GO_ENV} ${GMAKE} -f Makefile.freebsd #binary #daemon_freebsd.go binary
+do-build:
+	@cd ${GO_WRKSRC} && export DOCKER_GITCOMMIT=${GH_TAGNAME} && ${SETENV} ${MAKE_ENV} ${GO_ENV} ${BASH} hack/make.sh binary
 
 #do-install:
 #.for f in ${PLIST_FILES}
