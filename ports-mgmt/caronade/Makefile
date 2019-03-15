@@ -4,7 +4,8 @@ PORTNAME=	caronade
 DISTVERSIONPREFIX=v
 DISTVERSION=	0.1.0
 CATEGORIES=	ports-mgmt
-MASTER_SITES=	https://code.bluelife.at/decke/caronade/archive/
+MASTER_SITES=	https://code.bluelife.at/decke/caronade/archive/ \
+		LOCAL/decke/caronade/
 DISTFILES=	${DISTVERSIONPREFIX}${DISTVERSION}${DISTVERSIONSUFFIX}${EXTRACT_SUFX}
 DIST_SUBDIR=	${PORTNAME}
 
