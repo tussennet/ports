@@ -1,3 +1,3 @@
-TIMESTAMP = 1551897781
-SHA256 (docker-engine-v18.09.3_GH0.tar.gz) = 67c01237e3d9ffb1e419f9366c06b935ba67164a7e6ea1bd9a43514f5860db28
-SIZE (docker-engine-v18.09.3_GH0.tar.gz) = 8556590
+TIMESTAMP = 1553773605
+SHA256 (docker-engine-v18.09.4_GH0.tar.gz) = 1f4bd15d799420b587024fe3c6d7bd4eb584e509d30c8193db31411579780f2a
+SIZE (docker-engine-v18.09.4_GH0.tar.gz) = 8558675
