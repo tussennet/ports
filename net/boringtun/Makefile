@@ -14,6 +14,8 @@ COMMENT=	Userspace WireGuard implementation in Rust
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
+RUN_DEPENDS=	wg-quick:net/wireguard
+
 USES=		cargo
 USE_GITHUB=	yes
 GH_ACCOUNT=	cloudflare
