@@ -1,4 +1,4 @@
-TIMESTAMP = 1553785439
+TIMESTAMP = 1553851149
 SHA256 (rust/crates/ascii-0.9.1.tar.gz) = a5fc969a8ce2c9c0c4b0429bb8431544f6658283c8326ba5ff8c762b75369335
 SIZE (rust/crates/ascii-0.9.1.tar.gz) = 25317
 SHA256 (rust/crates/autocfg-0.1.2.tar.gz) = a6d640bee2da49f60a4068a7fae53acde8982514ab7bae8b8cea9e88cbcfd799
@@ -87,7 +87,7 @@ SHA256 (rust/crates/winapi-util-0.1.2.tar.gz) = 7168bab6e1daee33b4557efd0e95d5ca
 SIZE (rust/crates/winapi-util-0.1.2.tar.gz) = 7810
 SHA256 (rust/crates/winapi-x86_64-pc-windows-gnu-0.4.0.tar.gz) = 712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f
 SIZE (rust/crates/winapi-x86_64-pc-windows-gnu-0.4.0.tar.gz) = 2947998
-SHA256 (cloudflare-boringtun-v0.0.0.20190327-3c9c01c_GH0.tar.gz) = 1342b1a0061ba0210868a865733ad3269ef0018e8d43adc9f94881f6a21ef40f
-SIZE (cloudflare-boringtun-v0.0.0.20190327-3c9c01c_GH0.tar.gz) = 411362
+SHA256 (cloudflare-boringtun-v0.2.0_GH0.tar.gz) = 544c72fc482b636e7f6460bfee205adafc55de534067819e4e4914980f0d1350
+SIZE (cloudflare-boringtun-v0.2.0_GH0.tar.gz) = 411351
 SHA256 (b10df0ef427cea425f6eeedb372da372055de308.patch) = 6285d529181398bfe0121acf50da2dd9999e4d174adfcf59d9ca09a2761849ee
 SIZE (b10df0ef427cea425f6eeedb372da372055de308.patch) = 14603

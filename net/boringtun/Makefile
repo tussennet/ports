@@ -2,7 +2,7 @@
 
 PORTNAME=	boringtun
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.0.0.20190327
+DISTVERSION=	0.2.0
 CATEGORIES=	net
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
@@ -17,7 +17,6 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.md
 USES=		cargo
 USE_GITHUB=	yes
 GH_ACCOUNT=	cloudflare
-GH_TAGNAME=	3c9c01c
 
 CARGO_CRATES=	ascii-0.9.1 \
 		autocfg-0.1.2 \
