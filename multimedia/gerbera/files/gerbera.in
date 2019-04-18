@@ -1,0 +1,27 @@
+#!/bin/sh
+# $FreeBSD$
+
+# PROVIDE: gerbera
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+#
+# Add the following line to /etc/rc.conf[.local] to enable gerbera
+#
+# gerbera_enable (bool):       Set to "NO" by default.
+# gerbera_user (str):          User account to run with.
+# gerbera_group (str):         Group to run as
+# gerbera_flags (str):         Custom flags for gerbera
+
+. /etc/rc.subr
+
+name=gerbera
+rcvar=gerbera_enable
+load_rc_config $name
+
+pidfile="/var/run/${name}.pid"
+
+command="%%PREFIX%%/bin/gerbera"
+
+: ${gerbera_enable:=NO}
+
+run_rc_command "$1"
