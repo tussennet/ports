@@ -1,9 +1,0 @@
-bin/stubby
-@sample %%ETCDIR%%/stubby.yml.example %%ETCDIR%%/stubby.yml
-man/man1/stubby.1.gz
-%%DOCSDIR%%/AUTHORS
-%%DOCSDIR%%/COPYING
-%%DOCSDIR%%/ChangeLog
-%%DOCSDIR%%/INSTALL
-%%DOCSDIR%%/NEWS
-%%DOCSDIR%%/README.md
