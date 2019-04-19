@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	kodi-addon-pvr-hts
-PORTVERSION=	4.4.16
+PORTVERSION=	4.4.17
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
