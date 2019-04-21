@@ -1,0 +1,57 @@
+From 4287e060dd6e173e452fae41a636bda9be6e240d Mon Sep 17 00:00:00 2001
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Sat, 20 Apr 2019 11:29:07 +0900
+Subject: tun: freebsd: work around kernel panic on shutdown
+
+---
+ tun/tun_freebsd.go | 33 +++++++++++++++++++++++----------
+ 1 file changed, 23 insertions(+), 10 deletions(-)
+
+diff --git a/tun/tun_freebsd.go b/tun/tun_freebsd.go
+index 01a4348..91d2397 100644
+--- tun/tun_freebsd.go
++++ tun/tun_freebsd.go
+@@ -206,17 +206,30 @@ func tunDestroy(name string) error {
+ 
+ 	defer unix.Close(fd)
+ 
+-	// do ioctl call
+-
+-	var ifr [32]byte
+-	copy(ifr[:], name)
+-	_, _, errno := unix.Syscall(
+-		unix.SYS_IOCTL,
+-		uintptr(fd),
+-		uintptr(unix.SIOCIFDESTROY),
+-		uintptr(unsafe.Pointer(&ifr[0])),
+-	)
++	// First we set down the interface (no ifr flags), to work around FreeBSD kernel bug.
++	func() {
++		var ifr [1024]byte
++		copy(ifr[:], name)
++		unix.Syscall(
++			unix.SYS_IOCTL,
++			uintptr(fd),
++			uintptr(unix.SIOCSIFFLAGS),
++			uintptr(unsafe.Pointer(&ifr[0])),
++		)
++	}()
+ 
++	// Only after can we then destroy the interface.
++	errno := func() syscall.Errno {
++		var ifr [32]byte
++		copy(ifr[:], name)
++		_, _, errno := unix.Syscall(
++			unix.SYS_IOCTL,
++			uintptr(fd),
++			uintptr(unix.SIOCIFDESTROY),
++			uintptr(unsafe.Pointer(&ifr[0])),
++		)
++		return errno
++	}()
+ 	if errno != 0 {
+ 		return fmt.Errorf("failed to destroy interface %s: %s", name, errno.Error())
+ 	}
+-- 
+cgit v1.2.1-20-gc37e
+
