@@ -1,22 +1,22 @@
-From 4d8aab09932862bba6cf3fbb02ef57b3fbb438dd Mon Sep 17 00:00:00 2001
+From b3e1a1b07d3631bd816f9bfc27452a89dc29fa28 Mon Sep 17 00:00:00 2001
 From: "Jason A. Donenfeld" <Jason@zx2c4.com>
 Date: Sun, 21 Apr 2019 10:11:36 +0900
 Subject: wg-quick: freebsd: workaround SIOCGIFSTATUS race in FreeBSD kernel
 
 ---
- src/tools/wg-quick/freebsd.bash | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
+ src/tools/wg-quick/freebsd.bash | 31 ++++++++++++++++++++++---------
+ 1 file changed, 22 insertions(+), 9 deletions(-)
 
 diff --git a/src/tools/wg-quick/freebsd.bash b/src/tools/wg-quick/freebsd.bash
-index 9d3a4026..6be161a3 100755
+index 9d3a4026..72e0bd04 100755
 --- wg-quick/freebsd.bash
 +++ wg-quick/freebsd.bash
-@@ -137,13 +137,27 @@ del_routes() {
+@@ -137,18 +137,30 @@ del_routes() {
  	done
  }
  
 +if_exists() {
-+	# The goal is simply to determine whether or not the interface exists. The
++	# HACK: The goal is simply to determine whether or not the interface exists. The
 +	# straight-forward way of doing this would be `ifconfig $INTERFACE`, but this
 +	# invokes the SIOCGIFSTATUS ioctl, which races with interface shutdown inside
 +	# the tun driver, resulting in a kernel panic. So we work around it the stupid
@@ -30,17 +30,27 @@ index 9d3a4026..6be161a3 100755
 +}
 +
  del_if() {
- 	local line monitor_pid
+-	local line monitor_pid
  	[[ $HAVE_SET_DNS -eq 0 ]] || unset_dns
- 	exec 39< <(exec route -n monitor 2>/dev/null)
- 	monitor_pid=$!
+-	exec 39< <(exec route -n monitor 2>/dev/null)
+-	monitor_pid=$!
  	cmd rm -f "/var/run/wireguard/$INTERFACE.sock"
 -	while ifconfig "$INTERFACE" >/dev/null 2>&1; do
+-		while read -r line; do
+-			[[ $line =~ ^RTM_IFANNOUNCE:.* ]] && break
+-		done <&39
 +	while if_exists; do
- 		while read -r line; do
- 			[[ $line =~ ^RTM_IFANNOUNCE:.* ]] && break
- 		done <&39
-@@ -274,7 +288,8 @@ monitor_daemon() {
++		# HACK: it would be nice to `route monitor` here and wait for RTM_IFANNOUNCE
++		# but it turns out that the announcement is made before the interface
++		# disappears so we sometimes get a hang. So, we're instead left with polling
++		# in a sleep loop like this.
++		sleep 0.1
+ 	done
+-	kill $monitor_pid
+ }
+ 
+ up_if() {
+@@ -274,7 +286,8 @@ monitor_daemon() {
  	# endpoints change.
  	while read -r event; do
  		[[ $event == RTM_* ]] || continue
