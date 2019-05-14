@@ -1,10 +1,9 @@
 # $FreeBSD: head/lang/micropython/Makefile 498476 2019-04-09 14:04:49Z sunpoet $
 
 PORTNAME=	micropython
-PORTVERSION=	1.5.1
-DISTVERSIONPREFIX=	v
-PORTREVISION=	3
+PORTVERSION=	1.10
 CATEGORIES=	lang python
+MASTER_SITES=	https://github.com/micropython/micropython/releases/download/v${PORTVERSION}/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Implementation of the Python language for microcontrollers
@@ -13,38 +12,16 @@ LICENSE=	MIT
 
 LIB_DEPENDS=	libffi.so:devel/libffi
 
-USES=		gmake pkgconfig python:3.4+,build readline shebangfix
+BUILD_DEPENDS=	bash:shells/bash
+RUN_DEPENDS=    bash:shells/bash
 
-USE_GITHUB=	yes
+USES=		compiler gmake pkgconfig python,build
 
 PLIST_FILES=	bin/micropython
 
-BROKEN_armv6=	fails to assemble: error: invalid operand for instruction
-BROKEN_armv7=	fails to assemble: error: invalid operand for instruction
+WRKSRC_SUBDIR=	ports/unix
 
-WRKSRC_SUBDIR=	unix
-
-SHEBANG_FILES=	../tools/make-frozen.py
 MAKE_ARGS+=	V=1
-MAKE_ENV+=	PYTHON=${PYTHON_CMD} CFLAGS_EXTRA="${CPPFLAGS} ${CFLAGS}"
-TEST_TARGET=	test
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|-Werror||;/^COPT =/d; \
-		s|ls -1 -v|ls -1|' ${WRKSRC}/Makefile
-	@${REINPLACE_CMD} -e 's|re_exec|mp_re_exec|' \
-		${WRKSRC}/../extmod/modure.c
-	@${REINPLACE_CMD} -e 's|AS =|AS ?=|;s|LD =|LD ?=|; \
-		s|CC =|CC ?=|;s|PYTHON =|PYTHON ?=|' \
-		${WRKSRC}/../py/mkenv.mk
-	@${REINPLACE_CMD} -e 's|libc\.so\.6|libc\.so\.7|;' \
-		${WRKSRC}/../tests/unix/ffi_callback.py \
-		${WRKSRC}/../tests/unix/ffi_float.py
-
-do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/micropython ${STAGEDIR}${PREFIX}/bin
-
-pre-test:
-	@${RM} ${WRKSRC}/../tests/basics/memoryerror.py
+ALL_TARGET=	axtls micropython
 
 .include <bsd.port.mk>

@@ -1,2 +1,3 @@
-SHA256 (micropython-micropython-v1.5.1_GH0.tar.gz) = 95cc34089a1e40a992065ff9c9b67c121674c3bd6136a50882054fcac27485c2
-SIZE (micropython-micropython-v1.5.1_GH0.tar.gz) = 6635550
+TIMESTAMP = 1557861410
+SHA256 (micropython-1.10.tar.gz) = 207de28a243d5be59c1d5433670a5c76472ece532b446cc25da6cf3c6e943fbc
+SIZE (micropython-1.10.tar.gz) = 22489684
