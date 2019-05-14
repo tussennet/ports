@@ -9,18 +9,17 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Implementation of the Python language for microcontrollers
 
 LICENSE=	MIT
-
-LIB_DEPENDS=	libffi.so:devel/libffi
+LICENSE_FILE=	${WRKDIR}/${DISTNAME}/LICENSE
 
 BUILD_DEPENDS=	bash:shells/bash
-RUN_DEPENDS=    bash:shells/bash
+RUN_DEPENDS=	bash:shells/bash
+LIB_DEPENDS=	libffi.so:devel/libffi
 
-USES=		compiler gmake pkgconfig python,build
+USES=		compiler gmake pkgconfig python:build
 
 PLIST_FILES=	bin/micropython
 
 WRKSRC_SUBDIR=	ports/unix
-
 MAKE_ARGS+=	V=1
 ALL_TARGET=	axtls micropython
 
