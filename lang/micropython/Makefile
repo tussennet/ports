@@ -15,7 +15,8 @@ LIB_DEPENDS=	libffi.so:devel/libffi
 BUILD_DEPENDS=	bash:shells/bash
 RUN_DEPENDS=    bash:shells/bash
 
-USES=		compiler gmake pkgconfig python,build
+USES=		gmake pkgconfig python,build
+USE_GCC=	yes
 
 PLIST_FILES=	bin/micropython
 
