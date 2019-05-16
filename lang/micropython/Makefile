@@ -27,7 +27,7 @@ ALL_TARGET=	axtls micropython
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|AS =|AS ?=|;s|LD =|LD ?=|; \
-		s|CC =|CC ?=|;s|PYTHON =|PYTHON ?=|' \
-		${WRKSRC}/../py/mkenv.mk
+		s|CC =|CC ?=|;s|CXX =|CXX ?=|;s|PYTHON =|PYTHON ?=|' \
+		${WRKSRC}/../../py/mkenv.mk
 
 .include <bsd.port.mk>
