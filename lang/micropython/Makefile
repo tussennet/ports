@@ -22,6 +22,12 @@ PLIST_FILES=	bin/micropython
 
 WRKSRC_SUBDIR=	ports/unix
 MAKE_ARGS+=	V=1
+MAKE_ENV+=	PYTHON=${PYTHON_CMD} CFLAGS_EXTRA="${CPPFLAGS} ${CFLAGS}"
 ALL_TARGET=	axtls micropython
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|AS =|AS ?=|;s|LD =|LD ?=|; \
+		s|CC =|CC ?=|;s|PYTHON =|PYTHON ?=|' \
+		${WRKSRC}/../py/mkenv.mk
 
 .include <bsd.port.mk>
