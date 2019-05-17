@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	wazuh
-DISTVERSION=	3.9.0
 DISTVERSIONPREFIX=	v
+DISTVERSION=	3.9.0
 CATEGORIES=	security
 PKGNAMESUFFIX=	-agent
 
@@ -12,12 +12,9 @@ COMMENT=	Security tool to monitor and check logs and intrusions
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		gmake perl5 readline
+USES=		gmake perl5 readline ssl
 
 USE_GITHUB=	yes
-
-USE_OPENSSL=	yes
-USE_GMAKE=	yes
 
 USERS=		ossec ossecm ossecr
 GROUPS=		ossec
