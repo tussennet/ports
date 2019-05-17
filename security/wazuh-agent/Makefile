@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	wazuh
-PORTVERSION=	3.9.0
+DISTVERSION=	3.9.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	security
 PKGNAMESUFFIX=	-agent
@@ -21,8 +21,6 @@ USE_GMAKE=	yes
 
 USERS=		ossec ossecm ossecr
 GROUPS=		ossec
-
-.include <bsd.port.pre.mk>
 
 do-build:
 		@cd ${WRKSRC}/src && ${GMAKE} deps && ${GMAKE}
