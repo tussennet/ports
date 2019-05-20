@@ -4,14 +4,13 @@ PORTNAME=	wazuh
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.9.0
 CATEGORIES=	security
+MASTER_SITES=	https://packages.wazuh.com/deps/3.9/
 PKGNAMESUFFIX=	-agent
 DISTFILES=	cJSON.tar.gz src_cpython.tar.gz curl.tar.gz libdb.tar.gz libffi.tar.gz \
 		libyaml.tar.gz openssl.tar.gz procps.tar.gz sqlite.tar.gz  zlib.tar.gz \
 		audit-userspace.tar.gz msgpack.tar.gz
-MASTER_SITES=	https://packages.wazuh.com/deps/3.9/
 DIST_SUBDIR=	${PORTNAME}-${DISTVERSION}
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
-
 
 MAINTAINER=	m.muenz@gmail.com
 COMMENT=	Security tool to monitor and check logs and intrusions
