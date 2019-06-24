@@ -1,0 +1,78 @@
+# github.com/docker/docker/vendor/github.com/containerd/cgroups
+vendor/github.com/containerd/cgroups/memory.go:179:33: undefined: unix.SYS_EVENTFD2
+vendor/github.com/containerd/cgroups/memory.go:179:55: undefined: unix.EFD_CLOEXEC
+
+# github.com/docker/docker/vendor/github.com/containerd/continuity/fs
+vendor/github.com/containerd/continuity/fs/copy_unix.go:111:47: cannot use int(st.Rdev) (type int) as type uint64 in argument to unix.Mknod
+
+# github.com/docker/docker/pkg/system
+pkg/system/mknod.go:12:19: cannot use dev (type int) as type uint64 in argument to unix.Mknod
+
+# github.com/docker/docker/vendor/github.com/containerd/continuity/devices
+vendor/github.com/containerd/continuity/devices/devices_unix.go:58:29: cannot use int(dev) (type int) as type uint64 in argument to unix.Mknod
+
+# github.com/docker/docker/vendor/github.com/docker/libnetwork/iptables
+vendor/github.com/docker/libnetwork/iptables/conntrack.go:19:35: undefined: syscall.NETLINK_NETFILTER
+vendor/github.com/docker/libnetwork/iptables/conntrack.go:57:8: filter.AddIP undefined (type *netlink.ConntrackFilter has no field or method AddIP)
+vendor/github.com/docker/libnetwork/iptables/conntrack.go:57:15: undefined: netlink.ConntrackNatAnyIP
+vendor/github.com/docker/libnetwork/iptables/conntrack.go:58:35: undefined: netlink.ConntrackTable
+
+# github.com/docker/docker/vendor/github.com/opencontainers/runc/libcontainer/configs
+vendor/github.com/opencontainers/runc/libcontainer/configs/config.go:128:11: undefined: Cgroup
+
+# github.com/docker/docker/vendor/github.com/docker/libnetwork/portmapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:20:16: undefined: newProxyCommand
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:34:29: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:39:86: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:40:10: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:48:11: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:53:11: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:185:11: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:222:11: undefined: PortMapper
+
+
+
+### ERRORS FROM 18.09.5 ###
+
+# github.com/docker/docker/daemon/graphdriver/zfs
+daemon/graphdriver/zfs/zfs.go:416:37: undefined: unix.MNT_DETACH
+
+# github.com/docker/docker/daemon/stats
+daemon/stats/collector_unix.go:22:33: undefined: system.GetClockTicks       DEPENDS ON runc/libcontainer
+
+# github.com/docker/docker/libcontainerd
+libcontainerd/client_daemon.go:217:15: undefined: prepareBundleDir
+libcontainerd/client_daemon.go:288:14: undefined: getSpecUser
+libcontainerd/client_daemon.go:291:13: undefined: newFIFOSet
+libcontainerd/client_daemon.go:359:11: undefined: newFIFOSet
+libcontainerd/client_daemon.go:444:67: undefined: Stats
+libcontainerd/client_daemon.go:459:9: undefined: interfaceToStats
+libcontainerd/client_daemon.go:481:70: undefined: Summary
+libcontainerd/types.go:79:51: undefined: Stats
+libcontainerd/types.go:81:54: undefined: Summary
+libcontainerd/types.go:86:70: undefined: Resources
+libcontainerd/client_daemon.go:459:9: too many errors
+
+# github.com/docker/docker/libcontainerd/supervisor
+libcontainerd/supervisor/remote_daemon.go:84:3: r.setDefaults undefined (type *remote has no field or method setDefaults)
+libcontainerd/supervisor/remote_daemon.go:193:20: undefined: containerdSysProcAttr
+libcontainerd/supervisor/remote_daemon.go:239:5: r.stopDaemon undefined (type *remote has no field or method stopDaemon)
+libcontainerd/supervisor/remote_daemon.go:245:4: r.platformCleanup undefined (type *remote has no field or method platformCleanup)
+libcontainerd/supervisor/remote_daemon.go:320:5: r.killDaemon undefined (type *remote has no field or method killDaemon)
+
+
+
+### LINKS ###
+
+* https://reviews.freebsd.org/D12270
+* https://github.com/freebsd-docker/docker/commits/freebsd-compat
+* https://github.com/freebsd-docker/containerd/commits/freebsd-compat-0.2
+* https://github.com/digitalloggers/docker-zfs-patches
+* https://github.com/kvasdopil/docker/commits/freebsd-compat
+
+* containerd
+ * https://github.com/freebsd-docker/containerd/commits/freebsd-compat-0.2
+ * extract patches from freebsd-docker repositories
+
+* runC for FreeBSD: https://github.com/clovertrail/runc/tree/1501-SupportOnFreeBSD
+
