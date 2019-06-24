@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	docker-engine
-PORTVERSION=	18.09.5
+DISTVERSION=	19.03.0-rc3
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 
@@ -10,6 +10,8 @@ COMMENT=	Docker Engine based on moby
 
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BUILD_DEPENDS=	bash:shells/bash
 
 USES=		go
 
