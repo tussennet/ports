@@ -2,9 +2,6 @@
 vendor/github.com/containerd/cgroups/memory.go:179:33: undefined: unix.SYS_EVENTFD2
 vendor/github.com/containerd/cgroups/memory.go:179:55: undefined: unix.EFD_CLOEXEC
 
-# github.com/docker/docker/pkg/chrootarchive
-pkg/chrootarchive/archive_unix.go:135:12: undefined: realChroot
-
 # github.com/docker/docker/vendor/github.com/docker/libnetwork/iptables
 vendor/github.com/docker/libnetwork/iptables/conntrack.go:19:35: undefined: syscall.NETLINK_NETFILTER
 vendor/github.com/docker/libnetwork/iptables/conntrack.go:57:8: filter.AddIP undefined (type *netlink.ConntrackFilter has no field or method AddIP)
@@ -14,18 +11,8 @@ vendor/github.com/docker/libnetwork/iptables/conntrack.go:58:35: undefined: netl
 # github.com/docker/docker/vendor/github.com/moby/buildkit/executor/oci
 vendor/github.com/moby/buildkit/executor/oci/spec_unix.go:52:23: undefined: entitlements.WithInsecureSpec
 
-# github.com/docker/docker/vendor/github.com/opencontainers/runc/libcontainer/configs
-vendor/github.com/opencontainers/runc/libcontainer/configs/config.go:128:11: undefined: Cgroup
-
-# github.com/docker/docker/vendor/github.com/docker/libnetwork/portmapper
-vendor/github.com/docker/libnetwork/portmapper/mapper.go:20:16: undefined: newProxyCommand
-vendor/github.com/docker/libnetwork/portmapper/mapper.go:34:29: undefined: PortMapper
-vendor/github.com/docker/libnetwork/portmapper/mapper.go:39:86: undefined: PortMapper
-vendor/github.com/docker/libnetwork/portmapper/mapper.go:40:10: undefined: PortMapper
-vendor/github.com/docker/libnetwork/portmapper/mapper.go:48:11: undefined: PortMapper
-vendor/github.com/docker/libnetwork/portmapper/mapper.go:53:11: undefined: PortMapper
-vendor/github.com/docker/libnetwork/portmapper/mapper.go:185:11: undefined: PortMapper
-vendor/github.com/docker/libnetwork/portmapper/mapper.go:222:11: undefined: PortMapper
+# github.com/docker/docker/daemon/graphdriver/zfs
+daemon/graphdriver/zfs/zfs.go:417:37: undefined: unix.MNT_DETACH
 
 # github.com/docker/docker/libcontainerd/remote
 libcontainerd/remote/client.go:69:2: cannot use c (type *client) as type "github.com/docker/docker/libcontainerd/types".Client in return argument:
@@ -40,6 +27,22 @@ libcontainerd/remote/client.go:407:13: undefined: summaryFromInterface
 libcontainerd/remote/client.go:593:13: c.newDirectIO undefined (type *client has no field or method newDirectIO)
 libcontainerd/remote/client.go:678:5: undefined: newFIFOSet
 libcontainerd/remote/client.go:678:5: too many errors
+
+# github.com/docker/docker/vendor/github.com/opencontainers/runc/libcontainer/configs
+vendor/github.com/opencontainers/runc/libcontainer/configs/config.go:128:11: undefined: Cgroup
+
+# github.com/docker/docker/vendor/github.com/docker/libnetwork/portmapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:20:16: undefined: newProxyCommand
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:34:29: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:39:86: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:40:10: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:48:11: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:53:11: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:185:11: undefined: PortMapper
+vendor/github.com/docker/libnetwork/portmapper/mapper.go:222:11: undefined: PortMapper
+
+# github.com/docker/docker/daemon/stats
+daemon/stats/collector_unix.go:22:33: undefined: system.GetClockTicks
 
 # github.com/docker/docker/libcontainerd/supervisor
 libcontainerd/supervisor/remote_daemon.go:84:3: r.setDefaults undefined (type *remote has no field or method setDefaults)
