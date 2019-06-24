@@ -14,11 +14,6 @@ vendor/github.com/docker/libnetwork/iptables/conntrack.go:58:35: undefined: netl
 # github.com/docker/docker/vendor/github.com/moby/buildkit/executor/oci
 vendor/github.com/moby/buildkit/executor/oci/spec_unix.go:52:23: undefined: entitlements.WithInsecureSpec
 
-# github.com/docker/docker/libcontainerd/types
-libcontainerd/types/types.go:63:51: undefined: Stats
-libcontainerd/types/types.go:65:54: undefined: Summary
-libcontainerd/types/types.go:70:70: undefined: Resources
-
 # github.com/docker/docker/vendor/github.com/opencontainers/runc/libcontainer/configs
 vendor/github.com/opencontainers/runc/libcontainer/configs/config.go:128:11: undefined: Cgroup
 
@@ -31,6 +26,20 @@ vendor/github.com/docker/libnetwork/portmapper/mapper.go:48:11: undefined: PortM
 vendor/github.com/docker/libnetwork/portmapper/mapper.go:53:11: undefined: PortMapper
 vendor/github.com/docker/libnetwork/portmapper/mapper.go:185:11: undefined: PortMapper
 vendor/github.com/docker/libnetwork/portmapper/mapper.go:222:11: undefined: PortMapper
+
+# github.com/docker/docker/libcontainerd/remote
+libcontainerd/remote/client.go:69:2: cannot use c (type *client) as type "github.com/docker/docker/libcontainerd/types".Client in return argument:
+	*client does not implement "github.com/docker/docker/libcontainerd/types".Client (missing UpdateResources method)
+libcontainerd/remote/client.go:96:15: c.newDirectIO undefined (type *client has no field or method newDirectIO)
+libcontainerd/remote/client.go:133:26: undefined: runtimeName
+libcontainerd/remote/client.go:134:3: undefined: WithBundle
+libcontainerd/remote/client.go:191:14: undefined: getSpecUser
+libcontainerd/remote/client.go:194:13: undefined: newFIFOSet
+libcontainerd/remote/client.go:269:11: undefined: newFIFOSet
+libcontainerd/remote/client.go:407:13: undefined: summaryFromInterface
+libcontainerd/remote/client.go:593:13: c.newDirectIO undefined (type *client has no field or method newDirectIO)
+libcontainerd/remote/client.go:678:5: undefined: newFIFOSet
+libcontainerd/remote/client.go:678:5: too many errors
 
 # github.com/docker/docker/libcontainerd/supervisor
 libcontainerd/supervisor/remote_daemon.go:84:3: r.setDefaults undefined (type *remote has no field or method setDefaults)
