@@ -1,6 +1,6 @@
 --- libcontainerd/types/types_freebsd.go.orig	2019-06-24 11:36:48 UTC
 +++ libcontainerd/types/types_freebsd.go
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,24 @@
 +package types // import "github.com/docker/docker/libcontainerd/types"
 +
 +import (
@@ -13,10 +13,7 @@
 +type Summary struct{}
 +
 +// Stats holds metrics properties as returned by containerd
-+type Stats struct {
-+	Read    time.Time
-+	Metrics *cgroups.Metrics
-+}
++type Stats struct {}
 +
 +// InterfaceToStats returns a stats object from the platform-specific interface.
 +func InterfaceToStats(read time.Time, v interface{}) *Stats {
