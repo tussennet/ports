@@ -2,24 +2,34 @@
 vendor/github.com/containerd/cgroups/memory.go:179:33: undefined: unix.SYS_EVENTFD2
 vendor/github.com/containerd/cgroups/memory.go:179:55: undefined: unix.EFD_CLOEXEC
 
-# github.com/docker/docker/vendor/github.com/docker/libnetwork/iptables
-vendor/github.com/docker/libnetwork/iptables/conntrack.go:19:35: undefined: syscall.NETLINK_NETFILTER
-vendor/github.com/docker/libnetwork/iptables/conntrack.go:57:8: filter.AddIP undefined (type *netlink.ConntrackFilter has no field or method AddIP)
-vendor/github.com/docker/libnetwork/iptables/conntrack.go:57:15: undefined: netlink.ConntrackNatAnyIP
-vendor/github.com/docker/libnetwork/iptables/conntrack.go:58:35: undefined: netlink.ConntrackTable
-
 # github.com/docker/docker/daemon/graphdriver/zfs
 daemon/graphdriver/zfs/zfs.go:417:37: undefined: unix.MNT_DETACH
 
+# github.com/docker/docker/vendor/github.com/docker/libnetwork
+vendor/github.com/docker/libnetwork/agent.go:448:25: n.getController().getLBIndex undefined (type *controller has no field or method getLBIndex)
+vendor/github.com/docker/libnetwork/agent.go:633:32: too many arguments in call to c.addServiceBinding
+	have (string, string, string, string, string, net.IP, []*PortConfig, []string, []string, net.IP, string)
+	want (string, string, string, string, net.IP, []*PortConfig, []string, net.IP)
+vendor/github.com/docker/libnetwork/agent.go:638:14: c.addContainerNameResolution undefined (type *controller has no field or method addContainerNameResolution)
+vendor/github.com/docker/libnetwork/agent.go:719:32: too many arguments in call to c.rmServiceBinding
+	have (string, string, string, string, string, net.IP, []*PortConfig, []string, []string, net.IP, string, bool, bool)
+	want (string, string, string, string, net.IP, []*PortConfig, []string, net.IP)
+vendor/github.com/docker/libnetwork/agent.go:724:15: c.delContainerNameResolution undefined (type *controller has no field or method delContainerNameResolution)
+vendor/github.com/docker/libnetwork/agent.go:939:33: too many arguments in call to c.addServiceBinding
+	have (string, string, string, string, string, net.IP, []*PortConfig, []string, []string, net.IP, string)
+	want (string, string, string, string, net.IP, []*PortConfig, []string, net.IP)
+vendor/github.com/docker/libnetwork/agent.go:945:15: c.addContainerNameResolution undefined (type *controller has no field or method addContainerNameResolution)
+vendor/github.com/docker/libnetwork/agent.go:954:32: too many arguments in call to c.rmServiceBinding
+	have (string, string, string, string, string, net.IP, []*PortConfig, []string, []string, net.IP, string, bool, bool)
+	want (string, string, string, string, net.IP, []*PortConfig, []string, net.IP)
+vendor/github.com/docker/libnetwork/agent.go:960:15: c.delContainerNameResolution undefined (type *controller has no field or method delContainerNameResolution)
+vendor/github.com/docker/libnetwork/agent.go:973:31: too many arguments in call to c.rmServiceBinding
+	have (string, string, string, string, string, net.IP, []*PortConfig, []string, []string, net.IP, string, bool, bool)
+	want (string, string, string, string, net.IP, []*PortConfig, []string, net.IP)
+vendor/github.com/docker/libnetwork/agent.go:973:31: too many errors
+
 # github.com/docker/docker/vendor/github.com/opencontainers/runc/libcontainer/configs
 vendor/github.com/opencontainers/runc/libcontainer/configs/config.go:128:11: undefined: Cgroup
-
-# github.com/docker/docker/libcontainerd/supervisor
-libcontainerd/supervisor/remote_daemon.go:84:3: r.setDefaults undefined (type *remote has no field or method setDefaults)
-libcontainerd/supervisor/remote_daemon.go:193:20: undefined: containerdSysProcAttr
-libcontainerd/supervisor/remote_daemon.go:239:5: r.stopDaemon undefined (type *remote has no field or method stopDaemon)
-libcontainerd/supervisor/remote_daemon.go:245:4: r.platformCleanup undefined (type *remote has no field or method platformCleanup)
-libcontainerd/supervisor/remote_daemon.go:320:5: r.killDaemon undefined (type *remote has no field or method killDaemon)
 
 # github.com/docker/docker/daemon/stats
 daemon/stats/collector_unix.go:22:33: undefined: system.GetClockTicks
