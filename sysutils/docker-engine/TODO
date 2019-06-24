@@ -53,29 +53,6 @@ libcontainerd/supervisor/remote_daemon.go:320:5: r.killDaemon undefined (type *r
 
 
 
-### ERRORS FROM 18.09.5 ###
-
-# github.com/docker/docker/daemon/graphdriver/zfs
-daemon/graphdriver/zfs/zfs.go:416:37: undefined: unix.MNT_DETACH
-
-# github.com/docker/docker/daemon/stats
-daemon/stats/collector_unix.go:22:33: undefined: system.GetClockTicks       DEPENDS ON runc/libcontainer
-
-# github.com/docker/docker/libcontainerd
-libcontainerd/client_daemon.go:217:15: undefined: prepareBundleDir
-libcontainerd/client_daemon.go:288:14: undefined: getSpecUser
-libcontainerd/client_daemon.go:291:13: undefined: newFIFOSet
-libcontainerd/client_daemon.go:359:11: undefined: newFIFOSet
-libcontainerd/client_daemon.go:444:67: undefined: Stats
-libcontainerd/client_daemon.go:459:9: undefined: interfaceToStats
-libcontainerd/client_daemon.go:481:70: undefined: Summary
-libcontainerd/types.go:79:51: undefined: Stats
-libcontainerd/types.go:81:54: undefined: Summary
-libcontainerd/types.go:86:70: undefined: Resources
-libcontainerd/client_daemon.go:459:9: too many errors
-
-
-
 ### LINKS ###
 
 * https://reviews.freebsd.org/D12270
