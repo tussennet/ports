@@ -1,7 +1,7 @@
-# $FreeBSD: head/security/maltrail/Makefile 484506 2018-11-09 09:01:25Z decke $
+# $FreeBSD: head/security/maltrail/Makefile 495777 2019-03-15 08:47:18Z decke $
 
 PORTNAME=	maltrail
-PORTVERSION=	0.12
+PORTVERSION=	0.13
 CATEGORIES=	security python
 
 MAINTAINER=	m.muenz@gmail.com
