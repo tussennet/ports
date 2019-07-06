@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	kodi-addon-pvr-iptvsimple
-PORTVERSION=	3.5.7
+PORTVERSION=	3.5.8
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
@@ -16,7 +16,7 @@ LIB_DEPENDS=	libp8-platform.so:devel/p8-platform \
 		libkodiplatform.so:devel/kodi-platform
 RUN_DEPENDS=	kodi:multimedia/kodi-devel
 
-USES=		cmake:outsource,noninja
+USES=		cmake:noninja
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	kodi-pvr
