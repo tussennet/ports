@@ -1,0 +1,7 @@
+/etc/dma/dma.conf
+/etc/motd
+/etc/motd_ssh
+/etc/periodic.conf
+/etc/ssh/sshd_config
+etc/chrony.conf
+etc/pkg/repos/FreeBSD.conf
