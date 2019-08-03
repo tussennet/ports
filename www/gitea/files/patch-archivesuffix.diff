@@ -13,8 +13,8 @@ Created by:	Bernhard Froehlich <decke@bluelife.at>
  			ctx.ServerError("Download -> CreateArchive "+archivePath, err)
  			return
  		}
---- vendor/code.gitea.io/git/commit_archive.go.orig	2018-12-21 15:08:46 UTC
-+++ vendor/code.gitea.io/git/commit_archive.go
+--- modules/git/commit_archive.go.orig	2018-12-21 15:08:46 UTC
++++ modules/git/commit_archive.go
 @@ -6,8 +6,6 @@ package git
  
  import (
