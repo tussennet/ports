@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/net/wireguard-go/Makefile 505321 2019-06-29 03:51:13Z tobik $
 
 PORTNAME=	wireguard-go
 PORTVERSION=	0.0.20190805
@@ -12,16 +12,14 @@ COMMENT=	WireGuard implementation in Go
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	go:lang/go
-
-USES=		gmake tar:xz
+USES=		gmake go:modules,no_targets tar:xz
 
 USE_GITHUB=	nodefault
 GH_TUPLE=	golang:crypto:57b3e21c3d56:crypto/vendor/golang.org/x/crypto \
 		golang:net:d28f0bde5980:net/vendor/golang.org/x/net \
 		golang:sys:516e3c20635f:sys/vendor/golang.org/x/sys
 
-MAKE_ENV+=	GOFLAGS=-mod=vendor
+MAKE_ENV+=	GOFLAGS="${GO_BUILDFLAGS}"
 
 PLIST_FILES=	bin/${PORTNAME}
 
