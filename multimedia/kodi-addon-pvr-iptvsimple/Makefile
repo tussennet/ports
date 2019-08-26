@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	kodi-addon-pvr-iptvsimple
-PORTVERSION=	3.5.8
+PORTVERSION=	3.7.2
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
