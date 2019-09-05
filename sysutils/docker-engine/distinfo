@@ -1,3 +1,3 @@
-TIMESTAMP = 1564337630
-SHA256 (docker-engine-v19.03.1_GH0.tar.gz) = 187168518cf3d9f2ae4f993504519025d93e6b71d68a12e5f0db87c86787c330
-SIZE (docker-engine-v19.03.1_GH0.tar.gz) = 9136400
+TIMESTAMP = 1567673816
+SHA256 (docker-engine-v19.03.2_GH0.tar.gz) = 7fbd2ac9101026163479023f548acea1537e107b829fd8a0674b1b88a4feecff
+SIZE (docker-engine-v19.03.2_GH0.tar.gz) = 9136789
