@@ -6,7 +6,7 @@ DISTVERSION=	1.3.1
 CATEGORIES=	devel
 
 MAINTAINER=	decke@FreeBSD.org
-COMMENT=	A Container-Native, Continuous Delivery Platform
+COMMENT=	Container-Native, Continuous Delivery Platform
 
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
