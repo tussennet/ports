@@ -9,8 +9,8 @@ MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Drone pipeline runner that executes builds on the host machine
 
 # LICENSE: Polyform-Noncommercial-1.0.0 OR Polyform-Small-Business-1.0.0 OR Polyform-Free-Trial-1.0.0
-LICENSE=	NONE
-LICENSE_FILE=	${WRKSRC}/LICENSE.md
+#LICENSE=	NONE
+#LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
 USES=		go:modules
 
