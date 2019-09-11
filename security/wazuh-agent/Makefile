@@ -31,7 +31,7 @@ SHEBANG_FILES=	${WRKSRC}/contrib/util.sh \
 		${WRKSRC}/src/external/openssl/Configurations/unix-checker.pm \
 		${WRKSRC}/src/init/ossec-client.sh \
 		${WRKSRC}/wodles/oscap/oscap.py \
-		${WRKSRC}/active-response/*.sh \
+		${WRKSRC}/active-response/*.sh
 
 USERS=		ossec ossecm ossecr
 GROUPS=		ossec
@@ -56,6 +56,11 @@ post-extract:
 			exit 1; \
 		fi; \
 	done
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|/usr/bin/perl|${PERL}|g' \
+		${WRKSRC}/src/external/openssl/Makefile \
+		${WRKSRC}/src/external/openssl/configdata.pm
 
 do-build:
 	@cd ${WRKSRC}/src && ${GMAKE} TARGET=agent
