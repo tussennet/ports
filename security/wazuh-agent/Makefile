@@ -25,9 +25,10 @@ USES=		gmake perl5 readline shebangfix uidfix
 
 USE_GITHUB=	yes
 
-CONFLICTS_INSTALL=		ossec-*
+CONFLICTS_INSTALL=	ossec-*
 
 SHEBANG_FILES=	${WRKSRC}/contrib/util.sh \
+		${WRKSRC}/src/external/openssl/Configurations/unix-checker.pm \
 		${WRKSRC}/src/init/ossec-client.sh \
 		${WRKSRC}/wodles/oscap/oscap.py \
 		${WRKSRC}/active-response/*.sh \
