@@ -1,9 +1,9 @@
 # Created by: Stefan Bethke <stb@lassitu.de>
-# $FreeBSD: head/www/gitea/Makefile 509712 2019-08-24 07:36:14Z kai $
+# $FreeBSD: head/www/gitea/Makefile 510133 2019-08-29 03:29:40Z yuri $
 
 PORTNAME=	gitea
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.9.2
+DISTVERSION=	1.9.3
 CATEGORIES=	www
 
 MAINTAINER=	stb@lassitu.de
@@ -14,13 +14,12 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	git:devel/git
 
-USES=		go
+USES=		go:modules
 USE_GITHUB=	yes
 GH_ACCOUNT=	go-gitea
 USE_RC_SUBR=	gitea
 
-GO_PKGNAME=	code.gitea.io/${PORTNAME}
-GO_TARGET=	-tags "${GO_TAGS}"
+GO_BUILDFLAGS=	-tags "${GO_TAGS}"
 
 SUB_FILES+=	app.ini.sample
 SUB_LIST+=	GITUSER=${USERS}
