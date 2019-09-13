@@ -1,7 +1,7 @@
 # $FreeBSD: head/lang/micropython/Makefile 498476 2019-04-09 14:04:49Z sunpoet $
 
 PORTNAME=	micropython
-PORTVERSION=	1.10
+PORTVERSION=	1.11
 CATEGORIES=	lang python
 MASTER_SITES=	https://github.com/micropython/micropython/releases/download/v${PORTVERSION}/
 
