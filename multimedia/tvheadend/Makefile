@@ -1,9 +1,10 @@
 # Created by: Bernhard Froehlich <decke@FreeBSD.org>
-# $FreeBSD: head/multimedia/tvheadend/Makefile 449622 2017-09-11 09:27:04Z decke $
+# $FreeBSD: head/multimedia/tvheadend/Makefile 508216 2019-08-05 23:06:50Z jbeich $
 
 PORTNAME=	tvheadend
 PORTVERSION=	4.2.8
 DISTVERSIONPREFIX=	v
+PORTREVISION=	3
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
