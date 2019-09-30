@@ -2,4 +2,7 @@ Drone is a Continuous Delivery system built on container technology. Drone uses
 a simple YAML configuration file, a superset of docker-compose, to define and
 execute Pipelines inside Docker containers.
 
+This package builds the OpenSource Edition of Drone so it does not support any
+of the Enterprise Edition features.
+
 WWW: https://drone.io/
