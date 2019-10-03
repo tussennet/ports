@@ -3,7 +3,7 @@
 PORTNAME=	micropython
 PORTVERSION=	1.11
 CATEGORIES=	lang python
-MASTER_SITES=	https://github.com/micropython/micropython/releases/download/v${PORTVERSION}/
+MASTER_SITES=	http://micropython.org/resources/source/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Implementation of the Python language for microcontrollers
@@ -15,7 +15,7 @@ BUILD_DEPENDS=	bash:shells/bash
 RUN_DEPENDS=	bash:shells/bash
 LIB_DEPENDS=	libffi.so:devel/libffi
 
-USES=		gmake pkgconfig python:build
+USES=		gmake pkgconfig python:build tar:xz
 USE_GCC=	yes
 
 PLIST_FILES=	bin/micropython
