@@ -20,8 +20,7 @@ GH_ACCOUNT=	docker
 GH_PROJECT=	engine
 GH_SUBDIR=	src/github.com/docker/docker
 
-GO_PKGNAME=	github.com/docker/docker
-GO_TARGET=	${GO_PKGNAME}/cmd/dockerd
+GO_TARGET=	./cmd/dockerd
 
 do-build:
 	@cd ${GO_WRKSRC} && export DOCKER_GITCOMMIT=${GH_TAGNAME} && ${SETENV} ${GO_ENV} ./hack/make.sh binary
