@@ -2,7 +2,7 @@
 # $FreeBSD: head/multimedia/dtv-scan-tables/Makefile 461591 2018-02-12 15:08:51Z amdmi3 $
 
 PORTNAME=	dtv-scan-tables
-PORTVERSION=	20190325
+PORTVERSION=	20190925
 CATEGORIES=	multimedia
 MASTER_SITES=	LOCAL/decke
 
