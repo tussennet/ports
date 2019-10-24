@@ -1,4 +1,4 @@
-# $FreeBSD: head/lang/micropython/Makefile 498476 2019-04-09 14:04:49Z sunpoet $
+# $FreeBSD$
 
 PORTNAME=	micropython
 PORTVERSION=	1.11
