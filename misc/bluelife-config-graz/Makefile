@@ -1,13 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	bluelife-config-graz
-PORTVERSION=	2019.07.19
+PORTVERSION=	2019.10.24
 PORTREVISION=	0
 CATEGORIES=	misc
 MASTER_SITES=	#
 DISTFILES=	#
 
-MAINTAINER=	decke@FreeBSD.org
+MAINTAINER=	decke@bluelife.at
 COMMENT=	Common FreeBSD Server Configuration for bluelife.at Network
 
 LICENSE=	CC0-1.0
