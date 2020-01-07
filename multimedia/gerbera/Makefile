@@ -18,7 +18,9 @@ LIB_DEPENDS=	libupnp.so:devel/upnp \
 		libduktape.so:lang/duktape-lib \
 		libcurl.so:ftp/curl \
 		libtag.so:audio/taglib \
-		libexif.so:graphics/libexif
+		libexif.so:graphics/libexif \
+		libebml.so:textproc/libebml \
+		libmatroska.so:multimedia/libmatroska
 
 USES=		cmake:noninja pkgconfig
 
