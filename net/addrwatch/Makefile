@@ -16,6 +16,7 @@ LIB_DEPENDS=	libevent.so:devel/libevent \
 
 USES=		autoreconf gmake pkgconfig
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+=CFLAGS="-I${LOCALBASE}/include" LDFLAGS="-L${LOCALBASE}/lib"
 USE_GITHUB=	yes
 GH_ACCOUNT=	fln
 
