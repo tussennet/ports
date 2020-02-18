@@ -14,9 +14,8 @@ LIB_DEPENDS=	libevent.so:devel/libevent \
 		libpcap.so:net/libpcap \
 		libargp.so:devel/argp-standalone
 
-USES=		autoreconf gmake
+USES=		autoreconf gmake pkgconfig
 GNU_CONFIGURE=	yes
-CONFIGURE_ENV+=	LDFLAGS="-L/usr/local/lib" CPPFLAGS="-I/usr/local/include"
 USE_GITHUB=	yes
 GH_ACCOUNT=	fln
 
