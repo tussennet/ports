@@ -1,4 +1,4 @@
-ddrwatch is a similar software to arpwatch. It main purpose is to
+addrwatch is a similar software to arpwatch. It main purpose is to
 monitor network and log ethernet/ip pairings.
 
 To simply try out addrwatch start it without any arguments. When

@@ -19,7 +19,6 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=CPPFLAGS="-I${LOCALBASE}/include" LDFLAGS="-L${LOCALBASE}/lib"
 USE_GITHUB=	yes
 GH_ACCOUNT=	fln
-GH_TAGNAME=	59a075e
 
 PLIST_FILES=	bin/addrwatch \
 		bin/addrwatch_stdout \
