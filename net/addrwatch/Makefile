@@ -2,7 +2,7 @@
 
 PORTNAME=	addrwatch
 DISTVERSIONPREFIX=v
-DISTVERSION=	1.0.1
+DISTVERSION=	1.0.2
 CATEGORIES=	net
 
 MAINTAINER=	m.muenz@gmail.com
@@ -16,8 +16,14 @@ LIB_DEPENDS=	libevent.so:devel/libevent \
 
 USES=		autoreconf gmake pkgconfig
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=CFLAGS="-I${LOCALBASE}/include" LDFLAGS="-L${LOCALBASE}/lib"
+CONFIGURE_ARGS+=CPPFLAGS="-I${LOCALBASE}/include" LDFLAGS="-L${LOCALBASE}/lib"
 USE_GITHUB=	yes
 GH_ACCOUNT=	fln
+GH_TAGNAME=	59a075e
+
+PLIST_FILES=	bin/addrwatch \
+		bin/addrwatch_stdout \
+		bin/addrwatch_syslog \
+		man/man8/addrwatch.8.gz
 
 .include <bsd.port.mk>
