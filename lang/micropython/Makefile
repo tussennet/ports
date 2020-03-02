@@ -24,5 +24,6 @@ PLIST_FILES=	bin/micropython
 WRKSRC_SUBDIR=	ports/unix
 MAKE_ARGS=	V=1 PYTHON=${PYTHON_CMD} CC=gcc9
 ALL_TARGET=	axtls micropython
+TEST_TARGET=	test
 
 .include <bsd.port.mk>
