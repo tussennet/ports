@@ -1,0 +1,10 @@
+This program listens for packets on a specified UDP broadcast port.
+When a packet is received, it sends that packet to all specified
+interfaces but the one it came from as though it originated from
+the original sender.
+
+The primary purpose of this is to allow devices or game servers on
+separated local networks (Ethernet, WLAN, VLAN) that use udp
+broadcasts to find each other to do so.
+
+WWW: https://github.com/marjohn56/udpbroadcastrelay
