@@ -11,7 +11,6 @@ COMMENT=	UDP multicast/unicast relayer
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		gmake
 USE_GITHUB=	yes
 GH_ACCOUNT=	marjohn56
 
