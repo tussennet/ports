@@ -11,8 +11,6 @@ COMMENT=	Ephemeral infrastructure and distributed applications monitoring
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	bash:shells/bash
-
 USES=		go:modules
 USE_GITHUB=	yes
 GH_ACCOUNT=	sensu
@@ -131,20 +129,21 @@ GH_TUPLE=	\
 		xi2:xz:48954b6210f8:xi2_xz/vendor/github.com/xi2/xz \
 		xiang90:probing:43a291ad63a2:xiang90_probing/vendor/github.com/xiang90/probing
 
+GO_TARGET=
+
 OPTIONS_DEFINE=		SENSU_AGENT SENSU_CLI SENSU_BE
 OPTIONS_DEFAULT=	SENSU_AGENT
 OPTIONS_SUB=		yes
 
 SENSU_AGENT_DESC=	Install sensu-agent daemon
-SENSU_AGENT_VARS=	GO_TARGETS+=agent GO_BIN_TARGETS+=sensu-agent \
+SENSU_AGENT_VARS=	GO_TARGET+=./cmd/sensu-agent \
 			USE_RC_SUBR+=sensu-agent
 
 SENSU_CLI_DESC=		Install sensuctl binary
-SENSU_CLI_VARS=		GO_TARGETS+=cli GO_BIN_TARGETS+=sensuctl
+SENSU_CLI_VARS=		GO_TARGET+=./cmd/sensuctl
 
 SENSU_BE_DESC=		Install sensu-backend daemon (unsupported)
-SENSU_BE_VARS=		GO_TARGETS+=backend GO_BIN_TARGETS+=sensu-backend \
-			USE_RC_SUBR+=sensu-backend
+SENSU_BE_VARS=		GO_TARGET+=./cmd/sensu-backend
 SENSU_BE_BROKEN=	Currently not tested under FreeBSD
 
 .include <bsd.port.options.mk>
@@ -153,15 +152,15 @@ post-patch:
 	@${REINPLACE_CMD} '/git rev/d' ${WRKSRC}/build.sh
 #	@${REINPLACE_CMD} '/exec.Command("git"/d' ${WRKSRC}/version/cmd/version/version.go
 
-do-build:
-.for GO_TARGET in ${GO_TARGETS}
-	@(cd ${GO_WRKSRC}; ${SETENV} ${MAKE_ENV} ${GO_ENV} ./build.sh build_${GO_TARGET})
-.endfor
+#do-build:
+#.for GO_TARGET in ${GO_TARGETS}
+#	@(cd ${GO_WRKSRC}; ${SETENV} ${MAKE_ENV} ${GO_ENV} ./build.sh build_${GO_TARGET})
+#.endfor
 
-do-install:
-.for GO_BIN_TARGET in ${GO_BIN_TARGETS}
-	${INSTALL_PROGRAM} ${GO_WRKSRC}/target/freebsd-${ARCH:S/^i//}/${GO_BIN_TARGET} ${STAGEDIR}${PREFIX}/bin
-.endfor
+#do-install:
+#.for GO_BIN_TARGET in ${GO_BIN_TARGETS}
+#	${INSTALL_PROGRAM} ${GO_WRKSRC}/target/freebsd-${ARCH:S/^i//}/${GO_BIN_TARGET} ${STAGEDIR}${PREFIX}/bin
+#.endfor
 
 post-install-SENSU_AGENT-on:
 	${INSTALL_DATA} ${PATCHDIR}/sensu-agent.yml.sample \
