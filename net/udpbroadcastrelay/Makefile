@@ -16,7 +16,4 @@ GH_ACCOUNT=	marjohn56
 
 PLIST_FILES=	sbin/udpbroadcastrelay
 
-do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/udpbroadcastrelay ${STAGEDIR}${PREFIX}/sbin/udpbroadcastrelay
-
 .include <bsd.port.mk>
