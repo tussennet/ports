@@ -1,10 +1,8 @@
-This program listens for packets on a specified UDP broadcast port.
-When a packet is received, it sends that packet to all specified
-interfaces but the one it came from as though it originated from
-the original sender.
+udbproadcastrelay is a USB multicast relayer. Its intended use is to
+rebroadbcast udp packets on a specific port across interfaces, be those
+interfaces physical or VLAN.
 
-The primary purpose of this is to allow devices or game servers on
-separated local networks (Ethernet, WLAN, VLAN) that use udp
-broadcasts to find each other to do so.
+It is used where devices such as Sonos or Sky are spread accross
+different subnets and are not able to detect the servers or devices.
 
 WWW: https://github.com/marjohn56/udpbroadcastrelay
