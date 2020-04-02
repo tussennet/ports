@@ -10,5 +10,5 @@ caronade/templates/joblisting.html
 caronade/work/portlint.mk
 caronade/work/poudriere.mk
 caronade/work/ssh.mk
-%%ETCDIR%%/caronade.yaml.sample
+@sample %%ETCDIR%%/caronade.yaml.sample
 @dir caronade/builds
