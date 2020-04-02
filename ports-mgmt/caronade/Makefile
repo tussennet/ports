@@ -18,7 +18,9 @@ USE_RC_SUBR=	caronade
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	decke
-GH_TAGNAME=	e03349f
+GH_TAGNAME=	776cfb9
+
+MAKE_ENV+=	GO_BUILDFLAGS="${GO_BUILDFLAGS}"
 
 GH_TUPLE=	NYTimes:gziphandler:v1.1.1:nytimes_gziphandler/vendor/github.com/NYTimes/gziphandler \
 		go-yaml:yaml:v2.2.8:go_yaml_yaml/vendor/gopkg.in/yaml.v2
