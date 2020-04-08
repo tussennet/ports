@@ -3,9 +3,7 @@
 PORTNAME=                       smallstep-cli
 DISTVERSIONPREFIX=              v
 DISTVERSION=            0.14.0-rc.5
-DISTNAME=                               cli
 CATEGORIES=             security
-DIST_SUBDIR=                    ${PORTNAME}
 
 MAINTAINER=             mw@wipp.bayern
 COMMENT=                Smallstep step-ca command line client
@@ -20,7 +18,6 @@ GH_ACCOUNT=             smallstep
 GH_PROJECT=                             cli
 
 GO_TARGET=	./cmd/step
-#MAKE_ENV+=              GOPATH=${WRKDIR}
 
 GH_TUPLE=       \
                 AndreasBriese:bbloom:e2d15f34fcf9:andreasbriese_bbloom/vendor/github.com/AndreasBriese/bbloom \
@@ -192,11 +189,5 @@ GH_TUPLE=       \
                 xiang90:probing:43a291ad63a2:xiang90_probing/vendor/github.com/xiang90/probing
 
 GL_TUPLE=                               https://gitlab.howett.net:go:plist:591f970eefbbeb04d7b37f334a0c4c3256e32876:go_plist/vendor/howett.net/plist
-
-                # Mirrors for the following packages are not currently known, please look them up and handle these tuples manually:
-                #       ::v1.0.0:group_name/vendor/sourcegraph.com/sqs/pbtypes
-
-#post-extract:
-#                                               ${RM} ${WRKSRC}/go.mod
 
 .include <bsd.port.mk>
