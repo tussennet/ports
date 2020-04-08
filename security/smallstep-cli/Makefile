@@ -11,22 +11,16 @@ MAINTAINER=             mw@wipp.bayern
 COMMENT=                Smallstep step-ca command line client
 
 LICENSE=                APACHE20
-LICENSE_FILE_APACHE20=  ${WRKSRC}/LICENSE
+LICENSE_FILE=  ${WRKSRC}/LICENSE
 
-USES=                   go
+USES=                   go:modules
 
 USE_GITHUB=             yes
 GH_ACCOUNT=             smallstep
 GH_PROJECT=                             cli
-#GH_SUBDIR=                             cli-0.14.0-rc.5
 
-
-MAKE_ENV+=              GOPATH=${WRKDIR}
-
-BUILD_DEPENDS=          go>1:lang/go \
-                        bash>5:shells/bash \
-                        curl>7:ftp/curl
-
+GO_TARGET=	./cmd/step
+#MAKE_ENV+=              GOPATH=${WRKDIR}
 
 GH_TUPLE=       \
                 AndreasBriese:bbloom:e2d15f34fcf9:andreasbriese_bbloom/vendor/github.com/AndreasBriese/bbloom \
