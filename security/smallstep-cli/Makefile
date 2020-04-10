@@ -2,7 +2,7 @@
 
 PORTNAME=	smallstep-cli
 DISTVERSIONPREFIX=v
-DISTVERSION=	0.14.0-rc.5
+DISTVERSION=	0.14.2
 CATEGORIES=	security
 
 MAINTAINER=	mw@wipp.bayern
@@ -18,6 +18,9 @@ GH_ACCOUNT=	smallstep
 GH_PROJECT=	cli
 
 GO_TARGET=	./cmd/step
+GO_BUILDFLAGS=	-ldflags "-w -X main.version=${PORTVERSION} -X main.BuildTime=undefined"
+
+PLIST_FILES=	bin/step
 
 GH_TUPLE=	\
 		AndreasBriese:bbloom:e2d15f34fcf9:andreasbriese_bbloom/vendor/github.com/AndreasBriese/bbloom \
@@ -28,11 +31,12 @@ GH_TUPLE=	\
 		Microsoft:go-winio:v0.4.14:microsoft_go_winio/vendor/github.com/Microsoft/go-winio \
 		OpenPeeDeeP:depguard:v1.0.1:openpeedeep_depguard/vendor/github.com/OpenPeeDeeP/depguard \
 		ThomasRooney:gexpect:5482f0350944:thomasrooney_gexpect/vendor/github.com/ThomasRooney/gexpect \
-		asaskevich:govalidator:475eaeb16496:asaskevich_govalidator/vendor/github.com/asaskevich/govalidator \
+		asaskevich:govalidator:f9ffefc3facf:asaskevich_govalidator/vendor/github.com/asaskevich/govalidator \
 		beorn7:perks:v1.0.1:beorn7_perks/vendor/github.com/beorn7/perks \
 		bgentry:speakeasy:v0.1.0:bgentry_speakeasy/vendor/github.com/bgentry/speakeasy \
 		bombsimon:wsl:v2.0.0:bombsimon_wsl/vendor/github.com/bombsimon/wsl/v2 \
 		boombuler:barcode:v1.0.0:boombuler_barcode/vendor/github.com/boombuler/barcode \
+		census-instrumentation:opencensus-go:v0.22.2:census_instrumentation_opencensus_go/vendor/go.opencensus.io \
 		cespare:xxhash:v2.1.1:cespare_xxhash/vendor/github.com/cespare/xxhash/v2 \
 		cheggaaa:pb:v1.0.28:cheggaaa_pb/vendor/gopkg.in/cheggaaa/pb.v1 \
 		chzyer:readline:2972be24d48e:chzyer_readline/vendor/github.com/chzyer/readline \
@@ -70,13 +74,14 @@ GH_TUPLE=	\
 		gobwas:glob:v0.2.3:gobwas_glob/vendor/github.com/gobwas/glob \
 		gofrs:flock:5135e617513b:gofrs_flock/vendor/github.com/gofrs/flock \
 		gogo:protobuf:v1.3.1:gogo_protobuf/vendor/github.com/gogo/protobuf \
-		golang:appengine:v1.5.0:golang_appengine/vendor/google.golang.org/appengine \
+		golang:appengine:v1.6.5:golang_appengine/vendor/google.golang.org/appengine \
 		golang:crypto:0ec3e9974c59:golang_crypto/vendor/golang.org/x/crypto \
 		golang:glog:23def4e6c14b:golang_glog/vendor/github.com/golang/glog \
 		golang:groupcache:215e87163ea7:golang_groupcache/vendor/github.com/golang/groupcache \
 		golang:lint:fdd1cda4f05f:golang_lint/vendor/golang.org/x/lint \
 		golang:mock:v1.3.1:golang_mock/vendor/github.com/golang/mock \
 		golang:net:c0dbc17a3553:golang_net/vendor/golang.org/x/net \
+		golang:oauth2:858c2ad4c8b6:golang_oauth2/vendor/golang.org/x/oauth2 \
 		golang:protobuf:v1.3.2:golang_protobuf/vendor/github.com/golang/protobuf \
 		golang:sys:b016eb3dc98e:golang_sys/vendor/golang.org/x/sys \
 		golang:text:v0.3.2:golang_text/vendor/golang.org/x/text \
@@ -99,9 +104,13 @@ GH_TUPLE=	\
 		golangci:unconvert:28b1c447d1f4:golangci_unconvert/vendor/github.com/golangci/unconvert \
 		google:btree:v1.0.0:google_btree/vendor/github.com/google/btree \
 		google:certificate-transparency-go:v1.1.0:google_certificate_transparency_go/vendor/github.com/google/certificate-transparency-go \
+		google:go-cmp:v0.3.1:google_go_cmp/vendor/github.com/google/go-cmp \
 		google:go-genproto:f3c370f40bfb:google_go_genproto/vendor/google.golang.org/genproto \
 		google:monologue:35abc9683a6c:google_monologue/vendor/github.com/google/monologue \
 		google:uuid:v1.1.1:google_uuid/vendor/github.com/google/uuid \
+		googleapis:gax-go:v2.0.5:googleapis_gax_go/vendor/github.com/googleapis/gax-go \
+		googleapis:google-api-go-client:v0.15.0:googleapis_google_api_go_client/vendor/google.golang.org/api \
+		googleapis:google-cloud-go:v0.51.0:googleapis_google_cloud_go/vendor/cloud.google.com/go \
 		gorilla:websocket:v1.4.1:gorilla_websocket/vendor/github.com/gorilla/websocket \
 		gostaticanalysis:analysisutil:v0.0.3:gostaticanalysis_analysisutil/vendor/github.com/gostaticanalysis/analysisutil \
 		grpc-ecosystem:go-grpc-middleware:v1.1.0:grpc_ecosystem_go_grpc_middleware/vendor/github.com/grpc-ecosystem/go-grpc-middleware \
@@ -111,7 +120,7 @@ GH_TUPLE=	\
 		hashicorp:hcl:v1.0.0:hashicorp_hcl/vendor/github.com/hashicorp/hcl \
 		huandu:xstrings:v1.2.0:huandu_xstrings/vendor/github.com/huandu/xstrings \
 		icrowley:fake:4178557ae428:icrowley_fake/vendor/github.com/icrowley/fake \
-		imdario:mergo:v0.3.8:imdario_mergo/vendor/github.com/imdario/mergo \
+		imdario:mergo:v0.3.7:imdario_mergo/vendor/github.com/imdario/mergo \
 		inconshreveable:mousetrap:v1.0.0:inconshreveable_mousetrap/vendor/github.com/inconshreveable/mousetrap \
 		jonboulle:clockwork:v0.1.0:jonboulle_clockwork/vendor/github.com/jonboulle/clockwork \
 		json-iterator:go:v1.1.9:json_iterator_go/vendor/github.com/json-iterator/go \
@@ -156,7 +165,7 @@ GH_TUPLE=	\
 		shurcooL:sanitized_anchor_name:v1.0.0:shurcool_sanitized_anchor_name/vendor/github.com/shurcooL/sanitized_anchor_name \
 		sirupsen:logrus:v1.4.2:sirupsen_logrus/vendor/github.com/sirupsen/logrus \
 		smallstep:assert:b99dc1097b15:smallstep_assert/vendor/github.com/smallstep/assert \
-		smallstep:certificates:7846696fbb69:smallstep_certificates/vendor/github.com/smallstep/certificates \
+		smallstep:certificates:v0.14.2:smallstep_certificates/vendor/github.com/smallstep/certificates \
 		smallstep:certinfo:v1.2.0:smallstep_certinfo/vendor/github.com/smallstep/certinfo \
 		smallstep:nosql:v0.2.0:smallstep_nosql/vendor/github.com/smallstep/nosql \
 		smallstep:truststore:v0.9.3:smallstep_truststore/vendor/github.com/smallstep/truststore \
@@ -185,9 +194,9 @@ GH_TUPLE=	\
 		ultraware:whitespace:v0.0.4:ultraware_whitespace/vendor/github.com/ultraware/whitespace \
 		urfave:cli:v1.22.2:urfave_cli/vendor/github.com/urfave/cli \
 		uudashr:gocognit:v1.0.1:uudashr_gocognit/vendor/github.com/uudashr/gocognit \
-		weppos:publicsuffix-go:v0.10.0:weppos_publicsuffix_go/vendor/github.com/weppos/publicsuffix-go \
+		weppos:publicsuffix-go:v0.4.0:weppos_publicsuffix_go/vendor/github.com/weppos/publicsuffix-go \
 		xiang90:probing:43a291ad63a2:xiang90_probing/vendor/github.com/xiang90/probing
 
-GL_TUPLE=	https://gitlab.howett.net:go:plist:591f970eefbbeb04d7b37f334a0c4c3256e32876:go_plist/vendor/howett.net/plist
+GL_TUPLE=	https://gitlab.howett.net:go:plist:77e249a2e2ba6362794925035a31bea61b902a1e:go_plist/vendor/howett.net/plist
 
 .include <bsd.port.mk>
