@@ -11,16 +11,20 @@ COMMENT=	Smallstep step-ca command line client
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		go:modules
+USES=		go:modules shebangfix
+
+SHEBANG_FILES=	autocomplete/bash_autocomplete
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	smallstep
 GH_PROJECT=	cli
 
 GO_TARGET=	./cmd/step
-GO_BUILDFLAGS=	-ldflags "-w -X main.version=${PORTVERSION} -X main.BuildTime=undefined"
+GO_BUILDFLAGS=	-ldflags "-w -X main.Version=${PORTVERSION}"
 
-PLIST_FILES=	bin/step
+PLIST_FILES=	bin/step \
+		etc/bash_completion.d/step-completion.bash \
+		share/zsh/site-functions/_step
 
 GH_TUPLE=	\
 		AndreasBriese:bbloom:e2d15f34fcf9:andreasbriese_bbloom/vendor/github.com/AndreasBriese/bbloom \
@@ -198,5 +202,11 @@ GH_TUPLE=	\
 		xiang90:probing:43a291ad63a2:xiang90_probing/vendor/github.com/xiang90/probing
 
 GL_TUPLE=	https://gitlab.howett.net:go:plist:77e249a2e2ba6362794925035a31bea61b902a1e:go_plist/vendor/howett.net/plist
+
+post-install:
+	${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d
+	${CP} ${WRKSRC}/autocomplete/bash_autocomplete ${STAGEDIR}${PREFIX}/etc/bash_completion.d/step-completion.bash
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/zsh/site-functions
+	${CP} ${WRKSRC}/autocomplete/zsh_autocomplete ${STAGEDIR}${PREFIX}/share/zsh/site-functions/_step
 
 .include <bsd.port.mk>
