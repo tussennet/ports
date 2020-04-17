@@ -18,7 +18,7 @@ USES=		go:modules
 USERS=		step
 GROUPS=		${USERS}
 
-USE_RC_SUBR=	step_ca
+USE_RC_SUBR=	step-ca
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	smallstep

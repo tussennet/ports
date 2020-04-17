@@ -2,7 +2,7 @@
 #
 # $FreeBSD$
 #
-# PROVIDE: step_ca
+# PROVIDE: step-ca
 # REQUIRE: LOGIN networking
 # KEYWORD: shutdown
 #
