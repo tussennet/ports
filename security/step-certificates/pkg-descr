@@ -8,4 +8,4 @@ own ACME server.
 A private certificate authority (X.509 & SSH) & ACME server for secure
 automated certificate management, so you can use TLS everywhere & SSO for SSH.
 
-WWW: https://www.smallstep.com
+WWW: https://smallstep.com/certificates/
