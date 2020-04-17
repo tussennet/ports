@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTNAME=	smallstep-cli
+PORTNAME=	step-cli
 DISTVERSIONPREFIX=v
 DISTVERSION=	0.14.2
 CATEGORIES=	security
