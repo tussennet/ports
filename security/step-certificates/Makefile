@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTNAME=	smallstep-certificates
+PORTNAME=	step-certificates
 DISTVERSIONPREFIX=v
 DISTVERSION=	0.14.2
 CATEGORIES=	security
@@ -11,7 +11,7 @@ COMMENT=	Smallstep step-ca certificates server
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	step:security/smallstep-cli
+RUN_DEPENDS=	step:security/step-cli
 
 USES=		go:modules
 
