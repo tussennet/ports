@@ -16,7 +16,7 @@ RUN_DEPENDS=	step:security/step-cli
 USES=		go:modules
 
 USERS=		step
-GROUPS=		${USERS}
+GROUPS=		step
 
 USE_RC_SUBR=	step-ca
 
