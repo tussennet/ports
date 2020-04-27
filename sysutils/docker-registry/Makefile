@@ -24,7 +24,7 @@ GO_TARGET=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/cmd/registry
 GO_BUILDFLAGS=	-ldflags "-s -w -X github.com/docker/distribution/version.Version=${PORTVERSION}"
 
 PLIST_FILES=	bin/registry \
-		${ETCDIR}/config.yml.sample
+		"@sample ${ETCDIR}/config.yml.sample"
 
 GH_TUPLE=	\
 		Azure:azure-sdk-for-go:v16.2.1:azure_azure_sdk_for_go/vendor/github.com/Azure/azure-sdk-for-go \
