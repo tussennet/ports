@@ -15,12 +15,12 @@ USES=		go:modules
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	StackExchange
-GH_TAGNAME=	5416c16
+GH_TAGNAME=	3989be8
 
 PLIST_FILES=	bin/${PORTNAME}
 
 GH_TUPLE=	\
-		Azure:azure-sdk-for-go:v41.3.0:azure_azure_sdk_for_go/vendor/github.com/Azure/azure-sdk-for-go \
+		Azure:azure-sdk-for-go:v42.0.0:azure_azure_sdk_for_go/vendor/github.com/Azure/azure-sdk-for-go \
 		Azure:go-autorest:5bd9621f41a0:azure_go_autorest_date/vendor/github.com/Azure/go-autorest \
 		Azure:go-autorest:autorest/v0.10.0:azure_go_autorest_autorest \
 		Azure:go-autorest:b965d219bd9d:azure_go_autorest_auth \
@@ -31,7 +31,7 @@ GH_TUPLE=	\
 		DisposaBoy:JsonConfigReader:5ea4d0ddac55:disposaboy_jsonconfigreader/vendor/github.com/DisposaBoy/JsonConfigReader \
 		TomOnTime:utfutil:09c41003ee1d:tomontime_utfutil/vendor/github.com/TomOnTime/utfutil \
 		andreyvit:diff:c7f18ee00883:andreyvit_diff/vendor/github.com/andreyvit/diff \
-		aws:aws-sdk-go:v1.30.11:aws_aws_sdk_go/vendor/github.com/aws/aws-sdk-go \
+		aws:aws-sdk-go:v1.30.19:aws_aws_sdk_go/vendor/github.com/aws/aws-sdk-go \
 		billputer:go-namecheap:0c7adb0710f8:billputer_go_namecheap/vendor/github.com/billputer/go-namecheap \
 		cenkalti:backoff:v2.1.1:cenkalti_backoff/vendor/github.com/cenkalti/backoff \
 		census-instrumentation:opencensus-go:v0.22.0:census_instrumentation_opencensus_go/vendor/go.opencensus.io \
@@ -41,7 +41,6 @@ GH_TUPLE=	\
 		digitalocean:godo:v1.35.1:digitalocean_godo/vendor/github.com/digitalocean/godo \
 		dimchansky:utfbom:v1.1.0:dimchansky_utfbom/vendor/github.com/dimchansky/utfbom \
 		dnsimple:dnsimple-go:v0.31.0:dnsimple_dnsimple_go/vendor/github.com/dnsimple/dnsimple-go \
-		dominikh:go-tools:v0.0.1-2020.1.3:dominikh_go_tools/vendor/honnef.co/go/tools \
 		exoscale:egoscale:v0.23.0:exoscale_egoscale/vendor/github.com/exoscale/egoscale \
 		go-acme:lego:v2.7.2:go_acme_lego/vendor/github.com/go-acme/lego \
 		go-ini:ini:v1.42.0:go_ini_ini/vendor/gopkg.in/ini.v1 \
@@ -51,7 +50,6 @@ GH_TUPLE=	\
 		gofrs:uuid:v3.2.0:gofrs_uuid/vendor/github.com/gofrs/uuid \
 		golang:appengine:v1.6.5:golang_appengine/vendor/google.golang.org/appengine \
 		golang:crypto:891825fb96df:golang_crypto/vendor/golang.org/x/crypto \
-		golang:lint:738671d3881b:golang_lint/vendor/golang.org/x/lint \
 		golang:mod:v0.2.0:golang_mod/vendor/golang.org/x/mod \
 		golang:net:e086a090c8fd:golang_net/vendor/golang.org/x/net \
 		golang:oauth2:bf48bf16ab8d:golang_oauth2/vendor/golang.org/x/oauth2 \
