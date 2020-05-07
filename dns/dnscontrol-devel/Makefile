@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTNAME=	dnscontrol
+PORTNAME=	dnscontrol-devel
 DISTVERSIONPREFIX=v
 DISTVERSION=	3.0.0.99
 PORTREVISION=	1
@@ -16,6 +16,7 @@ USES=		go:modules
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	StackExchange
+GH_PROJECT=	dnscontrol
 GH_TAGNAME=	3989be8
 
 PLIST_FILES=	bin/${PORTNAME}
