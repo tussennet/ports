@@ -24,7 +24,7 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}flake8>=0:devel/py-flake8@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest-cov>=0:devel/py-pytest-cov@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest-runner>=0:devel/py-pytest-runner@${PY_FLAVOR}
 
-CONFLICTS=	radicale-1.[0-9]*
+CONFLICTS_INSTALL=      ${PYTHON_PKGNAMEPREFIX}radicale
 
 USES=		python:3.3+ shebangfix
 USE_PYTHON=	autoplist distutils
