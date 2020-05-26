@@ -2,7 +2,7 @@
 # $FreeBSD: head/security/i2p/Makefile 529327 2020-03-28 11:26:58Z rene $
 
 PORTNAME=	i2p
-DISTVERSION=	0.9.45
+DISTVERSION=	0.9.46
 CATEGORIES=	security java net-p2p
 MASTER_SITES=	http://download.i2p2.de/releases/${PORTVERSION}/
 DISTNAME=	i2psource_${PORTVERSION}
