@@ -1,7 +1,7 @@
 # $FreeBSD: head/sysutils/lsop/Makefile 436654 2017-03-21 21:00:32Z tobik $
 
 PORTNAME=	lsop
-PORTVERSION=	0.1
+PORTVERSION=	0.2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 
