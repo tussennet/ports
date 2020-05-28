@@ -44,7 +44,7 @@ post-install:
 	${MKDIR} ${STAGEDIR}/${DATADIR}
 	${MKDIR} ${STAGEDIR}/${WWWDIR}
 	${INSTALL_DATA} ${WRKSRC}/config ${STAGEDIR}/${ETCDIR}/config.sample
-	${INSTALL_DATA} ${WRKSRC}/logging ${STAGEDIR}/${ETCDIR}/logging.sample
+	${INSTALL_DATA} ${WRKSRC}/rights ${STAGEDIR}/${ETCDIR}/rights.sample
 	${INSTALL_SCRIPT} ${WRKSRC}/radicale.fcgi ${STAGEDIR}${WWWDIR}/radicale.fcgi
 	${INSTALL_SCRIPT} ${WRKSRC}/radicale.wsgi ${STAGEDIR}${WWWDIR}/radicale.wsgi
 
