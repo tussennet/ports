@@ -11,7 +11,7 @@ DISTNAME=	Radicale-${PORTVERSION}
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Python based CalDAV/CardDAV server
 
-LICENSE=	GPLv3+
+LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools>=0:devel/py-setuptools@${PY_FLAVOR}
