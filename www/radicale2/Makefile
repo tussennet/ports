@@ -32,8 +32,6 @@ USE_RC_SUBR=	radicale
 NO_ARCH=	yes
 SHEBANG_FILES=	radicale.fcgi radicale.wsgi
 
-CONFLICTS_INSTALL=	${PYTHON_PKGNAMEPREFIX}radicale
-
 SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}"
 
 post-patch:
@@ -41,9 +39,7 @@ post-patch:
 	@${REINPLACE_CMD} 's,~/.config/radicale,${DATADIR},g' ${WRKSRC}/config
 
 post-install:
-	${MKDIR} ${STAGEDIR}/${ETCDIR}
-	${MKDIR} ${STAGEDIR}/${DATADIR}
-	${MKDIR} ${STAGEDIR}/${WWWDIR}
+	@${MKDIR} ${STAGEDIR}/${ETCDIR} ${STAGEDIR}/${DATADIR} ${STAGEDIR}/${WWWDIR}
 	${INSTALL_DATA} ${WRKSRC}/config ${STAGEDIR}/${ETCDIR}/config.sample
 	${INSTALL_DATA} ${WRKSRC}/logging ${STAGEDIR}/${ETCDIR}/logging.sample
 	${INSTALL_SCRIPT} ${WRKSRC}/radicale.fcgi ${STAGEDIR}${WWWDIR}/radicale.fcgi
