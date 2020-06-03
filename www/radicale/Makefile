@@ -24,8 +24,6 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}flake8>=0:devel/py-flake8@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest-cov>=0:devel/py-pytest-cov@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest-runner>=0:devel/py-pytest-runner@${PY_FLAVOR}
 
-CONFLICTS_INSTALL=	${PYTHON_PKGNAMEPREFIX}radicale2
-
 USES=		python:3.3+ shebangfix
 USE_PYTHON=	autoplist distutils
 USERS=		radicale
@@ -33,6 +31,8 @@ GROUPS=		radicale
 USE_RC_SUBR=	radicale
 NO_ARCH=	yes
 SHEBANG_FILES=	radicale.fcgi radicale.wsgi
+
+CONFLICTS_INSTALL=	${PYTHON_PKGNAMEPREFIX}radicale2
 
 SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}"
 
