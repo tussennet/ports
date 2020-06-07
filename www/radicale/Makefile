@@ -31,8 +31,6 @@ USE_RC_SUBR=	radicale
 NO_ARCH=	yes
 SHEBANG_FILES=	radicale.fcgi radicale.wsgi
 
-CONFLICTS_INSTALL=	${PYTHON_PKGNAMEPREFIX}radicale2
-
 SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}"
 
 post-patch:
