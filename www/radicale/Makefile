@@ -36,8 +36,12 @@ CONFLICTS_INSTALL=	${PYTHON_PKGNAMEPREFIX}radicale2
 SUB_LIST=	USERS="${USERS}" GROUPS="${GROUPS}" PYTHON_CMD="${PYTHON_CMD}"
 
 post-patch:
-	@${REINPLACE_CMD} 's,= /etc,= ${PREFIX}/etc,g' ${WRKSRC}/config
-	@${REINPLACE_CMD} 's,~/.config/radicale,${DATADIR},g' ${WRKSRC}/config
+	@${REINPLACE_CMD} 's,/etc/radicale,${ETCDIR},g' \
+		${WRKSRC}/config \
+		${WRKSRC}/radicale/config.py
+	@${REINPLACE_CMD} 's,/var/lib/radicale,${DATADIR},g' \
+		${WRKSRC}/config \
+		${WRKSRC}/radicale/config.py
 
 post-install:
 	@${MKDIR} ${STAGEDIR}/${ETCDIR} ${STAGEDIR}/${DATADIR} ${STAGEDIR}/${WWWDIR}
