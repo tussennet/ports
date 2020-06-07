@@ -39,6 +39,9 @@ post-patch:
 	@${REINPLACE_CMD} 's,/etc/radicale,${ETCDIR},g' \
 		${WRKSRC}/config \
 		${WRKSRC}/radicale/config.py
+	@${REINPLACE_CMD} 's,/etc/ssl,${ETCDIR},g' \
+		${WRKSRC}/config \
+		${WRKSRC}/radicale/config.py
 	@${REINPLACE_CMD} 's,/var/lib/radicale,${DATADIR},g' \
 		${WRKSRC}/config \
 		${WRKSRC}/radicale/config.py
