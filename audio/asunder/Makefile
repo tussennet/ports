@@ -15,15 +15,15 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS=	libcddb.so:audio/libcddb
 RUN_DEPENDS=	${LOCALBASE}/bin/cdparanoia:audio/cdparanoia
 
+USES=		desktop-file-utils gettext gmake gnome pkgconfig tar:bzip2
+USE_GNOME=	gtk20 glib20 intltool intlhack
+GNU_CONFIGURE=	yes
+
 OPTIONS_DEFINE=	LAME OGG FLAC OPUS WAVPACK APE WINDOWS_CHARS NLS DOCS
 OPTIONS_DEFAULT=	OGG FLAC
 OPTIONS_SUB=	yes
 
 WINDOWS_CHARS_DESC=	Allow Windows special chars in filenames
-
-GNU_CONFIGURE=	yes
-USES=		desktop-file-utils gettext gmake gnome pkgconfig tar:bzip2
-USE_GNOME=	gtk20 glib20 intltool intlhack
 
 PORTDOCS=	AUTHORS ChangeLog INSTALL NEWS README TODO
 
