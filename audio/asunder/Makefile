@@ -2,7 +2,7 @@
 # $FreeBSD: head/audio/asunder/Makefile 517040 2019-11-08 09:27:56Z tobik $
 
 PORTNAME=	asunder
-PORTVERSION=	2.8
+PORTVERSION=	2.9.6
 CATEGORIES=	audio
 MASTER_SITES=	http://littlesvr.ca/asunder/releases/
 
