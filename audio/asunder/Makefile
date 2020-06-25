@@ -12,11 +12,13 @@ COMMENT=	Lightweight GTK+ CD ripper
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libcddb.so:audio/libcddb
+LIB_DEPENDS=	libcddb.so:audio/libcddb \
+		libfontconfig.so:x11-fonts/fontconfig \
+		libfreetype.so:print/freetype2
 RUN_DEPENDS=	${LOCALBASE}/bin/cdparanoia:audio/cdparanoia
 
 USES=		desktop-file-utils gettext gmake gnome pkgconfig tar:bzip2
-USE_GNOME=	gtk20 glib20 intltool intlhack
+USE_GNOME=	cairo gdkpixbuf2 gtk20 glib20 intltool intlhack
 GNU_CONFIGURE=	yes
 
 OPTIONS_DEFINE=	LAME OGG FLAC OPUS WAVPACK APE WINDOWS_CHARS NLS DOCS
