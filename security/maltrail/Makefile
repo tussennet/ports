@@ -1,4 +1,4 @@
-# $FreeBSD: head/security/maltrail/Makefile 534960 2020-05-11 21:22:40Z decke $
+# $FreeBSD: head/security/maltrail/Makefile 538212 2020-06-08 12:00:39Z decke $
 
 PORTNAME=	maltrail
 PORTVERSION=	0.21
