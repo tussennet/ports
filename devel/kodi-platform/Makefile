@@ -2,8 +2,8 @@
 
 PORTNAME=	kodi-platform
 PORTVERSION=	20180302
-CATEGORIES=	devel
 PORTREVISION=	1
+CATEGORIES=	devel
 
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	Kodi platform support library
