@@ -1,5 +1,5 @@
 # Created by: Dreamcat4 <dreamcat4@gmail.com>
-# $FreeBSD: head/multimedia/dtv-scan-tables/Makefile 461591 2018-02-12 15:08:51Z amdmi3 $
+# $FreeBSD$
 
 PORTNAME=	dtv-scan-tables
 PORTVERSION=	20200311
