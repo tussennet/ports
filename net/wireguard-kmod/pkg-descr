@@ -1,0 +1,5 @@
+WireGuard implementation for the FreeBSD kernel
+
+!! BE CAREFUL THIS KERNEL MODULE IS STILL UNDER DEVELOPMENT !!
+
+WWW: https://git.zx2c4.com/wireguard-freebsd/
