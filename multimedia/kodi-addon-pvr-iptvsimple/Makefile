@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	kodi-addon-pvr-iptvsimple
-PORTVERSION=	3.8.8
+PORTVERSION=	3.9.8
 CATEGORIES=	multimedia
 
 MAINTAINER=	decke@FreeBSD.org
@@ -14,7 +14,7 @@ BUILD_DEPENDS=	${LOCALBASE}/include/kodi/libXBMC_addon.h:multimedia/kodi \
 		${LOCALBASE}/include/rapidxml.hpp:textproc/rapidxml
 LIB_DEPENDS=	libp8-platform.so:devel/p8-platform \
 		libkodiplatform.so:devel/kodi-platform
-RUN_DEPENDS=	kodi:multimedia/kodi-devel
+RUN_DEPENDS=	kodi:multimedia/kodi
 
 USES=		cmake:noninja
 
