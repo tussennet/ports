@@ -13,7 +13,7 @@ LICENSE=	GPLv2+
 BUILD_DEPENDS=	${LOCALBASE}/include/kodi/libXBMC_addon.h:multimedia/kodi
 LIB_DEPENDS=	libp8-platform.so:devel/p8-platform \
 		libkodiplatform.so:devel/kodi-platform
-RUN_DEPENDS=	kodi:multimedia/kodi-devel
+RUN_DEPENDS=	kodi:multimedia/kodi
 
 USES=		cmake:noninja
 
