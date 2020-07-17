@@ -2,8 +2,7 @@
 # $FreeBSD: head/multimedia/kodi-addon-peripheral-joystick/Makefile 488341 2018-12-25 20:25:39Z tcberner $
 
 PORTNAME=	kodi-addon-peripheral-joystick
-PORTVERSION=	1.3.4
-DISTVERSIONPREFIX=v
+PORTVERSION=	1.4.9
 CATEGORIES=	multimedia
 
 MAINTAINER=	rozhuk.im@gmail.com
@@ -11,7 +10,7 @@ COMMENT=	Joystick support for Kodi
 
 LICENSE=	GPLv2+
 
-BUILD_DEPENDS=	${LOCALBASE}/lib/kodi/KodiConfig.cmake:multimedia/kodi
+BUILD_DEPENDS=	${LOCALBASE}/include/kodi/libXBMC_addon.h:multimedia/kodi
 LIB_DEPENDS=	libp8-platform.so:devel/p8-platform \
 		libkodiplatform.so:devel/kodi-platform \
 		libudev.so:devel/libudev-devd
@@ -22,6 +21,7 @@ USES=		cmake:noninja
 USE_GITHUB=	yes
 GH_ACCOUNT=	xbmc
 GH_PROJECT=	peripheral.joystick
+GH_TAGNAME=	${PORTVERSION}-Leia
 
 post-extract:
 	@${MKDIR} ${WRKSRC}/src/linux/
