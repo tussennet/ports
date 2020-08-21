@@ -8,7 +8,7 @@
  	"os"
  	"syscall"
  
-@@ -50,10 +51,30 @@
+@@ -50,10 +51,33 @@
  	return nil
  }
  
@@ -28,7 +28,10 @@
 +}
 +
 +func copyFileContent(dst, src *os.File) error {
-+	_, err = io.Copy(dst, src)
++	_, err := io.Copy(dst, src)
++	if(err != nil) {
++		return err
++	}
 +	return nil
 +}
 +
