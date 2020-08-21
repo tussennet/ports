@@ -1,15 +1,33 @@
 --- daemon/daemon_unix.go.orig	2019-06-18 21:30:11 UTC
 +++ daemon/daemon_unix.go
-@@ -36,7 +36,7 @@ import (
+@@ -7,7 +7,6 @@
+ 	"context"
+ 	"fmt"
+ 	"io/ioutil"
+-	"net"
+ 	"os"
+ 	"path/filepath"
+ 	"runtime"
+@@ -37,18 +36,14 @@
  	volumemounts "github.com/docker/docker/volume/mounts"
  	"github.com/docker/libnetwork"
  	nwconfig "github.com/docker/libnetwork/config"
 -	"github.com/docker/libnetwork/drivers/bridge"
-+	//"github.com/docker/libnetwork/drivers/bridge"
  	"github.com/docker/libnetwork/netlabel"
- 	"github.com/docker/libnetwork/netutils"
+-	"github.com/docker/libnetwork/netutils"
  	"github.com/docker/libnetwork/options"
-@@ -910,143 +910,12 @@ func driverOptions(config *config.Config) []nwconfig.O
+-	lntypes "github.com/docker/libnetwork/types"
+ 	"github.com/opencontainers/runc/libcontainer/cgroups"
+ 	rsystem "github.com/opencontainers/runc/libcontainer/system"
+ 	"github.com/opencontainers/runtime-spec/specs-go"
+ 	"github.com/opencontainers/selinux/go-selinux/label"
+ 	"github.com/pkg/errors"
+ 	"github.com/sirupsen/logrus"
+-	"github.com/vishvananda/netlink"
+ 	"golang.org/x/sys/unix"
+ )
+ 
+@@ -914,143 +909,12 @@
  }
  
  func initBridgeDriver(controller libnetwork.NetworkController, config *config.Config) error {
