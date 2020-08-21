@@ -1,6 +1,39 @@
 --- vendor/github.com/tonistiigi/fsutil/copy/copy_unix.go.orig	2019-06-18 21:30:11 UTC
 +++ vendor/github.com/tonistiigi/fsutil/copy/copy_unix.go
-@@ -64,5 +64,5 @@ func copyDevice(dst string, fi os.FileInfo) error {
+@@ -3,6 +3,7 @@
+ package fs
+ 
+ import (
++	"io"
+ 	"os"
+ 	"syscall"
+ 
+@@ -50,10 +51,30 @@
+ 	return nil
+ }
+ 
++func copyFile(source, target string) error {
++	src, err := os.Open(source)
++	if err != nil {
++		return errors.Wrapf(err, "failed to open source %s", source)
++	}
++	defer src.Close()
++	tgt, err := os.Create(target)
++	if err != nil {
++		return errors.Wrapf(err, "failed to open target %s", target)
++	}
++	defer tgt.Close()
++
++	return copyFileContent(tgt, src)
++}
++
++func copyFileContent(dst, src *os.File) error {
++	_, err = io.Copy(dst, src)
++	return nil
++}
++
+ func copyDevice(dst string, fi os.FileInfo) error {
+ 	st, ok := fi.Sys().(*syscall.Stat_t)
  	if !ok {
  		return errors.New("unsupported stat type")
  	}
