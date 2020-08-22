@@ -2,9 +2,6 @@
 vendor/github.com/containerd/cgroups/memory.go:179:33: undefined: unix.SYS_EVENTFD2
 vendor/github.com/containerd/cgroups/memory.go:179:55: undefined: unix.EFD_CLOEXEC
 
-# github.com/docker/docker/vendor/github.com/moby/buildkit/snapshot
-vendor/github.com/moby/buildkit/snapshot/localmounter_freebsd.go:22:22: lm.mountable.Release undefined (type Mountable has no field or method Release)
-
 # github.com/docker/docker/vendor/github.com/docker/libnetwork
 vendor/github.com/docker/libnetwork/agent.go:448:25: n.getController().getLBIndex undefined (type *controller has no field or method getLBIndex)
 vendor/github.com/docker/libnetwork/agent.go:633:32: too many arguments in call to c.addServiceBinding
