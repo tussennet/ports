@@ -263,6 +263,15 @@
  	return nil
  }
  
+@@ -1364,7 +1228,7 @@
+ 	if !c.IsRunning() {
+ 		return nil, errNotRunning(c.ID)
+ 	}
+-	cs, err := daemon.containerd.Stats(context.Background(), c.ID)
++	_, err := daemon.containerd.Stats(context.Background(), c.ID)
+ 	if err != nil {
+ 		if strings.Contains(err.Error(), "container not found") {
+ 			return nil, containerNotFound(c.ID)
 @@ -1372,97 +1236,97 @@
  		return nil, err
  	}
