@@ -1,4 +1,4 @@
---- pkg/archive/archive_unix.go.orig	2019-06-24 10:21:29 UTC
+--- pkg/archive/archive_unix.go.orig	2019-10-07 21:12:15 UTC
 +++ pkg/archive/archive_unix.go
 @@ -96,7 +96,7 @@ func handleTarTypeBlockCharFifo(hdr *tar.Header, path 
  		mode |= unix.S_IFIFO

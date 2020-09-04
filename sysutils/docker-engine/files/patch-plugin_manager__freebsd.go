@@ -1,6 +1,4 @@
-Fix build on FreeBSD by copying Windows stub
-
---- plugin/manager_freebsd.go.orig	2019-03-08 09:00:07 UTC
+--- plugin/manager_freebsd.go.orig	2020-09-04 09:13:43 UTC
 +++ plugin/manager_freebsd.go
 @@ -0,0 +1,28 @@
 +package plugin // import "github.com/docker/docker/plugin"

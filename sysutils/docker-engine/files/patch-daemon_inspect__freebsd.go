@@ -1,5 +1,5 @@
---- daemon/inspect_freebsd.go.orig	2020-08-28 10:48:03.845649000 +0200
-+++ daemon/inspect_freebsd.go	2020-08-28 10:47:36.341814000 +0200
+--- daemon/inspect_freebsd.go.orig	2020-09-04 09:13:42 UTC
++++ daemon/inspect_freebsd.go
 @@ -0,0 +1,73 @@
 +package daemon // import "github.com/docker/docker/daemon"
 +

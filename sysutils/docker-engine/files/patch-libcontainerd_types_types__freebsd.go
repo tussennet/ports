@@ -1,4 +1,4 @@
---- libcontainerd/types/types_freebsd.go.orig	2019-06-24 11:36:48 UTC
+--- libcontainerd/types/types_freebsd.go.orig	2020-09-04 09:13:43 UTC
 +++ libcontainerd/types/types_freebsd.go
 @@ -0,0 +1,24 @@
 +package types // import "github.com/docker/docker/libcontainerd/types"

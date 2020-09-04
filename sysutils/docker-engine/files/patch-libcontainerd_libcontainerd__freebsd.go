@@ -1,6 +1,4 @@
-This is a copy from libcontainerd_linux.go
-
---- libcontainerd/libcontainerd_freebsd.go.orig	2019-06-24 09:47:19 UTC
+--- libcontainerd/libcontainerd_freebsd.go.orig	2020-09-04 09:13:42 UTC
 +++ libcontainerd/libcontainerd_freebsd.go
 @@ -0,0 +1,14 @@
 +package libcontainerd // import "github.com/docker/docker/libcontainerd"

@@ -1,4 +1,4 @@
---- vendor/github.com/docker/libnetwork/portmapper/mapper_freebsd.go.orig	2019-06-24 18:33:51 UTC
+--- vendor/github.com/docker/libnetwork/portmapper/mapper_freebsd.go.orig	2020-09-04 09:13:43 UTC
 +++ vendor/github.com/docker/libnetwork/portmapper/mapper_freebsd.go
 @@ -0,0 +1,31 @@
 +package portmapper

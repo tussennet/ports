@@ -1,4 +1,4 @@
---- vendor/github.com/moby/buildkit/util/entitlements/security_freebsd.go.orig	2019-06-24 18:24:33 UTC
+--- vendor/github.com/moby/buildkit/util/entitlements/security_freebsd.go.orig	2020-09-04 09:13:43 UTC
 +++ vendor/github.com/moby/buildkit/util/entitlements/security_freebsd.go
 @@ -0,0 +1,67 @@
 +package entitlements

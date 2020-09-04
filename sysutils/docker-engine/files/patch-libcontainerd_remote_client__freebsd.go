@@ -1,4 +1,4 @@
---- libcontainerd/remote/client_freebsd.go.orig	2019-06-24 18:09:27 UTC
+--- libcontainerd/remote/client_freebsd.go.orig	2020-09-04 09:13:43 UTC
 +++ libcontainerd/remote/client_freebsd.go
 @@ -0,0 +1,126 @@
 +package remote // import "github.com/docker/docker/libcontainerd/remote"

@@ -1,6 +1,6 @@
---- daemon/daemon_unix.go.orig	2019-06-18 21:30:11 UTC
+--- daemon/daemon_unix.go.orig	2019-10-07 21:12:15 UTC
 +++ daemon/daemon_unix.go
-@@ -7,7 +7,6 @@
+@@ -7,7 +7,6 @@ import (
  	"context"
  	"fmt"
  	"io/ioutil"
@@ -8,7 +8,7 @@
  	"os"
  	"path/filepath"
  	"runtime"
-@@ -29,7 +28,7 @@
+@@ -29,7 +28,7 @@ import (
  	"github.com/docker/docker/pkg/containerfs"
  	"github.com/docker/docker/pkg/idtools"
  	"github.com/docker/docker/pkg/ioutils"
@@ -17,7 +17,7 @@
  	"github.com/docker/docker/pkg/parsers"
  	"github.com/docker/docker/pkg/parsers/kernel"
  	"github.com/docker/docker/pkg/sysinfo"
-@@ -37,18 +36,14 @@
+@@ -37,18 +36,14 @@ import (
  	volumemounts "github.com/docker/docker/volume/mounts"
  	"github.com/docker/libnetwork"
  	nwconfig "github.com/docker/libnetwork/config"
@@ -37,7 +37,7 @@
  	"golang.org/x/sys/unix"
  )
  
-@@ -914,143 +909,12 @@
+@@ -914,143 +909,12 @@ func driverOptions(config *config.Config) []nwconfig.O
  }
  
  func initBridgeDriver(controller libnetwork.NetworkController, config *config.Config) error {
@@ -184,7 +184,7 @@
  }
  
  func setupInitLayer(idMapping *idtools.IdentityMapping) func(containerfs.ContainerFS) error {
-@@ -1237,45 +1101,45 @@
+@@ -1237,45 +1101,45 @@ func setupDaemonRoot(config *config.Config, rootDir st
  }
  
  func setupDaemonRootPropagation(cfg *config.Config) error {
@@ -263,7 +263,7 @@
  	return nil
  }
  
-@@ -1364,7 +1228,7 @@
+@@ -1364,7 +1228,7 @@ func (daemon *Daemon) stats(c *container.Container) (*
  	if !c.IsRunning() {
  		return nil, errNotRunning(c.ID)
  	}
@@ -272,7 +272,7 @@
  	if err != nil {
  		if strings.Contains(err.Error(), "container not found") {
  			return nil, containerNotFound(c.ID)
-@@ -1372,97 +1236,97 @@
+@@ -1372,97 +1236,97 @@ func (daemon *Daemon) stats(c *container.Container) (*
  		return nil, err
  	}
  	s := &types.StatsJSON{}
@@ -457,7 +457,7 @@
  
  	return s, nil
  }
-@@ -1548,7 +1412,10 @@
+@@ -1548,7 +1412,10 @@ func (daemon *Daemon) initCgroupsPath(path string) err
  	// for the period and runtime as this limits what the children can be set to.
  	daemon.initCgroupsPath(filepath.Dir(path))
  

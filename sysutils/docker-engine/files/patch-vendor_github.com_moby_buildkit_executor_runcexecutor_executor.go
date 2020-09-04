@@ -1,4 +1,4 @@
---- vendor/github.com/moby/buildkit/executor/runcexecutor/executor.go.orig	2019-08-22 20:57:25 UTC
+--- vendor/github.com/moby/buildkit/executor/runcexecutor/executor.go.orig	2019-10-07 21:12:15 UTC
 +++ vendor/github.com/moby/buildkit/executor/runcexecutor/executor.go
 @@ -22,7 +22,6 @@ import (
  	"github.com/moby/buildkit/identity"

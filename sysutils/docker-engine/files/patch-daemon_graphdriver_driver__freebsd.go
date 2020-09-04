@@ -1,8 +1,4 @@
-Fix build error on FreeBSD:
-
-daemon/graphdriver/driver_freebsd.go:17:38: cannot use &buf (type *unix.Statfs_t) as type *syscall.Statfs_t in argument to syscall.Statfs
-
---- daemon/graphdriver/driver_freebsd.go.orig	2019-02-26 00:29:56 UTC
+--- daemon/graphdriver/driver_freebsd.go.orig	2019-10-07 21:12:15 UTC
 +++ daemon/graphdriver/driver_freebsd.go
 @@ -1,8 +1,7 @@
  package graphdriver // import "github.com/docker/docker/daemon/graphdriver"

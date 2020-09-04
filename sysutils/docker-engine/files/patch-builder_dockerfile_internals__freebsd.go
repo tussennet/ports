@@ -1,8 +1,4 @@
-Fix build on FreeBSD by copying linux implementation:
-
-builder/dockerfile/internals.go:193:19: undefined: parseChownFlag
-
---- builder/dockerfile/internals_freebsd.go.orig	2019-03-08 14:02:51 UTC
+--- builder/dockerfile/internals_freebsd.go.orig	2020-09-04 09:13:42 UTC
 +++ builder/dockerfile/internals_freebsd.go
 @@ -0,0 +1,88 @@
 +package dockerfile // import "github.com/docker/docker/builder/dockerfile"

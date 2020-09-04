@@ -1,5 +1,5 @@
---- daemon/daemon_freebsd.go.orig	2020-08-21 19:29:32.462100000 +0200
-+++ daemon/daemon_freebsd.go	2020-08-21 19:36:20.871466000 +0200
+--- daemon/daemon_freebsd.go.orig	2020-09-04 09:13:42 UTC
++++ daemon/daemon_freebsd.go
 @@ -0,0 +1,146 @@
 +package daemon // import "github.com/docker/docker/daemon"
 +

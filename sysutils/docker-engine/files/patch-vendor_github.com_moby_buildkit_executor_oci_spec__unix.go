@@ -1,4 +1,4 @@
---- vendor/github.com/moby/buildkit/executor/oci/spec_unix.go.orig	2019-08-22 20:57:25 UTC
+--- vendor/github.com/moby/buildkit/executor/oci/spec_unix.go.orig	2019-10-07 21:12:15 UTC
 +++ vendor/github.com/moby/buildkit/executor/oci/spec_unix.go
 @@ -8,7 +8,6 @@ import (
  	"sync"

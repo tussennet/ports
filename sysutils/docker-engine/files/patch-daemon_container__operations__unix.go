@@ -1,6 +1,6 @@
---- daemon/container_operations_unix.go.orig	2020-08-28 10:10:01.856418000 +0200
-+++ daemon/container_operations_unix.go	2020-08-28 10:10:16.078675000 +0200
-@@ -143,10 +143,10 @@
+--- daemon/container_operations_unix.go.orig	2019-10-07 21:12:15 UTC
++++ daemon/container_operations_unix.go
+@@ -143,10 +143,10 @@ func (daemon *Daemon) setupIpcDirs(c *container.Contai
  				return err
  			}
  

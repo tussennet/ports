@@ -1,6 +1,6 @@
---- hack/make.sh.orig	2019-10-07 23:12:15.000000000 +0200
-+++ hack/make.sh	2020-08-28 16:51:57.589492000 +0200
-@@ -128,7 +128,6 @@
+--- hack/make.sh.orig	2019-10-07 21:12:15 UTC
++++ hack/make.sh
+@@ -128,7 +128,6 @@ BUILDFLAGS=( ${BUILDFLAGS} "${ORIG_BUILDFLAGS[@]}" )
  
  LDFLAGS_STATIC_DOCKER="
  	$LDFLAGS_STATIC
@@ -8,7 +8,7 @@
  "
  
  if [ "$(uname -s)" = 'FreeBSD' ]; then
-@@ -138,7 +137,7 @@
+@@ -138,7 +137,7 @@ if [ "$(uname -s)" = 'FreeBSD' ]; then
  
  	# "-extld clang" is a workaround for
  	# https://code.google.com/p/go/issues/detail?id=6845

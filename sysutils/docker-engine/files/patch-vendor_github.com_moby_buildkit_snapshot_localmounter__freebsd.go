@@ -1,4 +1,4 @@
---- vendor/github.com/moby/buildkit/snapshot/localmounter_freebsd.go.orig	2019-03-06 19:37:34 UTC
+--- vendor/github.com/moby/buildkit/snapshot/localmounter_freebsd.go.orig	2020-09-04 09:13:43 UTC
 +++ vendor/github.com/moby/buildkit/snapshot/localmounter_freebsd.go
 @@ -0,0 +1,26 @@
 +package snapshot

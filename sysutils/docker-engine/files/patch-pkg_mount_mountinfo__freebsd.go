@@ -1,4 +1,4 @@
---- pkg/mount/mountinfo_freebsd.go.orig	2019-02-06 23:39:49 UTC
+--- pkg/mount/mountinfo_freebsd.go.orig	2019-10-07 21:12:15 UTC
 +++ pkg/mount/mountinfo_freebsd.go
 @@ -37,7 +37,7 @@ func parseMountTable(filter FilterFunc) ([]*Info, erro
  

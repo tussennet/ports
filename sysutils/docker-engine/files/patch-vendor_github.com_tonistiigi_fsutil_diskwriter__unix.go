@@ -1,4 +1,4 @@
---- vendor/github.com/tonistiigi/fsutil/diskwriter_unix.go.orig	2019-02-26 00:29:56 UTC
+--- vendor/github.com/tonistiigi/fsutil/diskwriter_unix.go.orig	2019-10-07 21:12:15 UTC
 +++ vendor/github.com/tonistiigi/fsutil/diskwriter_unix.go
 @@ -45,7 +45,7 @@ func handleTarTypeBlockCharFifo(path string, stat *typ
  		mode |= syscall.S_IFBLK
