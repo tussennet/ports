@@ -1,3 +1,10 @@
+Big steps plan
+- start with a new port based on moby (done)
+- hack it to get it compile (done)
+- integrate containerd and runC (see bottom of TODO)
+- runtime testing
+- cleanup patches / upstreaming
+
 # github.com/docker/docker/vendor/github.com/containerd/cgroups
 vendor/github.com/containerd/cgroups/memory.go:179:33: undefined: unix.SYS_EVENTFD2
 vendor/github.com/containerd/cgroups/memory.go:179:55: undefined: unix.EFD_CLOEXEC
