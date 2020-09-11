@@ -1,5 +1,5 @@
---- libcontainerd/supervisor/remote_daemon_options_freebsd.go.orig	2020-08-28 12:28:37.910366000 +0200
-+++ libcontainerd/supervisor/remote_daemon_options_freebsd.go	2020-08-28 12:28:27.814302000 +0200
+--- libcontainerd/supervisor/remote_daemon_options_freebsd.go.orig	2020-09-04 09:13:43 UTC
++++ libcontainerd/supervisor/remote_daemon_options_freebsd.go
 @@ -0,0 +1,9 @@
 +package supervisor // import "github.com/docker/docker/libcontainerd/supervisor"
 +

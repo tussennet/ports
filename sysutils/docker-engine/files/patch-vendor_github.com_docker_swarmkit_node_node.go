@@ -1,6 +1,6 @@
---- vendor/github.com/docker/swarmkit/node/node.go.orig	2019-06-18 21:30:11 UTC
+--- vendor/github.com/docker/swarmkit/node/node.go.orig	2019-10-07 21:12:15 UTC
 +++ vendor/github.com/docker/swarmkit/node/node.go
-@@ -20,7 +20,6 @@ import (
+@@ -21,7 +21,6 @@ import (
  
  	"github.com/docker/docker/pkg/plugingetter"
  	"github.com/docker/go-metrics"
@@ -8,7 +8,7 @@
  	"github.com/docker/swarmkit/agent"
  	"github.com/docker/swarmkit/agent/exec"
  	"github.com/docker/swarmkit/api"
-@@ -273,11 +272,7 @@ func (n *Node) currentRole() api.NodeRole {
+@@ -274,11 +273,7 @@ func (n *Node) currentRole() api.NodeRole {
  
  // configVXLANUDPPort sets vxlan port in libnetwork
  func configVXLANUDPPort(ctx context.Context, vxlanUDPPort uint32) {

@@ -1,7 +1,7 @@
---- libcontainerd/types/types_freebsd.go.orig	2019-06-24 11:36:48 UTC
+--- libcontainerd/types/types_freebsd.go.orig	2020-09-04 14:57:27 UTC
 +++ libcontainerd/types/types_freebsd.go
-@@ -0,0 +1,24 @@
-+package types // import "github.com/docker/docker/libcontainerd/types"
+@@ -0,0 +1,33 @@
++package types
 +
 +import (
 +	"time"
@@ -18,6 +18,15 @@
 +// InterfaceToStats returns a stats object from the platform-specific interface.
 +func InterfaceToStats(read time.Time, v interface{}) *Stats {
 +	return &Stats{}
++}
++
++// StateInfo contains description about the new state container has entered.
++type StateInfo struct {
++	//CommonStateInfo
++
++	// Platform specific StateInfo
++	OOMKilled bool
++	ExitCode int
 +}
 +
 +// Resources defines updatable container resource values. TODO: it must match containerd upcoming API

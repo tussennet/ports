@@ -1,0 +1,71 @@
+--- Makefile.freebsd.orig	2020-09-04 14:57:27 UTC
++++ Makefile.freebsd
+@@ -0,0 +1,68 @@
++# This file exists to support the non-Docker-based build requirements for
++# FreeBSD/Docker
++#
++# Hacking GOPATH to take the first directory in the list and use that to clone
++# our dependencies
++export GO_PATH=$(firstword $(subst :, ,$(GOPATH)))
++export AUTO_GO_PATH=1
++export DEST_DIR=$(PWD)/bundles/bin
++export RUNC_PATH="${GO_PATH}/src/github.com/opencontainers/runc"
++export CONTAINERD_PATH="${GO_PATH}/src/github.com/containerd/containerd"
++export CONTAINERD_REFSPEC=freebsd-compat-0.2
++export LIBNETWORK_PATH="${GO_PATH}/src/github.com/docker/libnetwork"
++export TINI_PATH="${GO_PATH}/src/tini"
++
++all: binary
++
++binary: $(DEST_DIR)/docker-containerd $(DEST_DIR)/docker-proxy
++	./hack/make.sh binary
++	# Copy into bundles/bin for packaging
++	for f in bundles/latest/*/*; do \
++		[ -L "$$f" ] || continue; \
++		cp -f "$$(readlink -f $$f)" "$(DEST_DIR)/$${f##*/}"; \
++	done
++
++$(DEST_DIR)/docker-containerd: prepare
++	if [ ! -d $(CONTAINERD_PATH) ]; then \
++		git clone https://github.com/freebsd-docker/containerd.git $(CONTAINERD_PATH) && \
++		cd $(CONTAINERD_PATH) && \
++		git checkout $(CONTAINERD_REFSPEC); \
++	fi;
++	cd $(CONTAINERD_PATH) && \
++		$(MAKE) && \
++		cp bin/containerd $(DEST_DIR)/docker-containerd && \
++		cp bin/containerd-shim $(DEST_DIR)/docker-containerd-shim && \
++		cp bin/ctr $(DEST_DIR)/docker-containerd-ctr
++
++$(DEST_DIR)/docker-proxy: prepare
++	if [ ! -d $(LIBNETWORK_PATH) ]; then \
++		git clone https://github.com/freebsd-docker/libnetwork.git $(LIBNETWORK_PATH); \
++	fi;
++	cd $(LIBNETWORK_PATH) && \
++		go build -o $(DEST_DIR)/docker-proxy github.com/docker/libnetwork/cmd/proxy
++
++
++runc:
++	if [ ! -d $(RUNC_PATH) ]; then \
++		git clone https://github.com/freebsd-docker/runc.git $(RUNC_PATH); \
++	fi;
++	cd $(RUNC_PATH) && \
++		$(MAKE)
++
++tini: check-depends
++	if [ ! -d $(TINI_PATH) ]; then \
++		git clone https://github.com/krallin/tini.git $(TINI_PATH); \
++	fi;
++	cd $(TINI_PATH) && \
++		cmake . && \
++		$(MAKE) tini-static
++
++check-depends:
++	echo ">> Verify that you have CMake installed"
++
++prepare: bundles/bin
++
++bundles/bin:
++	mkdir -p bundles/bin
++
++.PHONY: check-depends prepare all binary
