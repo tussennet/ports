@@ -1,5 +1,5 @@
---- vendor/github.com/docker/libnetwork/service_freebsd.go.orig	2020-08-21 16:36:21.959749000 +0200
-+++ vendor/github.com/docker/libnetwork/service_freebsd.go	2019-10-07 23:12:15.000000000 +0200
+--- vendor/github.com/docker/libnetwork/service_freebsd.go.orig	2020-09-04 09:13:43 UTC
++++ vendor/github.com/docker/libnetwork/service_freebsd.go
 @@ -0,0 +1,302 @@
 +package libnetwork
 +

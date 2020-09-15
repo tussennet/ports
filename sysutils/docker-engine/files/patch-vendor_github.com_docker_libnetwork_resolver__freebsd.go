@@ -1,4 +1,4 @@
---- vendor/github.com/docker/libnetwork/resolver_freebsd.go.orig	2019-06-24 19:16:48 UTC
+--- vendor/github.com/docker/libnetwork/resolver_freebsd.go.orig	2020-09-04 14:57:27 UTC
 +++ vendor/github.com/docker/libnetwork/resolver_freebsd.go
 @@ -0,0 +1,12 @@
 +package libnetwork
@@ -11,5 +11,5 @@
 +}
 +
 +func (r *resolver) setupIPTable() error {
-+	return fmt.Errorf("IPTables not supported on FreeBSD")
++	return fmt.Errorf("IPTables not supported on FreeBSD") // this is just return null in old freebsd-docker
 +}

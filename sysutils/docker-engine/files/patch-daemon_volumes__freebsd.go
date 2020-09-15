@@ -1,5 +1,5 @@
---- daemon/volumes_freebsd.go.orig	2020-08-28 11:41:27.586718000 +0200
-+++ daemon/volumes_freebsd.go	2020-08-28 11:41:15.346599000 +0200
+--- daemon/volumes_freebsd.go.orig	2020-09-04 09:13:42 UTC
++++ daemon/volumes_freebsd.go
 @@ -0,0 +1,9 @@
 +package daemon // import "github.com/docker/docker/daemon"
 +
