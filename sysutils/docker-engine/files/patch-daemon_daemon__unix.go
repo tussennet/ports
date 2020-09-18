@@ -1,4 +1,4 @@
---- daemon/daemon_unix.go.orig	2019-10-07 21:12:15 UTC
+--- daemon/daemon_unix.go.orig	2020-09-18 09:00:53 UTC
 +++ daemon/daemon_unix.go
 @@ -7,7 +7,6 @@ import (
  	"context"
@@ -37,7 +37,7 @@
  	"golang.org/x/sys/unix"
  )
  
-@@ -914,143 +909,12 @@ func driverOptions(config *config.Config) []nwconfig.O
+@@ -916,143 +911,12 @@ func driverOptions(config *config.Config) []nwconfig.O
  }
  
  func initBridgeDriver(controller libnetwork.NetworkController, config *config.Config) error {
@@ -92,11 +92,11 @@
 -	}
 -
 -	if config.BridgeConfig.IP != "" {
--		ipamV4Conf.PreferredPool = config.BridgeConfig.IP
--		ip, _, err := net.ParseCIDR(config.BridgeConfig.IP)
+-		ip, ipNet, err := net.ParseCIDR(config.BridgeConfig.IP)
 -		if err != nil {
 -			return err
 -		}
+-		ipamV4Conf.PreferredPool = ipNet.String()
 -		ipamV4Conf.Gateway = ip.String()
 -	} else if bridgeName == bridge.DefaultBridgeName && ipamV4Conf.PreferredPool != "" {
 -		logrus.Infof("Default bridge (%s) is assigned with an IP address %s. Daemon option --bip can be used to set a preferred IP address", bridgeName, ipamV4Conf.PreferredPool)
@@ -168,8 +168,7 @@
 -	if err != nil {
 -		return fmt.Errorf("Error creating default \"bridge\" network: %v", err)
 -	}
--	return nil
-+	return fmt.Errorf("Bridge network driver not supported on FreeBSD (yet)")
+ 	return nil
  }
  
  // Remove default bridge interface if present (--bridge=none use case)
@@ -184,7 +183,7 @@
  }
  
  func setupInitLayer(idMapping *idtools.IdentityMapping) func(containerfs.ContainerFS) error {
-@@ -1237,45 +1101,45 @@ func setupDaemonRoot(config *config.Config, rootDir st
+@@ -1260,45 +1124,45 @@ func setupDaemonRoot(config *config.Config, rootDir st
  }
  
  func setupDaemonRootPropagation(cfg *config.Config) error {
@@ -263,7 +262,7 @@
  	return nil
  }
  
-@@ -1364,7 +1228,7 @@ func (daemon *Daemon) stats(c *container.Container) (*
+@@ -1387,7 +1251,7 @@ func (daemon *Daemon) stats(c *container.Container) (*
  	if !c.IsRunning() {
  		return nil, errNotRunning(c.ID)
  	}
@@ -272,7 +271,7 @@
  	if err != nil {
  		if strings.Contains(err.Error(), "container not found") {
  			return nil, containerNotFound(c.ID)
-@@ -1372,97 +1236,97 @@ func (daemon *Daemon) stats(c *container.Container) (*
+@@ -1395,97 +1259,97 @@ func (daemon *Daemon) stats(c *container.Container) (*
  		return nil, err
  	}
  	s := &types.StatsJSON{}
@@ -457,7 +456,7 @@
  
  	return s, nil
  }
-@@ -1548,7 +1412,10 @@ func (daemon *Daemon) initCgroupsPath(path string) err
+@@ -1571,7 +1435,10 @@ func (daemon *Daemon) initCgroupsPath(path string) err
  	// for the period and runtime as this limits what the children can be set to.
  	daemon.initCgroupsPath(filepath.Dir(path))
  

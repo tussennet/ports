@@ -1,6 +1,6 @@
---- vendor/github.com/containerd/cgroups/memory.go.orig	2019-10-07 21:12:15 UTC
+--- vendor/github.com/containerd/cgroups/memory.go.orig	2020-09-18 09:00:55 UTC
 +++ vendor/github.com/containerd/cgroups/memory.go
-@@ -176,7 +176,7 @@ func (m *memoryController) OOMEventFD(path string) (ui
+@@ -208,7 +208,7 @@ func (m *memoryController) OOMEventFD(path string) (ui
  		return 0, err
  	}
  	defer f.Close()

@@ -1,4 +1,4 @@
---- vendor/github.com/tonistiigi/fsutil/copy/copy_unix.go.orig	2019-10-07 21:12:15 UTC
+--- vendor/github.com/tonistiigi/fsutil/copy/copy_unix.go.orig	2020-09-18 09:00:57 UTC
 +++ vendor/github.com/tonistiigi/fsutil/copy/copy_unix.go
 @@ -3,6 +3,7 @@
  package fs
@@ -8,7 +8,7 @@
  	"os"
  	"syscall"
  
-@@ -50,10 +51,33 @@ func (c *copier) copyFileInfo(fi os.FileInfo, name str
+@@ -52,10 +53,33 @@ func (c *copier) copyFileInfo(fi os.FileInfo, name str
  	return nil
  }
  
