@@ -1,8 +1,7 @@
---- daemon/update_freebsd.go.orig	2020-09-04 14:57:27 UTC
+--- daemon/update_freebsd.go.orig	2020-09-18 09:01:00 UTC
 +++ daemon/update_freebsd.go
-@@ -0,0 +1,12 @@
-+package daemon // import "github.com/docker/docker/daemon"
-+
+@@ -0,0 +1,11 @@
++package daemon
 +
 +import (
 +	"github.com/docker/docker/api/types/container"
