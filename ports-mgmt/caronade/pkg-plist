@@ -5,7 +5,7 @@ caronade/static/favicon-32.png
 caronade/static/favicon-96.png
 caronade/static/logo.png
 caronade/templates/email.txt
-caronade/templates/index.html
+caronade/templates/build.html
 caronade/templates/joblisting.html
 caronade/work/portlint.mk
 caronade/work/poudriere.mk
