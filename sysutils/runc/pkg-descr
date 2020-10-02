@@ -1,0 +1,5 @@
+runc is a CLI tool for spawning and running containers according to the OCI specification.
+
+Used to run docker containers
+
+https://github.com/opencontainers/runc
