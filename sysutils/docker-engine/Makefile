@@ -2,7 +2,7 @@
 
 PORTNAME=	docker-engine
 DISTVERSIONPREFIX=	v
-DISTVERSION=	19.03.12
+DISTVERSION=	19.03.13
 CATEGORIES=	sysutils
 
 MAINTAINER=	decke@FreeBSD.org
@@ -16,8 +16,8 @@ BUILD_DEPENDS=	bash:shells/bash
 USES=		go
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	docker
-GH_PROJECT=	engine
+GH_ACCOUNT=	moby
+GH_PROJECT=	moby
 GH_SUBDIR=	src/github.com/docker/docker
 
 GO_TARGET=	./cmd/dockerd
