@@ -1,6 +1,6 @@
---- daemon/daemon_freebsd.go.orig	2020-09-04 09:13:42 UTC
+--- daemon/daemon_freebsd.go.orig	2020-10-16 13:57:41 UTC
 +++ daemon/daemon_freebsd.go
-@@ -0,0 +1,146 @@
+@@ -0,0 +1,139 @@
 +package daemon // import "github.com/docker/docker/daemon"
 +
 +// based on daemon_linux
@@ -27,14 +27,7 @@
 +}
 +
 +func (daemon *Daemon) cleanupMountsByID(id string) error {
-+	logrus.Debugf("Cleaning up old mountid %s: start.", id)
-+	f, err := os.Open("/proc/self/mountinfo")
-+	if err != nil {
-+		return err
-+	}
-+	defer f.Close()
-+
-+	return daemon.cleanupMountsFromReaderByID(f, id, mount.Unmount)
++	return nil
 +}
 +
 +func (daemon *Daemon) cleanupMountsFromReaderByID(reader io.Reader, id string, unmount func(target string) error) error {

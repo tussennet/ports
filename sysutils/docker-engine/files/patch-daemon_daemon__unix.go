@@ -1,4 +1,4 @@
---- daemon/daemon_unix.go.orig	2020-09-18 09:00:53 UTC
+--- daemon/daemon_unix.go.orig	2020-10-16 13:57:35 UTC
 +++ daemon/daemon_unix.go
 @@ -7,7 +7,6 @@ import (
  	"context"
@@ -8,16 +8,17 @@
  	"os"
  	"path/filepath"
  	"runtime"
-@@ -29,7 +28,7 @@ import (
+@@ -29,7 +28,8 @@ import (
  	"github.com/docker/docker/pkg/containerfs"
  	"github.com/docker/docker/pkg/idtools"
  	"github.com/docker/docker/pkg/ioutils"
 -	"github.com/docker/docker/pkg/mount"
++
 +	//"github.com/docker/docker/pkg/mount"
  	"github.com/docker/docker/pkg/parsers"
  	"github.com/docker/docker/pkg/parsers/kernel"
  	"github.com/docker/docker/pkg/sysinfo"
-@@ -37,18 +36,14 @@ import (
+@@ -37,18 +37,15 @@ import (
  	volumemounts "github.com/docker/docker/volume/mounts"
  	"github.com/docker/libnetwork"
  	nwconfig "github.com/docker/libnetwork/config"
@@ -27,6 +28,7 @@
  	"github.com/docker/libnetwork/options"
 -	lntypes "github.com/docker/libnetwork/types"
 -	"github.com/opencontainers/runc/libcontainer/cgroups"
++
 +	// "github.com/opencontainers/runc/libcontainer/cgroups"
  	rsystem "github.com/opencontainers/runc/libcontainer/system"
  	"github.com/opencontainers/runtime-spec/specs-go"
@@ -37,7 +39,24 @@
  	"golang.org/x/sys/unix"
  )
  
-@@ -916,143 +911,12 @@ func driverOptions(config *config.Config) []nwconfig.O
+@@ -874,11 +871,11 @@ func (daemon *Daemon) initNetworkController(config *co
+ 	}
+ 
+ 	// Initialize default network on "host"
+-	if n, _ := controller.NetworkByName("host"); n == nil {
+-		if _, err := controller.NewNetwork("host", "host", "", libnetwork.NetworkOptionPersist(true)); err != nil {
+-			return nil, fmt.Errorf("Error creating default \"host\" network: %v", err)
+-		}
+-	}
++	// if n, _ := controller.NetworkByName("host"); n == nil {
++	// 	if _, err := controller.NewNetwork("host", "host", "", libnetwork.NetworkOptionPersist(true)); err != nil {
++	// 		return nil, fmt.Errorf("Error creating default \"host\" network: %v", err)
++	// 	}
++	// }
+ 
+ 	// Clear stale bridge network
+ 	if n, err := controller.NetworkByName("bridge"); err == nil {
+@@ -916,143 +913,12 @@ func driverOptions(config *config.Config) []nwconfig.O
  }
  
  func initBridgeDriver(controller libnetwork.NetworkController, config *config.Config) error {
@@ -183,7 +202,7 @@
  }
  
  func setupInitLayer(idMapping *idtools.IdentityMapping) func(containerfs.ContainerFS) error {
-@@ -1260,45 +1124,45 @@ func setupDaemonRoot(config *config.Config, rootDir st
+@@ -1260,45 +1126,45 @@ func setupDaemonRoot(config *config.Config, rootDir st
  }
  
  func setupDaemonRootPropagation(cfg *config.Config) error {
@@ -262,7 +281,7 @@
  	return nil
  }
  
-@@ -1387,7 +1251,7 @@ func (daemon *Daemon) stats(c *container.Container) (*
+@@ -1387,7 +1253,7 @@ func (daemon *Daemon) stats(c *container.Container) (*
  	if !c.IsRunning() {
  		return nil, errNotRunning(c.ID)
  	}
@@ -271,7 +290,7 @@
  	if err != nil {
  		if strings.Contains(err.Error(), "container not found") {
  			return nil, containerNotFound(c.ID)
-@@ -1395,97 +1259,97 @@ func (daemon *Daemon) stats(c *container.Container) (*
+@@ -1395,97 +1261,97 @@ func (daemon *Daemon) stats(c *container.Container) (*
  		return nil, err
  	}
  	s := &types.StatsJSON{}
@@ -456,7 +475,33 @@
  
  	return s, nil
  }
-@@ -1571,7 +1435,10 @@ func (daemon *Daemon) initCgroupsPath(path string) err
+@@ -1538,24 +1404,7 @@ func setMayDetachMounts() error {
+ }
+ 
+ func setupOOMScoreAdj(score int) error {
+-	f, err := os.OpenFile("/proc/self/oom_score_adj", os.O_WRONLY, 0)
+-	if err != nil {
+-		return err
+-	}
+-	defer f.Close()
+-	stringScore := strconv.Itoa(score)
+-	_, err = f.WriteString(stringScore)
+-	if os.IsPermission(err) {
+-		// Setting oom_score_adj does not work in an
+-		// unprivileged container. Ignore the error, but log
+-		// it if we appear not to be in that situation.
+-		if !rsystem.RunningInUserNS() {
+-			logrus.Debugf("Permission denied writing %q to /proc/self/oom_score_adj", stringScore)
+-		}
+-		return nil
+-	}
+-
+-	return err
++	return nil
+ }
+ 
+ func (daemon *Daemon) initCgroupsPath(path string) error {
+@@ -1571,7 +1420,10 @@ func (daemon *Daemon) initCgroupsPath(path string) err
  	// for the period and runtime as this limits what the children can be set to.
  	daemon.initCgroupsPath(filepath.Dir(path))
  
