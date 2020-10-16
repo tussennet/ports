@@ -1,3 +1,3 @@
-TIMESTAMP = 1600415528
-SHA256 (docker-engine-v19.03.12_GH0.tar.gz) = 858e4e74ee0097bcbdb71d737e268dfcfd1970efa4a1600354253b02fd403e39
-SIZE (docker-engine-v19.03.12_GH0.tar.gz) = 10399056
+TIMESTAMP = 1602853279
+SHA256 (moby-moby-v19.03.13_GH0.tar.gz) = f43331fef1d24e31f43392fc1fed72b48fc17fd432d341d6eb1f68ca11383406
+SIZE (moby-moby-v19.03.13_GH0.tar.gz) = 10406691
