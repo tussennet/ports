@@ -1,14 +1,6 @@
---- daemon/daemon_unix.go.orig	2020-10-16 13:57:35 UTC
+--- daemon/daemon_unix.go.orig	2020-10-23 18:37:16 UTC
 +++ daemon/daemon_unix.go
-@@ -7,7 +7,6 @@ import (
- 	"context"
- 	"fmt"
- 	"io/ioutil"
--	"net"
- 	"os"
- 	"path/filepath"
- 	"runtime"
-@@ -29,7 +28,8 @@ import (
+@@ -29,7 +29,8 @@ import (
  	"github.com/docker/docker/pkg/containerfs"
  	"github.com/docker/docker/pkg/idtools"
  	"github.com/docker/docker/pkg/ioutils"
@@ -18,15 +10,16 @@
  	"github.com/docker/docker/pkg/parsers"
  	"github.com/docker/docker/pkg/parsers/kernel"
  	"github.com/docker/docker/pkg/sysinfo"
-@@ -37,18 +37,15 @@ import (
+@@ -37,18 +38,18 @@ import (
  	volumemounts "github.com/docker/docker/volume/mounts"
  	"github.com/docker/libnetwork"
  	nwconfig "github.com/docker/libnetwork/config"
 -	"github.com/docker/libnetwork/drivers/bridge"
++	"github.com/docker/libnetwork/drivers/freebsd/bridge"
  	"github.com/docker/libnetwork/netlabel"
--	"github.com/docker/libnetwork/netutils"
+ 	"github.com/docker/libnetwork/netutils"
  	"github.com/docker/libnetwork/options"
--	lntypes "github.com/docker/libnetwork/types"
+ 	lntypes "github.com/docker/libnetwork/types"
 -	"github.com/opencontainers/runc/libcontainer/cgroups"
 +
 +	// "github.com/opencontainers/runc/libcontainer/cgroups"
@@ -39,7 +32,7 @@
  	"golang.org/x/sys/unix"
  )
  
-@@ -874,11 +871,11 @@ func (daemon *Daemon) initNetworkController(config *co
+@@ -874,11 +875,11 @@ func (daemon *Daemon) initNetworkController(config *co
  	}
  
  	// Initialize default network on "host"
@@ -56,137 +49,11 @@
  
  	// Clear stale bridge network
  	if n, err := controller.NetworkByName("bridge"); err == nil {
-@@ -916,143 +913,12 @@ func driverOptions(config *config.Config) []nwconfig.O
- }
- 
- func initBridgeDriver(controller libnetwork.NetworkController, config *config.Config) error {
--	bridgeName := bridge.DefaultBridgeName
--	if config.BridgeConfig.Iface != "" {
--		bridgeName = config.BridgeConfig.Iface
--	}
--	netOption := map[string]string{
--		bridge.BridgeName:         bridgeName,
--		bridge.DefaultBridge:      strconv.FormatBool(true),
--		netlabel.DriverMTU:        strconv.Itoa(config.Mtu),
--		bridge.EnableIPMasquerade: strconv.FormatBool(config.BridgeConfig.EnableIPMasq),
--		bridge.EnableICC:          strconv.FormatBool(config.BridgeConfig.InterContainerCommunication),
--	}
--
--	// --ip processing
--	if config.BridgeConfig.DefaultIP != nil {
--		netOption[bridge.DefaultBindingIP] = config.BridgeConfig.DefaultIP.String()
--	}
--
--	var (
--		ipamV4Conf *libnetwork.IpamConf
--		ipamV6Conf *libnetwork.IpamConf
--	)
--
--	ipamV4Conf = &libnetwork.IpamConf{AuxAddresses: make(map[string]string)}
--
--	nwList, nw6List, err := netutils.ElectInterfaceAddresses(bridgeName)
--	if err != nil {
--		return errors.Wrap(err, "list bridge addresses failed")
--	}
--
--	nw := nwList[0]
--	if len(nwList) > 1 && config.BridgeConfig.FixedCIDR != "" {
--		_, fCIDR, err := net.ParseCIDR(config.BridgeConfig.FixedCIDR)
--		if err != nil {
--			return errors.Wrap(err, "parse CIDR failed")
--		}
--		// Iterate through in case there are multiple addresses for the bridge
--		for _, entry := range nwList {
--			if fCIDR.Contains(entry.IP) {
--				nw = entry
--				break
--			}
--		}
--	}
--
--	ipamV4Conf.PreferredPool = lntypes.GetIPNetCanonical(nw).String()
--	hip, _ := lntypes.GetHostPartIP(nw.IP, nw.Mask)
--	if hip.IsGlobalUnicast() {
--		ipamV4Conf.Gateway = nw.IP.String()
--	}
--
--	if config.BridgeConfig.IP != "" {
--		ip, ipNet, err := net.ParseCIDR(config.BridgeConfig.IP)
--		if err != nil {
--			return err
--		}
--		ipamV4Conf.PreferredPool = ipNet.String()
--		ipamV4Conf.Gateway = ip.String()
--	} else if bridgeName == bridge.DefaultBridgeName && ipamV4Conf.PreferredPool != "" {
--		logrus.Infof("Default bridge (%s) is assigned with an IP address %s. Daemon option --bip can be used to set a preferred IP address", bridgeName, ipamV4Conf.PreferredPool)
--	}
--
--	if config.BridgeConfig.FixedCIDR != "" {
--		_, fCIDR, err := net.ParseCIDR(config.BridgeConfig.FixedCIDR)
--		if err != nil {
--			return err
--		}
--
--		ipamV4Conf.SubPool = fCIDR.String()
--	}
--
--	if config.BridgeConfig.DefaultGatewayIPv4 != nil {
--		ipamV4Conf.AuxAddresses["DefaultGatewayIPv4"] = config.BridgeConfig.DefaultGatewayIPv4.String()
--	}
--
--	var deferIPv6Alloc bool
--	if config.BridgeConfig.FixedCIDRv6 != "" {
--		_, fCIDRv6, err := net.ParseCIDR(config.BridgeConfig.FixedCIDRv6)
--		if err != nil {
--			return err
--		}
--
--		// In case user has specified the daemon flag --fixed-cidr-v6 and the passed network has
--		// at least 48 host bits, we need to guarantee the current behavior where the containers'
--		// IPv6 addresses will be constructed based on the containers' interface MAC address.
--		// We do so by telling libnetwork to defer the IPv6 address allocation for the endpoints
--		// on this network until after the driver has created the endpoint and returned the
--		// constructed address. Libnetwork will then reserve this address with the ipam driver.
--		ones, _ := fCIDRv6.Mask.Size()
--		deferIPv6Alloc = ones <= 80
--
--		if ipamV6Conf == nil {
--			ipamV6Conf = &libnetwork.IpamConf{AuxAddresses: make(map[string]string)}
--		}
--		ipamV6Conf.PreferredPool = fCIDRv6.String()
--
--		// In case the --fixed-cidr-v6 is specified and the current docker0 bridge IPv6
--		// address belongs to the same network, we need to inform libnetwork about it, so
--		// that it can be reserved with IPAM and it will not be given away to somebody else
--		for _, nw6 := range nw6List {
--			if fCIDRv6.Contains(nw6.IP) {
--				ipamV6Conf.Gateway = nw6.IP.String()
--				break
--			}
--		}
--	}
--
--	if config.BridgeConfig.DefaultGatewayIPv6 != nil {
--		if ipamV6Conf == nil {
--			ipamV6Conf = &libnetwork.IpamConf{AuxAddresses: make(map[string]string)}
--		}
--		ipamV6Conf.AuxAddresses["DefaultGatewayIPv6"] = config.BridgeConfig.DefaultGatewayIPv6.String()
--	}
--
--	v4Conf := []*libnetwork.IpamConf{ipamV4Conf}
--	v6Conf := []*libnetwork.IpamConf{}
--	if ipamV6Conf != nil {
--		v6Conf = append(v6Conf, ipamV6Conf)
--	}
--	// Initialize default network on "bridge" with the same name
--	_, err = controller.NewNetwork("bridge", "bridge", "",
--		libnetwork.NetworkOptionEnableIPv6(config.BridgeConfig.EnableIPv6),
--		libnetwork.NetworkOptionDriverOpts(netOption),
--		libnetwork.NetworkOptionIpam("default", "", v4Conf, v6Conf, nil),
--		libnetwork.NetworkOptionDeferIPv6Alloc(deferIPv6Alloc))
--	if err != nil {
--		return fmt.Errorf("Error creating default \"bridge\" network: %v", err)
--	}
+@@ -1043,16 +1044,13 @@ func initBridgeDriver(controller libnetwork.NetworkCon
+ 	if err != nil {
+ 		return fmt.Errorf("Error creating default \"bridge\" network: %v", err)
+ 	}
++
  	return nil
  }
  
@@ -202,7 +69,7 @@
  }
  
  func setupInitLayer(idMapping *idtools.IdentityMapping) func(containerfs.ContainerFS) error {
-@@ -1260,45 +1126,45 @@ func setupDaemonRoot(config *config.Config, rootDir st
+@@ -1260,45 +1258,45 @@ func setupDaemonRoot(config *config.Config, rootDir st
  }
  
  func setupDaemonRootPropagation(cfg *config.Config) error {
@@ -281,7 +148,7 @@
  	return nil
  }
  
-@@ -1387,7 +1253,7 @@ func (daemon *Daemon) stats(c *container.Container) (*
+@@ -1387,7 +1385,7 @@ func (daemon *Daemon) stats(c *container.Container) (*
  	if !c.IsRunning() {
  		return nil, errNotRunning(c.ID)
  	}
@@ -290,7 +157,7 @@
  	if err != nil {
  		if strings.Contains(err.Error(), "container not found") {
  			return nil, containerNotFound(c.ID)
-@@ -1395,97 +1261,97 @@ func (daemon *Daemon) stats(c *container.Container) (*
+@@ -1395,97 +1393,97 @@ func (daemon *Daemon) stats(c *container.Container) (*
  		return nil, err
  	}
  	s := &types.StatsJSON{}
@@ -475,7 +342,7 @@
  
  	return s, nil
  }
-@@ -1538,24 +1404,7 @@ func setMayDetachMounts() error {
+@@ -1538,24 +1536,7 @@ func setMayDetachMounts() error {
  }
  
  func setupOOMScoreAdj(score int) error {
@@ -501,7 +368,7 @@
  }
  
  func (daemon *Daemon) initCgroupsPath(path string) error {
-@@ -1571,7 +1420,10 @@ func (daemon *Daemon) initCgroupsPath(path string) err
+@@ -1571,7 +1552,10 @@ func (daemon *Daemon) initCgroupsPath(path string) err
  	// for the period and runtime as this limits what the children can be set to.
  	daemon.initCgroupsPath(filepath.Dir(path))
  
