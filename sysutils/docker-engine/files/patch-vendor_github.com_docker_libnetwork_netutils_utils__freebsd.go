@@ -1,47 +1,70 @@
---- vendor/github.com/docker/libnetwork/netutils/utils_freebsd.go.orig	2020-09-04 14:54:57 UTC
+--- vendor/github.com/docker/libnetwork/netutils/utils_freebsd.go.orig	2020-10-23 14:06:21 UTC
 +++ vendor/github.com/docker/libnetwork/netutils/utils_freebsd.go
-@@ -1,7 +1,10 @@
- package netutils
+@@ -6,7 +6,10 @@ import (
+ 	"os/exec"
+ 	"strings"
  
- import (
-+	"fmt"
- 	"net"
-+	"os/exec"
-+	"strings"
- 
- 	"github.com/docker/libnetwork/types"
+-	"github.com/docker/libnetwork/types"
++	"github.com/docker/libnetwork/ipamutils"
++	"github.com/docker/libnetwork/ns"
++	"github.com/docker/libnetwork/osl"
++	"github.com/pkg/errors"
  )
-@@ -19,5 +22,32 @@ func ElectInterfaceAddresses(name string) ([]*net.IPNe
- // FindAvailableNetwork returns a network from the passed list which does not
- // overlap with existing interfaces in the system
- func FindAvailableNetwork(list []*net.IPNet) (*net.IPNet, error) {
--	return nil, types.NotImplementedErrorf("not supported on freebsd")
-+	for _, avail := range list {
-+		cidr := strings.Split(avail.String(), "/")
-+		ipitems := strings.Split(cidr[0], ".")
-+		ip := ipitems[0] + "." +
-+		      ipitems[1] + "." +
-+		      ipitems[2] + "." + "1"
+ 
+ // ElectInterfaceAddresses looks for an interface on the OS with the specified name
+@@ -16,7 +19,43 @@ import (
+ // list the first IPv4 address which does not conflict with other
+ // interfaces on the system.
+ func ElectInterfaceAddresses(name string) ([]*net.IPNet, []*net.IPNet, error) {
+-	return nil, nil, types.NotImplementedErrorf("not supported on freebsd")
++	var (
++		v4Nets []*net.IPNet
++		v6Nets []*net.IPNet
++	)
 +
-+		out, err := exec.Command("/sbin/route", "get", ip).Output()
++	defer osl.InitOSContext()()
++
++	link, _ := ns.NlHandle().LinkByName(name)
++	// disabled on freebsd for now
++	// if link != nil {
++	// 	v4addr, err := ns.NlHandle().AddrList(link, netlink.FAMILY_V4)
++	// 	if err != nil {
++	// 		return nil, nil, err
++	// 	}
++	// 	v6addr, err := ns.NlHandle().AddrList(link, netlink.FAMILY_V6)
++	// 	if err != nil {
++	// 		return nil, nil, err
++	// 	}
++	// 	for _, nlAddr := range v4addr {
++	// 		v4Nets = append(v4Nets, nlAddr.IPNet)
++	// 	}
++	// 	for _, nlAddr := range v6addr {
++	// 		v6Nets = append(v6Nets, nlAddr.IPNet)
++	// 	}
++	// }
++
++	if link == nil || len(v4Nets) == 0 {
++		// Choose from predefined local scope networks
++		v4Net, err := FindAvailableNetwork(ipamutils.PredefinedLocalScopeDefaultNetworks)
 +		if err != nil {
-+			fmt.Println("failed to run route get command")
-+			return nil, err
++			return nil, nil, errors.Wrapf(err, "PredefinedLocalScopeDefaultNetworks List: %+v",
++				ipamutils.PredefinedLocalScopeDefaultNetworks)
 +		}
-+		lines := strings.Split(string(out), "\n")
-+		for _, l := range lines {
-+			s := strings.Split(string(l), ":")
-+			if len(s) == 2 {
-+				k, v := s[0], strings.TrimSpace(s[1])
-+				if k == "destination" {
-+					if v == "default" {
-+						return avail, nil
-+					}
-+					break
-+				}
-+			}
-+		}
++		v4Nets = append(v4Nets, v4Net)
 +	}
-+	return nil, fmt.Errorf("no available network")
-+	//types.NotImplementedErrorf("not supported on freebsd")
++
++	return v4Nets, v6Nets, nil
  }
+ 
+ // FindAvailableNetwork returns a network from the passed list which does not
+@@ -26,8 +65,8 @@ func FindAvailableNetwork(list []*net.IPNet) (*net.IPN
+ 		cidr := strings.Split(avail.String(), "/")
+ 		ipitems := strings.Split(cidr[0], ".")
+ 		ip := ipitems[0] + "." +
+-		      ipitems[1] + "." +
+-		      ipitems[2] + "." + "1"
++			ipitems[1] + "." +
++			ipitems[2] + "." + "1"
+ 
+ 		out, err := exec.Command("/sbin/route", "get", ip).Output()
+ 		if err != nil {
